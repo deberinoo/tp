@@ -33,7 +33,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 <img src="images/tadacheng.png" width="200px">
 
-[[github](http://github.com/tadacheng)] [[portfolio](team/johndoe.md)]
+[[github](http://github.com/tadacheng)] [[portfolio](team/tadacheng.md)]
 
 * Role: Developer
 * Responsibilities: Scheduling and tracking, Model
