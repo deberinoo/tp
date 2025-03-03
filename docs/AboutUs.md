@@ -19,21 +19,21 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Developer
 * Responsibilities: Documentation, In charge of State component
 
-### Jane Doe
+### Yeo Yi Wen
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/xenyeo.png" width="200px">
 
 [[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[portfolio](team/xenyeo)]
 
-* Role: Team Lead
-* Responsibilities: UI
+* Role: Developer
+* Responsibilities: Documentation, Scheduling and tracking
 
 ### Johnny Doe
 
 <img src="images/johndoe.png" width="200px">
 
-[[github](http://github.com/johndoe)] [[portfolio](team/johndoe.md)]
+[[github](http://github.com/johndoe)] [[portfolio](team/xenyeo)]
 
 * Role: Developer
 * Responsibilities: Data
@@ -43,7 +43,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 <img src="images/johndoe.png" width="200px">
 
 [[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[portfolio](team/xenyeo)]
 
 * Role: Developer
 * Responsibilities: Dev Ops + Threading
@@ -53,7 +53,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 <img src="images/johndoe.png" width="200px">
 
 [[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[portfolio](team/xenyeo)]
 
 * Role: Developer
 * Responsibilities: UI
