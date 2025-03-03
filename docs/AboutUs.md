@@ -9,6 +9,36 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ## Project team
 
+### Sean Sim
+
+<img src="images/botosek.png" width="200px">
+
+[[github](https://github.com/botosek)]
+[[portfolio](team/botosek.md)]
+
+* Role: Developer
+* Responsibilities: Documentation, In charge of State component
+
+### Yeo Yi Wen
+
+<img src="images/xenyeo.png" width="200px">
+
+[[github](http://github.com/johndoe)]
+[[portfolio](team/xenyeo)]
+
+* Role: Developer
+* Responsibilities: Documentation, Scheduling and tracking
+
+### Tang Dan Cheng
+
+<img src="images/tadacheng.png" width="200px">
+
+[[github](http://github.com/tadacheng)]
+[[portfolio](team/tadacheng.md)]
+
+* Role: Developer
+* Responsibilities: Testing, Model
+
 ### Deborah Lu
 
 <img src="images/deberinoo.png" width="200px">
@@ -19,42 +49,12 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Developer
 * Responsibilities: Code Quality
 
-### Jane Doe
-
-<img src="images/johndoe.png" width="200px">
-
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
-
-* Role: Team Lead
-* Responsibilities: UI
-
-### Johnny Doe
-
-<img src="images/johndoe.png" width="200px">
-
-[[github](http://github.com/johndoe)] 
-[[portfolio](team/johndoe.md)]
-
-* Role: Developer
-* Responsibilities: Data
-
-### Jean Doe
-
-<img src="images/johndoe.png" width="200px">
-
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
-
-* Role: Developer
-* Responsibilities: Dev Ops + Threading
-
 ### James Doe
 
 <img src="images/johndoe.png" width="200px">
 
 [[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[portfolio](team/xenyeo)]
 
 * Role: Developer
 * Responsibilities: UI
