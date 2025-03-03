@@ -29,14 +29,14 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Developer
 * Responsibilities: Documentation, Scheduling and tracking
 
-### Johnny Doe
+### Tang Dan Cheng
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/tadacheng.png" width="200px">
 
-[[github](http://github.com/johndoe)] [[portfolio](team/xenyeo)]
+[[github](http://github.com/tadacheng)] [[portfolio](team/tadacheng.md)]
 
 * Role: Developer
-* Responsibilities: Data
+* Responsibilities: Testing, Model
 
 ### Jean Doe
 
