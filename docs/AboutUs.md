@@ -9,26 +9,25 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ## Project team
 
+### Sean Sim
+
+<img src="images/botosek.png" width="200px">
+
+[[github](https://github.com/botosek)]
+[[portfolio](team/botosek.md)]
+
+* Role: Developer
+* Responsibilities: Documentation, In charge of State component
+
 ### Yeo Yi Wen
 
 <img src="images/xenyeo.png" width="200px">
 
-[[homepage](http://www.comp.nus.edu.sg/~damithch)]
-[[github](https://github.com/johndoe)]
+[[github](http://github.com/johndoe)]
 [[portfolio](team/xenyeo)]
 
 * Role: Developer
 * Responsibilities: Documentation, Scheduling and tracking
-
-### Jane Doe
-
-<img src="images/johndoe.png" width="200px">
-
-[[github](http://github.com/johndoe)]
-[[portfolio](team/xenyeo)]
-
-* Role: Team Lead
-* Responsibilities: UI
 
 ### Johnny Doe
 
