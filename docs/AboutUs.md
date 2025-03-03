@@ -33,20 +33,21 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 <img src="images/tadacheng.png" width="200px">
 
-[[github](http://github.com/tadacheng)] [[portfolio](team/tadacheng.md)]
+[[github](http://github.com/tadacheng)]
+[[portfolio](team/tadacheng.md)]
 
 * Role: Developer
 * Responsibilities: Testing, Model
 
-### Jean Doe
+### Deborah Lu
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/deberinoo.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/xenyeo)]
+[[github](https://github.com/deberinoo)]
+[[portfolio](team/johndoe.md)]
 
 * Role: Developer
-* Responsibilities: Dev Ops + Threading
+* Responsibilities: Code Quality
 
 ### James Doe
 
