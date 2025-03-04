@@ -49,12 +49,12 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Developer
 * Responsibilities: Code Quality
 
-### James Doe
+### Philip Hew
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/dnardnar.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/xenyeo)]
+[[github](http://github.com/dnardnar)]
+[[portfolio](team/dnardnar.md)]
 
 * Role: Developer
-* Responsibilities: UI
+* Responsibilities: Documentation, Deliverables and deadlines, Integration
