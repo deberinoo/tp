@@ -313,30 +313,156 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is the `EduEase` and the **Actor** is the `user`, unless specified otherwise)
 
-**Use case: Delete a person**
+**Use case: Add a new student contact**
 
 **MSS**
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+1.  Tutor enters the command to add a new student with details (name, phone number, email, parent contact)
+2.  EduEase validates the input fields
+3.  If all fields are valid, EduEase saves the student contact
+4.  EduEase confirms the addition with a success message
 
     Use case ends.
 
 **Extensions**
 
-* 2a. The list is empty.
+* 2a. Invalid input format.
 
-  Use case ends.
+    * 2a1. EduEase displays an appropriate error message and prompts for correction.
 
-* 3a. The given index is invalid.
+      Use case resumes at step 1.
 
-    * 3a1. AddressBook shows an error message.
+* 2b. Duplicate student detected
+
+    * 2b1. EduEase notifies the tutor that the student already exists
+    * 2b2. Tutor decides to update existing information or cancel the operation
 
       Use case resumes at step 2.
+
+**Use case: Delete a student contact**
+
+**MSS**
+
+1.  Tutor enters the command to delete a student by rank
+2.  EduEase checks if the rank is valid
+3.  If valid, EduEase deletes the student contact
+4.  EduEase confirms the deletion with a success message
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The rank does not exist.
+
+   * 2a1. EduEase displays an error message.
+
+      Use case resumes at step 1.
+
+* 2b. A non-integer value is entered.
+
+    * 2a1. EduEase prompts for a correct format.
+
+      Use case resumes at step 1.
+
+**Use case: List student contacts**
+
+**MSS**
+
+1.  Tutor enters the command to list all student contacts
+2.  EduEase retrieves and displays a list of students, including their details (name, phone number, email, parent contact, tags)
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. If no students exist.
+
+   * 2a1. EduEase displays a message indicating that the list is empty.
+
+      Use case ends.
+
+* 2b. If an invalid command is entered.
+
+    * 2b1. EduEase displays an error message.
+
+      Use case resumes at step 1.
+
+**Use case: Set reminders for upcoming exams or important dates**
+
+**MSS**
+
+1.  Tutor enters the command to set a reminder
+2.  EduEase validates the input parameters
+3.  If all parameters are valid, EduEase saves the reminder
+4.  EduEase confirms the addition with a success message
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. If any parameter is missing or invalid.
+
+   * 2a1. EduEase displays an error message based on the specific issue.
+
+      Use case resumes at step 1.
+
+* 2b. If the date/time is in the past.
+
+    * 2b1. EduEase displays an error message.
+
+      Use case resumes at step 1.
+
+* 2c.  If the student does not exist.
+   
+    * 2c1. EduEase displays an error message.
+
+      Use case resumes at step 1.
+
+* 2d.  If a duplicate reminder exists.
+   
+    * 2d1. EduEase notifies the tutor that a similar reminder already exists.
+    * 2d2. Tutor decides to update existing information or cancel the operation
+
+      Use case resumes at step 1.
+
+**Use case: Add tags to student contacts**
+
+**MSS**
+
+1.  Tutor enters the command to add a student with tags
+2.  EduEase validates the tag parameters
+3.  If all parameters are valid, EduEase adds the student with the specified tags
+4.  EduEase confirms the addition with a success message
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. If a tag contains invalid characters or exceeds 25 characters.
+
+   * 2a1. EduEase displays an error message based on the specific issue.
+
+      Use case resumes at step 1.
+
+* 2b.  If more than 5 tags are provided.
+   
+    * 2b1. EduEase displays an error message.
+
+      Use case resumes at step 1.
+   
+* 2c.  If a duplicate tag is entered for the same student.
+
+    * 2c1. EduEase does not add the duplicate tag.
+
+      Use case resumes at step 1.
+
+* 2d.  If a tag is empty.
+    
+    * 2d1. EduEase displays an error message.
+
+      Use case resumes at step 1.
 
 *{More to be added}*
 
