@@ -471,8 +471,12 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 1.  Should work on any _mainstream OS_ as long as it has Java `17` or above installed.
 2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
 3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+4. The system should respond in less than three seconds.
+5. The system should allow tutors to complete common tasks (e.g., adding or deleting a contact) with no more than three commands or interactions.
+6. The interface must provide clear error messages and guidance for invalid inputs, ensuring that new users can recover from errors without external help.
 
 *{More to be added}*
+
 
 ### Glossary
 
