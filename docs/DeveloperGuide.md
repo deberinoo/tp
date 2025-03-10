@@ -258,31 +258,56 @@ _{Explain here how the data archiving feature will be implemented}_
 
 ## **Appendix: Requirements**
 
+**Team**: F09-02
+
+**Product Name**: EduEase
+
 ### Product scope
 
-**Target user profile**:
-
-* has a need to manage a significant number of contacts
+**Target user profile**: Private home tutors providing one-on-one remote sessions for primary students on math.
+* is a tutor managing student contacts
 * prefer desktop apps over other types
 * can type fast
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
-
+**Value proposition**: EduEase simplifies the management of student contact details, helping private tutors stay organized. It allows them to focus on delivering high-quality teaching while reducing administrative burdens, such as their students' progress and contacts, thereby enhancing their productivity.
 
 ### User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
-| -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
-| `* * *`  | new user                                   | see usage instructions         | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person               |                                                                        |
-| `* * *`  | user                                       | delete a person                | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name          | locate details of persons without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details   | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name           | locate a person easily                                                 |
+| Priority | As a …​ | I want to …​                                                                                  | So that I can…​                                                                        |
+|----------|---------|-----------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------|
+| `* * *`  | tutor   | add new student contacts with details (Eg. name, phone, email, parent/guardian contact, etc.) | keep track of my students easily                                                       |
+| `* * *`  | tutor   | delete student contacts                                                                       | remove outdated or incorrect contacts                                                  |
+| `* * *`  | tutor   | view a simple list of all my students                                                         | quickly find their details                                                             |
+| `* * *`  | tutor   | set reminders for upcoming exams or important dates dates for each student                    | prepare appropriate review materials in advance                                        |
+| `* * *`  | tutor   | create custom tags for students                                                               | filter and group them more efficiently                                                 |
+| `* *`    | tutor   | edit existing student contacts                                                                | keep student information up to date                                                    |
+| `* *`    | tutor   | categorize my contacts (Eg. Current students, past students, etc.)                            | manage them efficiently                                                                |
+| `* *`    | tutor   | manually schedule tutoring sessions                                                           | keep track of upcoming classes                                                         |
+| `* *`    | tutor   | view all scheduled sessions in a simple calendar                                              | stay organized                                                                         |
+| `* *`    | tutor   | reschedule or cancel a session manually                                                       | update my availabiity                                                                  |
+| `* *`    | tutor   | filter my schedule by student                                                                 | see sessions for a specific student                                                    |
+| `* *`    | tutor   | set recurring sessions for regular students                                                   | avoid manually scheduling them every week                                              |
+| `*`      | tutor   | add notes about each student's progress                                                       | personalize my lessons                                                                 |
+| `*`      | tutor   | manually save my student data as a local file                                                 | back up my records                                                                     |
+| `*`      | tutor   | write notes after a session                                                                   | review what was covered                                                                |
+| `*`      | tutor   | mark a session as completed                                                                   | track my past lessons                                                                  |
+| `*`      | tutor   | keep a history of past sessions                                                               | refer to them later                                                                    |
+| `*`      | tutor   | receive simple local notifications before a session starts                                    | be prepared for it                                                                     |
+| `*`      | tutor   | track the payment status of each session                                                      | easily manage my income and follow up on any outstanding payments                      |
+| `*`      | tutor   | generate a simple progress report for each student                                            | share their improvement or areas that need further attention with parents or guardians |
+| `*`      | tutor   | add and view teaching resources (Eg. Worksheets, Practice questions, etc.)                    | quickly access relevant materials during sessions                                      |
+| `*`      | tutor   | set goals for each student and track their progress towards these goals                       | provide targeted support and motivation                                                |
+| `*`      | tutor   | view a summary of my weekly or monthly teaching hours                                         | manage my workload effectively                                                         |
+| `*`      | tutor   | upload and store student assignments or completed work                                        | review them later and track their progress over time                                   |
+| `*`      | tutor   | quickly message a student or their parent directly from the app                               | communicate easily about scheduling changes or important updates                       |
+| `*`      | tutor   | track the duration of each session                                                            | accurately log my teaching hours                                                       |
+| `*`      | tutor   | archive inactive students instead of deleting them                                            | refer to their records later if needed                                                 |
+| `*`      | tutor   | import student contacts from a CSV of Excel file                                              | quickly set up my student database                                                     |
+
 
 *{More to be added}*
 
