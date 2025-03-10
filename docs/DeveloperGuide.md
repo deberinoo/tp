@@ -482,6 +482,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * **Mainstream OS**: Windows, Linux, Unix, MacOS
 * **Private contact detail**: A contact detail that is not meant to be shared with others
+* **rank**: The position of a student in the list of students
+* **sluggishness**: Slow response time
+* **tag**: A label that can be attached to a student to categorize them
 
 --------------------------------------------------------------------------------------------------------------------
 
