@@ -44,7 +44,9 @@ public class Person {
         return phone;
     }
 
-    public Phone getParentPhone() { return parentPhone; }
+    public Phone getParentPhone() {
+        return parentPhone;
+    }
 
     public Email getEmail() {
         return email;
@@ -82,11 +84,10 @@ public class Person {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof Person)) {
+        if (!(other instanceof Person otherPerson)) {
             return false;
         }
 
-        Person otherPerson = (Person) other;
         return name.equals(otherPerson.name)
                 && phone.equals(otherPerson.phone)
                 && parentPhone.equals(otherPerson.parentPhone)
