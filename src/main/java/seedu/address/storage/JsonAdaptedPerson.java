@@ -25,6 +25,7 @@ class JsonAdaptedPerson {
 
     private final String name;
     private final String phone;
+    private final String parentPhone;
     private final String email;
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
 
@@ -33,10 +34,11 @@ class JsonAdaptedPerson {
      */
     @JsonCreator
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
-            @JsonProperty("email") String email,
+                             @JsonProperty("parentPhone") String parentPhone, @JsonProperty("email") String email,
                              @JsonProperty("tags") List<JsonAdaptedTag> tags) {
         this.name = name;
         this.phone = phone;
+        this.parentPhone = parentPhone;
         this.email = email;
         if (tags != null) {
             this.tags.addAll(tags);
@@ -49,6 +51,7 @@ class JsonAdaptedPerson {
     public JsonAdaptedPerson(Person source) {
         name = source.getName().fullName;
         phone = source.getPhone().value;
+        parentPhone = source.getParentPhone().value;
         email = source.getEmail().value;
         tags.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
@@ -82,6 +85,14 @@ class JsonAdaptedPerson {
         }
         final Phone modelPhone = new Phone(phone);
 
+        if (parentPhone == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Phone.class.getSimpleName()));
+        }
+        if (!Phone.isValidPhone(parentPhone)) {
+            throw new IllegalValueException(Phone.MESSAGE_CONSTRAINTS);
+        }
+        final Phone modelParentPhone = new Phone(parentPhone);
+
         if (email == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Email.class.getSimpleName()));
         }
@@ -91,7 +102,7 @@ class JsonAdaptedPerson {
         final Email modelEmail = new Email(email);
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
-        return new Person(modelName, modelPhone, modelEmail, modelTags);
+        return new Person(modelName, modelPhone, modelParentPhone, modelEmail, modelTags);
     }
 
 }

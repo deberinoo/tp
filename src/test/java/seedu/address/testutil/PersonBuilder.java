@@ -17,11 +17,12 @@ public class PersonBuilder {
 
     public static final String DEFAULT_NAME = "Amy Bee";
     public static final String DEFAULT_PHONE = "85355255";
+    public static final String DEFAULT_PARENTPHONE = "85355255";
     public static final String DEFAULT_EMAIL = "amy@gmail.com";
-    public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
 
     private Name name;
     private Phone phone;
+    private Phone parentPhone;
     private Email email;
     private Set<Tag> tags;
 
@@ -31,6 +32,7 @@ public class PersonBuilder {
     public PersonBuilder() {
         name = new Name(DEFAULT_NAME);
         phone = new Phone(DEFAULT_PHONE);
+        parentPhone = new Phone(DEFAULT_PARENTPHONE);
         email = new Email(DEFAULT_EMAIL);
         tags = new HashSet<>();
     }
@@ -41,6 +43,7 @@ public class PersonBuilder {
     public PersonBuilder(Person personToCopy) {
         name = personToCopy.getName();
         phone = personToCopy.getPhone();
+        parentPhone = personToCopy.getParentPhone();
         email = personToCopy.getEmail();
         tags = new HashSet<>(personToCopy.getTags());
     }
@@ -70,6 +73,14 @@ public class PersonBuilder {
     }
 
     /**
+     * Sets the {@code ParentPhone} of the {@code Person} that we are building.
+     */
+    public PersonBuilder withParentPhone(String parentPhone) {
+        this.parentPhone = new Phone(parentPhone);
+        return this;
+    }
+
+    /**
      * Sets the {@code Email} of the {@code Person} that we are building.
      */
     public PersonBuilder withEmail(String email) {
@@ -78,7 +89,6 @@ public class PersonBuilder {
     }
 
     public Person build() {
-        return new Person(name, phone, email, tags);
+        return new Person(name, phone, parentPhone, email, tags);
     }
-
 }
