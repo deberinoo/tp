@@ -96,7 +96,8 @@ public class NoteCommand extends Command {
 
         NoteCommand otherNoteCommand = (NoteCommand) other;
         return index.equals(otherNoteCommand.index)
-                && note.equals(otherNoteCommand.note);
+                && note.equals(otherNoteCommand.note)
+                && noteType.equals(otherNoteCommand.noteType);
     }
 
     @Override
@@ -104,6 +105,7 @@ public class NoteCommand extends Command {
         return new ToStringBuilder(this)
                 .add("index", index)
                 .add("note", note)
+                .add("notetype", noteType)
                 .toString();
     }
 }

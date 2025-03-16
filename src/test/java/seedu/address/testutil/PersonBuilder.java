@@ -19,12 +19,15 @@ public class PersonBuilder {
     public static final String DEFAULT_PHONE = "85355255";
     public static final String DEFAULT_PARENTPHONE = "85355255";
     public static final String DEFAULT_EMAIL = "amy@gmail.com";
+    public static final String DEFAULT_NOTE = "Need extra help in long division";
 
     private Name name;
     private Phone phone;
     private Phone parentPhone;
     private Email email;
     private Set<Tag> tags;
+
+    private String note;
 
     /**
      * Creates a {@code PersonBuilder} with the default details.
@@ -35,6 +38,7 @@ public class PersonBuilder {
         parentPhone = new Phone(DEFAULT_PARENTPHONE);
         email = new Email(DEFAULT_EMAIL);
         tags = new HashSet<>();
+        note = DEFAULT_NOTE;
     }
 
     /**
@@ -46,6 +50,7 @@ public class PersonBuilder {
         parentPhone = personToCopy.getParentPhone();
         email = personToCopy.getEmail();
         tags = new HashSet<>(personToCopy.getTags());
+        note = personToCopy.getNote();
     }
 
     /**
@@ -88,7 +93,15 @@ public class PersonBuilder {
         return this;
     }
 
+    /**
+     * Sets the {@code Note} of the {@code Person} that we are building.
+     */
+    public PersonBuilder withNote(String note) {
+        this.note = note;
+        return this;
+    }
+
     public Person build() {
-        return new Person(name, phone, parentPhone, email, tags);
+        return new Person(name, phone, parentPhone, email, tags, note);
     }
 }
