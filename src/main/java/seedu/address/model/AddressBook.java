@@ -84,7 +84,8 @@ public class AddressBook implements ReadOnlyAddressBook {
         for (Tag tag : p.getTags()) {
             managedTags.add(tags.createOrGetTag(tag));
         }
-        Person updatedPerson = new Person(p.getName(), p.getPhone(), p.getParentPhone(), p.getEmail(), managedTags);
+        Person updatedPerson = new Person(p.getName(), p.getPhone(), p.getParentPhone(),
+                p.getEmail(), managedTags, p.getNote());
         persons.add(updatedPerson);
     }
 

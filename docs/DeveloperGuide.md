@@ -285,13 +285,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | tutor   | set reminders for upcoming exams or important dates dates for each student                    | prepare appropriate review materials in advance                                        |
 | `* * *`  | tutor   | create custom tags for students                                                               | filter and group them more efficiently                                                 |
 | `* *`    | tutor   | edit existing student contacts                                                                | keep student information up to date                                                    |
+| `* *`    | tutor   | add notes about each student's progress                                                       | personalize my lessons                                                                 |
 | `* *`    | tutor   | categorize my contacts (Eg. Current students, past students, etc.)                            | manage them efficiently                                                                |
 | `* *`    | tutor   | manually schedule tutoring sessions                                                           | keep track of upcoming classes                                                         |
 | `* *`    | tutor   | view all scheduled sessions in a simple calendar                                              | stay organized                                                                         |
 | `* *`    | tutor   | reschedule or cancel a session manually                                                       | update my availabiity                                                                  |
 | `* *`    | tutor   | filter my schedule by student                                                                 | see sessions for a specific student                                                    |
 | `* *`    | tutor   | set recurring sessions for regular students                                                   | avoid manually scheduling them every week                                              |
-| `*`      | tutor   | add notes about each student's progress                                                       | personalize my lessons                                                                 |
 | `*`      | tutor   | manually save my student data as a local file                                                 | back up my records                                                                     |
 | `*`      | tutor   | write notes after a session                                                                   | review what was covered                                                                |
 | `*`      | tutor   | mark a session as completed                                                                   | track my past lessons                                                                  |
@@ -415,13 +415,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       Use case resumes at step 1.
 
 * 2c.  If the student does not exist.
-   
+
     * 2c1. EduEase displays an error message.
 
       Use case resumes at step 1.
 
 * 2d.  If a duplicate reminder exists.
-   
+
     * 2d1. EduEase notifies the tutor that a similar reminder already exists.
     * 2d2. Tutor decides to update existing information or cancel the operation
 
@@ -447,11 +447,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       Use case resumes at step 1.
 
 * 2b.  If more than 5 tags are provided.
-   
+
     * 2b1. EduEase displays an error message.
 
       Use case resumes at step 1.
-   
+
 * 2c.  If a duplicate tag is entered for the same student.
 
     * 2c1. EduEase does not add the duplicate tag.
@@ -459,10 +459,41 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       Use case resumes at step 1.
 
 * 2d.  If a tag is empty.
-    
+
     * 2d1. EduEase displays an error message.
 
       Use case resumes at step 1.
+
+**Use case: Set notes for each student**
+
+**MSS**
+
+1.  Tutor enters the command to set a note
+2.  EduEase validates the input parameters
+3.  If all parameters are valid, EduEase saves the note
+4.  EduEase confirms the addition with a success message and display the note
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. If index parameter is missing or invalid.
+
+    * 2a1. EduEase displays an error message based on the specific issue.
+
+      Use case resumes at step 1.
+
+* 2b. If the arguments are invalid.
+
+    * 2b1. EduEase displays original note.
+
+      Use case resumes at step 3.
+
+* 2c If multiple arguments exists.
+
+    * 2c1. EduEase will prioritise appending to the note.
+
+      Use case resumes at step 3.
 
 *{More to be added}*
 
