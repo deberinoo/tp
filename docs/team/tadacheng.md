@@ -23,13 +23,13 @@ Given below are my contributions to the project.
 
 * **Enhancements to existing features**:
     * Updated PersonCard UI and GUI color scheme (Pull requests [\#34](), [\#34]())
-    * 
+
 
 * **Documentation**:
     * User Guide:
-        * 
+
     * Developer Guide:
-        * 
+
 
 * **Community**:
     * PRs reviewed (with non-trivial review comments):
@@ -38,7 +38,7 @@ Given below are my contributions to the project.
     * Some parts of the history feature I added was adopted by several other classmates ([1](), [2]())
 
 * **Tools**:
-    * 
-    * 
+
+
 
 * _{you can add/remove categories in the list above}

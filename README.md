@@ -5,7 +5,7 @@
 
 * **EduEase** is a modified version of the AddressBook Level 3 (AB3) project, tailored specifically for private tutors.<br>
 Example usages:
-  * Helps tutors efficiently manage student contacts, 
+  * Helps tutors efficiently manage student contacts,
   * Track important dates
   * Organize students based on custom tags
 * The project simulates an ongoing software project for a desktop application (called _EduEase_) used for managing contact details.

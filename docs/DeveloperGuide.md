@@ -415,13 +415,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       Use case resumes at step 1.
 
 * 2c.  If the student does not exist.
-   
+
     * 2c1. EduEase displays an error message.
 
       Use case resumes at step 1.
 
 * 2d.  If a duplicate reminder exists.
-   
+
     * 2d1. EduEase notifies the tutor that a similar reminder already exists.
     * 2d2. Tutor decides to update existing information or cancel the operation
 
@@ -447,11 +447,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       Use case resumes at step 1.
 
 * 2b.  If more than 5 tags are provided.
-   
+
     * 2b1. EduEase displays an error message.
 
       Use case resumes at step 1.
-   
+
 * 2c.  If a duplicate tag is entered for the same student.
 
     * 2c1. EduEase does not add the duplicate tag.
@@ -459,7 +459,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       Use case resumes at step 1.
 
 * 2d.  If a tag is empty.
-    
+
     * 2d1. EduEase displays an error message.
 
       Use case resumes at step 1.

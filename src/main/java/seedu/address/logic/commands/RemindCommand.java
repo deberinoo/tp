@@ -4,7 +4,7 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-public class RemindCommand extends Command{
+public class RemindCommand extends Command {
 
     public static final String COMMAND_WORD = "remind";
 
