@@ -27,17 +27,9 @@
               <Region fx:constant="USE_PREF_SIZE" />
             </minWidth>
           </Label>
-        <Label fx:id="name" text="\$first" styleClass="cell_big_label" style="-fx-font-size: 18; -fx-font-weight: bold;"/>
+        <Label fx:id="name" text="\$first" styleClass="cell_big_label"
+               style="-fx-font-size: 18; -fx-font-weight: bold;"/>
       </HBox>
-<!--      <HBox spacing="0.5" alignment="CENTER_LEFT">-->
-<!--        <Label fx:id="id" styleClass="cell_big_label" style="-fx-font-weight: bold;">-->
-<!--          <minWidth>-->
-<!--            &lt;!&ndash; Ensures that the label text is never truncated &ndash;&gt;-->
-<!--            <Region fx:constant="USE_PREF_SIZE" />-->
-<!--          </minWidth>-->
-<!--        </Label>-->
-<!--        <Label fx:id="name" text="\$first" styleClass="cell_big_label" style="-fx-font-weight: bold;"/>-->
-<!--      </HBox>-->
       <HBox spacing="5" alignment="CENTER_LEFT">
         <ImageView fitHeight="15" fitWidth="15">
           <Image url="@/images/phone_icon.png"/>

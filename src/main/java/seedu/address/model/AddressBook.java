@@ -2,12 +2,16 @@ package seedu.address.model;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.UniquePersonList;
+import seedu.address.model.tag.Tag;
+import seedu.address.model.tag.UniqueTagList;
 
 /**
  * Wraps all data at the address-book level
@@ -16,6 +20,7 @@ import seedu.address.model.person.UniquePersonList;
 public class AddressBook implements ReadOnlyAddressBook {
 
     private final UniquePersonList persons;
+    private final UniqueTagList tags;
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -26,6 +31,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     {
         persons = new UniquePersonList();
+        tags = new UniqueTagList();
     }
 
     public AddressBook() {}
@@ -70,9 +76,17 @@ public class AddressBook implements ReadOnlyAddressBook {
     /**
      * Adds a person to the address book.
      * The person must not already exist in the address book.
+     * Also, makes sure that there are only one tag object per unique tag.
      */
     public void addPerson(Person p) {
-        persons.add(p);
+        requireNonNull(p);
+        Set<Tag> managedTags = new HashSet<>();
+        for (Tag tag : p.getTags()) {
+            managedTags.add(tags.createOrGetTag(tag));
+        }
+        Person updatedPerson = new Person(p.getName(), p.getPhone(), p.getParentPhone(),
+                p.getEmail(), managedTags, p.getNote());
+        persons.add(updatedPerson);
     }
 
     /**
@@ -106,6 +120,11 @@ public class AddressBook implements ReadOnlyAddressBook {
     @Override
     public ObservableList<Person> getPersonList() {
         return persons.asUnmodifiableObservableList();
+    }
+
+    @Override
+    public ObservableList<Tag> getTagList() {
+        return tags.asUnmodifiableObservableList();
     }
 
     @Override
