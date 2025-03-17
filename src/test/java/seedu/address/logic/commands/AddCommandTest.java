@@ -16,6 +16,7 @@ import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.Messages;
@@ -25,6 +26,7 @@ import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.person.Person;
+import seedu.address.model.schedule.Session;
 import seedu.address.testutil.PersonBuilder;
 
 public class AddCommandTest {
@@ -158,6 +160,29 @@ public class AddCommandTest {
         @Override
         public void updateFilteredPersonList(Predicate<Person> predicate) {
             throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void addSession(Session session) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<Session> getScheduleList() {
+            // Return a mock list or an empty list
+            return FXCollections.observableArrayList();
+        }
+
+        @Override
+        public void deleteSession(int id) {
+            // Implement your mock delete session logic here
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean hasSession(Session session) {
+            // Implement the logic to check if the session exists
+            return false; // Example, adjust to your needs
         }
     }
 

@@ -2,6 +2,10 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeParseException;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -104,5 +108,59 @@ public class ParserUtil {
             tagSet.add(parseTag(tagName));
         }
         return tagSet;
+    }
+
+    /**
+     * Parses the given date string into a {@code LocalDate}.
+     */
+    public static LocalDate parseDate(String dateStr) throws ParseException {
+        try {
+            return LocalDate.parse(dateStr);
+        } catch (DateTimeParseException e) {
+            throw new ParseException("Invalid date format! Expected format: yyyy-MM-dd");
+        }
+    }
+
+    /**
+     * Parses the given time string into a {@code LocalTime}.
+     */
+    public static LocalTime parseTime(String timeStr) throws ParseException {
+        try {
+            return LocalTime.parse(timeStr);
+        } catch (DateTimeParseException e) {
+            throw new ParseException("Invalid time format! Expected format: HH:mm");
+        }
+    }
+
+    /**
+     * Parses the given duration string into a {@code Duration}.
+     */
+     public static Duration parseDuration(String durationStr) throws ParseException {
+        try {
+            // Ensure the string matches the expected format: XhYm or Xh
+            durationStr = durationStr.trim();
+            
+            // Split the duration string into hours and minutes
+            String[] parts = durationStr.split("h");
+            long hours = Long.parseLong(parts[0].trim()); // Get the hours
+
+            long minutes = 0;  // Default minutes is 0
+            if (parts.length > 1) {
+                String minutesPart = parts[1].trim();
+                
+                // Check if the minutes part ends with 'm'
+                if (minutesPart.endsWith("m")) {
+                    minutes = Long.parseLong(minutesPart.substring(0, minutesPart.length() - 1).trim());
+                } else {
+                    throw new ParseException("Invalid duration format! Expected format: XhYm (e.g., 1h30m)");
+                }
+            }
+
+            // Return the Duration object with hours and minutes
+            return Duration.ofHours(hours).plusMinutes(minutes);
+
+        } catch (NumberFormatException | ArrayIndexOutOfBoundsException | StringIndexOutOfBoundsException e) {
+            throw new ParseException("Invalid duration format! Expected format: XhYm (e.g., 1h30m)");
+        }
     }
 }
