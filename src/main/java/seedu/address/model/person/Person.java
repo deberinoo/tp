@@ -23,6 +23,7 @@ public class Person {
     private final Email email;
 
     private final Set<Tag> tags = new HashSet<>();
+    private String note = "";
 
     /**
      * Every field must be present and not null.
@@ -34,6 +35,19 @@ public class Person {
         this.parentPhone = parentPhone;
         this.email = email;
         this.tags.addAll(tags);
+    }
+
+    /**
+     * Person Constructor with Note.
+     */
+    public Person(Name name, Phone phone, Phone parentPhone, Email email, Set<Tag> tags, String note) {
+        requireAllNonNull(name, phone, parentPhone, email, tags);
+        this.name = name;
+        this.phone = phone;
+        this.parentPhone = parentPhone;
+        this.email = email;
+        this.tags.addAll(tags);
+        this.note = note;
     }
 
     public Name getName() {
@@ -50,6 +64,14 @@ public class Person {
 
     public Email getEmail() {
         return email;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
     }
 
     /**

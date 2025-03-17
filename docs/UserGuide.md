@@ -142,6 +142,29 @@ Examples:
 * `list` followed by `delete 2` deletes the 2nd person in the address book.
 * `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
 
+### Updating a Note for a person : `note`
+
+Updates the note of  the specified person from the address book.
+
+Format: `note INDEX [-a APPEND] [-o OVERWRITE] [-c]`
+
+* Update notes of the person at the specified `INDEX` based on parameters.
+  * `-a` will append the new note with the old note with a newline.
+  * `-o` will overwrite the old note with the new note.
+  * `-c` will clear the note.
+* If multiple additional parameter is present, priority is as follows, append > overwrite > clear.
+* If no additional parameter is present, there will be no change and the old note will be shown.
+* The index refers to the index number shown in the displayed person list.
+* The index **must be a positive integer** 1, 2, 3, …​
+
+Examples:
+* `list` followed by `note 2` will show the note of the 2nd person in the address book.
+* `note 1 -o Need help in long division` will overwrite previous note.
+  * Returns `Need help in long division`.
+* `note 1 -a Also need help in 7th multiplication` will append to the previous note.
+  * Returns `Need help in long division\nAlso need help in 7th multiplication`
+* `note 1 -c` clears the note.
+
 ### Clearing all entries : `clear`
 
 Clears all entries from the address book.
