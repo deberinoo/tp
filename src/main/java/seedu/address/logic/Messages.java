@@ -1,11 +1,13 @@
 package seedu.address.logic;
 
+import java.time.format.DateTimeFormatter;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import seedu.address.logic.parser.Prefix;
 import seedu.address.model.person.Person;
+import seedu.address.model.schedule.Session;
 
 /**
  * Container for user visible messages.
@@ -18,6 +20,8 @@ public class Messages {
     public static final String MESSAGE_PERSONS_LISTED_OVERVIEW = "%1$d persons listed!";
     public static final String MESSAGE_DUPLICATE_FIELDS =
                 "Multiple values specified for the following single-valued field(s): ";
+    public static final String MESSAGE_DUPLICATE_SESSION = "This session already exists in the schedule!";
+    public static final String MESSAGE_SCHEDULE_SUCCESS = "New session added: %1$s";
 
     /**
      * Returns an error message indicating the duplicate prefixes.
@@ -48,4 +52,19 @@ public class Messages {
         return builder.toString();
     }
 
+    /**
+     * Formats the {@code session} for display to the user.
+     */
+     public static String format(Session session) {
+        long hours = session.getDuration().toHours();  // Get hours from the duration
+        long minutes = session.getDuration().toMinutesPart();  // Get remaining minutes from the duration
+
+        return String.format("Session for %s in %s on %s at %s for %dh%02dm",
+                session.getStudentName(),
+                session.getSubject(),
+                session.getDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")),
+                session.getTime().format(DateTimeFormatter.ofPattern("HH:mm")),
+                hours, // Hours part of the duration
+                minutes); // Minutes part of the duration
+    }
 }

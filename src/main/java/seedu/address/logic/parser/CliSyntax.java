@@ -14,5 +14,8 @@ public class CliSyntax {
     public static final Prefix PREFIX_APPEND = new Prefix("-a");
     public static final Prefix PREFIX_OVERWRITE = new Prefix("-o");
     public static final Prefix PREFIX_CLEAR = new Prefix("-c");
-
+    public static final Prefix PREFIX_SUBJECT = new Prefix("s/");
+    public static final Prefix PREFIX_DATE = new Prefix("d/");
+    public static final Prefix PREFIX_TIME = new Prefix("t/");
+    public static final Prefix PREFIX_DURATION = new Prefix("dur/");
 }

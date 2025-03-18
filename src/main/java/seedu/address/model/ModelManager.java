@@ -7,11 +7,13 @@ import java.nio.file.Path;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.person.Person;
+import seedu.address.model.schedule.Session;
 
 /**
  * Represents the in-memory model of the address book data.
@@ -22,6 +24,7 @@ public class ModelManager implements Model {
     private final AddressBook addressBook;
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
+    private final ObservableList<Session> sessions = FXCollections.observableArrayList();
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -143,6 +146,28 @@ public class ModelManager implements Model {
         return addressBook.equals(otherModelManager.addressBook)
                 && userPrefs.equals(otherModelManager.userPrefs)
                 && filteredPersons.equals(otherModelManager.filteredPersons);
+    }
+    
+    //=========== Sessions ================================================================================
+    @Override
+    public ObservableList<Session> getScheduleList() {
+        return sessions;
+    }
+
+    @Override
+    public void addSession(Session session) {
+        requireNonNull(session);
+        sessions.add(session);
+    }
+
+    @Override
+    public void deleteSession(int index) {
+        sessions.remove(index);
+    }
+
+    @Override
+    public boolean hasSession(Session session) {
+        return sessions.contains(session);
     }
 
 }
