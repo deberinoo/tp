@@ -2,7 +2,10 @@ package seedu.address.model.tag;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -56,6 +59,18 @@ public class UniqueTagList implements Iterable<Tag> {
         return internalUnmodifiableList;
     }
 
+    /**
+     * Returns sorted version of any tag list.
+     *
+     * @return tag list sorted alphabetically by tag names.
+     */
+    public static List<Tag> getSortedTags(ObservableList<Tag> tags) {
+        List<Tag> sortedTags = new ArrayList<>(tags);
+        sortedTags.sort((tag1, tag2) -> tag1.tagName.compareToIgnoreCase(tag2.tagName));
+
+        return sortedTags;
+    }
+
     @Override
     public Iterator<Tag> iterator() {
         return internalList.iterator();
@@ -68,11 +83,10 @@ public class UniqueTagList implements Iterable<Tag> {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof UniqueTagList)) {
+        if (!(other instanceof UniqueTagList otherUniqueTagList)) {
             return false;
         }
 
-        UniqueTagList otherUniqueTagList = (UniqueTagList) other;
         return internalList.equals(otherUniqueTagList.internalList);
     }
 
