@@ -2,9 +2,16 @@ package seedu.address.logic.commands;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-public class RemindCommand extends Command{
+import seedu.address.model.Reminder;
+/**
+ * Adding reminders to the system.
+ */
+public class RemindCommand extends Command {
 
     public static final String COMMAND_WORD = "remind";
 
@@ -20,11 +27,20 @@ public class RemindCommand extends Command{
 
     private final String name;
     private final String event;
-    private final String date;
-    private final String time;
-    //time and date will be converted into an object next time
-
-    public RemindCommand(String name, String event, String date, String time) {
+    private final LocalDate date;
+    private final LocalTime time;
+    /**
+     * Creates a {@code RemindCommand} to add a reminder for the specified {@code Person}.
+     * The reminder includes the person's name, the event description,
+     * the date, and the time of the reminder.
+     *
+     * @param name The name of the person associated with the reminder.
+     * @param event The description of the event to be reminded about.
+     * @param date The date of the reminder.
+     * @param time The time of the reminder.
+     * @throws NullPointerException If any of the parameters are null.
+     */
+    public RemindCommand(String name, String event, LocalDate date, LocalTime time) {
         requireAllNonNull(name, event, date, time);
 
         this.name = name;
@@ -35,8 +51,16 @@ public class RemindCommand extends Command{
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
-        throw new CommandException(String.format(MESSAGE_ARGUMENTS, name, event, date, time));
+        // Create a new Reminder object
+        Reminder reminder = new Reminder(name, event, date, time);
+
+        // Add the reminder to the model's list
+        model.addReminder(reminder);
+
+        // Return success message
+        return new CommandResult(String.format("New reminder added:\n%s", reminder));
     }
+
 
     @Override
     public boolean equals(Object other) {
