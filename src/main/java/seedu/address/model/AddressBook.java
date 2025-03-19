@@ -106,7 +106,26 @@ public class AddressBook implements ReadOnlyAddressBook {
     public void setPerson(Person target, Person editedPerson) {
         requireNonNull(editedPerson);
 
+        // Update the person in the list
         persons.setPerson(target, editedPerson);
+
+        // Rebuild the UniqueTagList to reflect the latest tags
+        rebuildUniqueTagList();
+    }
+
+    /**
+     * Rebuilds the UniqueTagList to ensure it contains only tags that are currently in use.
+     */
+    private void rebuildUniqueTagList() {
+        // Clear the current tags
+        tags.clear();
+
+        // Add tags from all persons to the UniqueTagList
+        for (Person person : persons) {
+            for (Tag tag : person.getTags()) {
+                tags.createOrGetTag(tag);
+            }
+        }
     }
 
     /**
