@@ -85,4 +85,8 @@ public class UniqueTagList implements Iterable<Tag> {
     public String toString() {
         return internalList.toString();
     }
+
+    public void clear() {
+        internalList.clear();
+    }
 }

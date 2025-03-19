@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.person.Person;
 import seedu.address.model.schedule.Session;
+import seedu.address.model.tag.Tag;
 
 /**
  * The API of the Model component.
@@ -52,6 +53,11 @@ public interface Model {
 
     /** Returns the AddressBook */
     ReadOnlyAddressBook getAddressBook();
+
+    /**
+     * Returns an unmodifiable view of the list of tags.
+     */
+    ObservableList<Tag> getTagList();
 
     /**
      * Returns true if a person with the same identity as {@code person} exists in the address book.
