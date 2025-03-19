@@ -258,60 +258,242 @@ _{Explain here how the data archiving feature will be implemented}_
 
 ## **Appendix: Requirements**
 
+**Team**: F09-02
+
+**Product Name**: EduEase
+
 ### Product scope
 
-**Target user profile**:
-
-* has a need to manage a significant number of contacts
+**Target user profile**: Private home tutors providing one-on-one remote sessions for primary students on math.
+* is a tutor managing student contacts
 * prefer desktop apps over other types
 * can type fast
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
-
+**Value proposition**: EduEase simplifies the management of student contact details, helping private tutors stay organized. It allows them to focus on delivering high-quality teaching while reducing administrative burdens, such as their students' progress and contacts, thereby enhancing their productivity.
 
 ### User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
-| -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
-| `* * *`  | new user                                   | see usage instructions         | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person               |                                                                        |
-| `* * *`  | user                                       | delete a person                | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name          | locate details of persons without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details   | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name           | locate a person easily                                                 |
+| Priority | As a …​ | I want to …​                                                                                  | So that I can…​                                                                        |
+|----------|---------|-----------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------|
+| `* * *`  | tutor   | add new student contacts with details (Eg. name, phone, email, parent/guardian contact, etc.) | keep track of my students easily                                                       |
+| `* * *`  | tutor   | delete student contacts                                                                       | remove outdated or incorrect contacts                                                  |
+| `* * *`  | tutor   | view a simple list of all my students                                                         | quickly find their details                                                             |
+| `* * *`  | tutor   | set reminders for upcoming exams or important dates dates for each student                    | prepare appropriate review materials in advance                                        |
+| `* * *`  | tutor   | create custom tags for students                                                               | filter and group them more efficiently                                                 |
+| `* *`    | tutor   | edit existing student contacts                                                                | keep student information up to date                                                    |
+| `* *`    | tutor   | add notes about each student's progress                                                       | personalize my lessons                                                                 |
+| `* *`    | tutor   | categorize my contacts (Eg. Current students, past students, etc.)                            | manage them efficiently                                                                |
+| `* *`    | tutor   | manually schedule tutoring sessions                                                           | keep track of upcoming classes                                                         |
+| `* *`    | tutor   | view all scheduled sessions in a simple calendar                                              | stay organized                                                                         |
+| `* *`    | tutor   | reschedule or cancel a session manually                                                       | update my availabiity                                                                  |
+| `* *`    | tutor   | filter my schedule by student                                                                 | see sessions for a specific student                                                    |
+| `* *`    | tutor   | set recurring sessions for regular students                                                   | avoid manually scheduling them every week                                              |
+| `*`      | tutor   | manually save my student data as a local file                                                 | back up my records                                                                     |
+| `*`      | tutor   | write notes after a session                                                                   | review what was covered                                                                |
+| `*`      | tutor   | mark a session as completed                                                                   | track my past lessons                                                                  |
+| `*`      | tutor   | keep a history of past sessions                                                               | refer to them later                                                                    |
+| `*`      | tutor   | receive simple local notifications before a session starts                                    | be prepared for it                                                                     |
+| `*`      | tutor   | track the payment status of each session                                                      | easily manage my income and follow up on any outstanding payments                      |
+| `*`      | tutor   | generate a simple progress report for each student                                            | share their improvement or areas that need further attention with parents or guardians |
+| `*`      | tutor   | add and view teaching resources (Eg. Worksheets, Practice questions, etc.)                    | quickly access relevant materials during sessions                                      |
+| `*`      | tutor   | set goals for each student and track their progress towards these goals                       | provide targeted support and motivation                                                |
+| `*`      | tutor   | view a summary of my weekly or monthly teaching hours                                         | manage my workload effectively                                                         |
+| `*`      | tutor   | upload and store student assignments or completed work                                        | review them later and track their progress over time                                   |
+| `*`      | tutor   | quickly message a student or their parent directly from the app                               | communicate easily about scheduling changes or important updates                       |
+| `*`      | tutor   | track the duration of each session                                                            | accurately log my teaching hours                                                       |
+| `*`      | tutor   | archive inactive students instead of deleting them                                            | refer to their records later if needed                                                 |
+| `*`      | tutor   | import student contacts from a CSV of Excel file                                              | quickly set up my student database                                                     |
+
 
 *{More to be added}*
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is the `EduEase` and the **Actor** is the `user`, unless specified otherwise)
 
-**Use case: Delete a person**
+**Use case: Add a new student contact**
 
 **MSS**
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+1.  Tutor enters the command to add a new student with details (name, phone number, email, parent contact)
+2.  EduEase validates the input fields
+3.  If all fields are valid, EduEase saves the student contact
+4.  EduEase confirms the addition with a success message
 
     Use case ends.
 
 **Extensions**
 
-* 2a. The list is empty.
+* 2a. Invalid input format.
 
-  Use case ends.
+    * 2a1. EduEase displays an appropriate error message and prompts for correction.
 
-* 3a. The given index is invalid.
+      Use case resumes at step 1.
 
-    * 3a1. AddressBook shows an error message.
+* 2b. Duplicate student detected
+
+    * 2b1. EduEase notifies the tutor that the student already exists
+    * 2b2. Tutor decides to update existing information or cancel the operation
 
       Use case resumes at step 2.
+
+**Use case: Delete a student contact**
+
+**MSS**
+
+1.  Tutor enters the command to delete a student by rank
+2.  EduEase checks if the rank is valid
+3.  If valid, EduEase deletes the student contact
+4.  EduEase confirms the deletion with a success message
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The rank does not exist.
+
+   * 2a1. EduEase displays an error message.
+
+      Use case resumes at step 1.
+
+* 2b. A non-integer value is entered.
+
+    * 2a1. EduEase prompts for a correct format.
+
+      Use case resumes at step 1.
+
+**Use case: List student contacts**
+
+**MSS**
+
+1.  Tutor enters the command to list all student contacts
+2.  EduEase retrieves and displays a list of students, including their details (name, phone number, email, parent contact, tags)
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. If no students exist.
+
+   * 2a1. EduEase displays a message indicating that the list is empty.
+
+      Use case ends.
+
+* 2b. If an invalid command is entered.
+
+    * 2b1. EduEase displays an error message.
+
+      Use case resumes at step 1.
+
+**Use case: Set reminders for upcoming exams or important dates**
+
+**MSS**
+
+1.  Tutor enters the command to set a reminder
+2.  EduEase validates the input parameters
+3.  If all parameters are valid, EduEase saves the reminder
+4.  EduEase confirms the addition with a success message
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. If any parameter is missing or invalid.
+
+   * 2a1. EduEase displays an error message based on the specific issue.
+
+      Use case resumes at step 1.
+
+* 2b. If the date/time is in the past.
+
+    * 2b1. EduEase displays an error message.
+
+      Use case resumes at step 1.
+
+* 2c.  If the student does not exist.
+
+    * 2c1. EduEase displays an error message.
+
+      Use case resumes at step 1.
+
+* 2d.  If a duplicate reminder exists.
+
+    * 2d1. EduEase notifies the tutor that a similar reminder already exists.
+    * 2d2. Tutor decides to update existing information or cancel the operation
+
+      Use case resumes at step 1.
+
+**Use case: Add tags to student contacts**
+
+**MSS**
+
+1.  Tutor enters the command to add a student with tags
+2.  EduEase validates the tag parameters
+3.  If all parameters are valid, EduEase adds the student with the specified tags
+4.  EduEase confirms the addition with a success message
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. If a tag contains invalid characters or exceeds 25 characters.
+
+   * 2a1. EduEase displays an error message based on the specific issue.
+
+      Use case resumes at step 1.
+
+* 2b.  If more than 5 tags are provided.
+
+    * 2b1. EduEase displays an error message.
+
+      Use case resumes at step 1.
+
+* 2c.  If a duplicate tag is entered for the same student.
+
+    * 2c1. EduEase does not add the duplicate tag.
+
+      Use case resumes at step 1.
+
+* 2d.  If a tag is empty.
+
+    * 2d1. EduEase displays an error message.
+
+      Use case resumes at step 1.
+
+**Use case: Set notes for each student**
+
+**MSS**
+
+1.  Tutor enters the command to set a note
+2.  EduEase validates the input parameters
+3.  If all parameters are valid, EduEase saves the note
+4.  EduEase confirms the addition with a success message and display the note
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. If index parameter is missing or invalid.
+
+    * 2a1. EduEase displays an error message based on the specific issue.
+
+      Use case resumes at step 1.
+
+* 2b. If the arguments are invalid.
+
+    * 2b1. EduEase displays original note.
+
+      Use case resumes at step 3.
+
+* 2c If multiple arguments exists.
+
+    * 2c1. EduEase will prioritise appending to the note.
+
+      Use case resumes at step 3.
 
 *{More to be added}*
 
@@ -320,13 +502,20 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 1.  Should work on any _mainstream OS_ as long as it has Java `17` or above installed.
 2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
 3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+4. The system should respond in less than three seconds.
+5. The system should allow tutors to complete common tasks (e.g., adding or deleting a contact) with no more than three commands or interactions.
+6. The interface must provide clear error messages and guidance for invalid inputs, ensuring that new users can recover from errors without external help.
 
 *{More to be added}*
+
 
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, MacOS
 * **Private contact detail**: A contact detail that is not meant to be shared with others
+* **rank**: The position of a student in the list of students
+* **sluggishness**: Slow response time
+* **tag**: A label that can be attached to a student to categorize them
 
 --------------------------------------------------------------------------------------------------------------------
 

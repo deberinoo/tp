@@ -3,9 +3,12 @@ package seedu.address.logic.parser;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.Messages.MESSAGE_UNKNOWN_COMMAND;
 
+import java.lang.reflect.Method;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.List;
+import java.util.ArrayList;
 
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.commands.AddCommand;
@@ -17,7 +20,9 @@ import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.NoteCommand;
 import seedu.address.logic.commands.RemindCommand;
+import seedu.address.logic.commands.ScheduleCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
@@ -30,6 +35,22 @@ public class AddressBookParser {
      */
     private static final Pattern BASIC_COMMAND_FORMAT = Pattern.compile("(?<commandWord>\\S+)(?<arguments>.*)");
     private static final Logger logger = LogsCenter.getLogger(AddressBookParser.class);
+
+    private static final List<String> commandClasses = new ArrayList<>();
+
+    static {
+        // Dynamically adding class names of commands
+        commandClasses.add(AddCommand.COMMAND_WORD);
+        commandClasses.add(ClearCommand.COMMAND_WORD);
+        commandClasses.add(DeleteCommand.COMMAND_WORD);
+        commandClasses.add(EditCommand.COMMAND_WORD);
+        commandClasses.add(ExitCommand.COMMAND_WORD);
+        commandClasses.add(FindCommand.COMMAND_WORD);
+        commandClasses.add(ListCommand.COMMAND_WORD);
+        commandClasses.add(NoteCommand.COMMAND_WORD);
+        commandClasses.add(RemindCommand.COMMAND_WORD);
+        // Add more as necessary
+    }
 
     /**
      * Parses user input into command for execution.
@@ -47,13 +68,15 @@ public class AddressBookParser {
         final String commandWord = matcher.group("commandWord");
         final String arguments = matcher.group("arguments");
 
+       // Try to find the closest matching command
+       String resolvedCommandWord = getFullCommandName(commandWord);
+        
         // Note to developers: Change the log level in config.json to enable lower level (i.e., FINE, FINER and lower)
         // log messages such as the one below.
         // Lower level log messages are used sparingly to minimize noise in the code.
         logger.fine("Command word: " + commandWord + "; Arguments: " + arguments);
 
-        switch (commandWord) {
-
+        switch (resolvedCommandWord) {
         case AddCommand.COMMAND_WORD:
             return new AddCommandParser().parse(arguments);
 
@@ -72,6 +95,12 @@ public class AddressBookParser {
         case ListCommand.COMMAND_WORD:
             return new ListCommand();
 
+        case NoteCommand.COMMAND_WORD:
+            return new NoteCommandParser().parse(arguments);
+
+        case ScheduleCommand.COMMAND_WORD:
+            return new ScheduleCommandParser().parse(arguments);
+
         case ExitCommand.COMMAND_WORD:
             return new ExitCommand();
 
@@ -87,4 +116,25 @@ public class AddressBookParser {
         }
     }
 
+    /**
+     * Returns the full command name based on the given input.
+     * This method attempts to find the closest matching command using a basic similarity check.
+     */
+    private String getFullCommandName(String commandInput) throws ParseException {
+        for (String command : commandClasses) {
+            if (commandInput.equalsIgnoreCase(command) || isSimilar(commandInput, command)) {
+                return command;
+            }
+        }
+        throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
+    }
+
+    /**
+     * A simple similarity check (could be enhanced further).
+     * This compares the commandInput against full command names with simple rules like truncation.
+     */
+    private boolean isSimilar(String commandInput, String fullCommand) {
+        // Example: Compare "lis" with "list"
+        return fullCommand.startsWith(commandInput) || commandInput.startsWith(fullCommand);
+    }
 }

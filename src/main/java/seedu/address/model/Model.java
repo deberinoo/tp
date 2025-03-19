@@ -6,6 +6,7 @@ import java.util.function.Predicate;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.person.Person;
+import seedu.address.model.schedule.Session;
 
 /**
  * The API of the Model component.
@@ -88,4 +89,23 @@ public interface Model {
     void addReminder(Reminder reminder);
 
     ObservableList<Reminder> getFilteredReminderList();
+     /**
+     * Returns the list of scheduled sessions.
+     */
+    ObservableList<Session> getScheduleList();
+
+    /**
+     * Adds a new session to the model.
+     */
+    void addSession(Session session);
+
+    /**
+     * Deletes the session at the specified index.
+     */
+    void deleteSession(int index);
+
+    /**
+     * Checks if the given session exists in the model.
+     */
+    boolean hasSession(Session session);
 }

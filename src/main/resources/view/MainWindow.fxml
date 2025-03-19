@@ -20,7 +20,7 @@
   <scene>
     <Scene>
       <stylesheets>
-        <URL value="@DarkTheme.css" />
+        <URL value="@WhiteTheme.css" />
         <URL value="@Extensions.css" />
       </stylesheets>
 
@@ -63,7 +63,14 @@
           </padding>
         </AnchorPane>
 
-        <StackPane fx:id="statusbarPlaceholder" VBox.vgrow="NEVER"/>
+        <VBox fx:id="personNote" styleClass="pane-with-border" minWidth="340" prefWidth="340" VBox.vgrow="ALWAYS">
+          <padding>
+            <Insets top="5" right="10" bottom="5" left="10" />
+          </padding>
+          <StackPane VBox.vgrow="ALWAYS" fx:id="personNoteAreaPlaceholder"/>
+        </VBox>
+
+        <StackPane fx:id="statusbarPlaceholder" VBox.vgrow="NEVER" />
       </VBox>
     </Scene>
   </scene>

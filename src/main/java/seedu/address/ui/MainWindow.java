@@ -10,6 +10,7 @@ import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
@@ -34,6 +35,8 @@ public class MainWindow extends UiPart<Stage> {
     // Independent Ui parts residing in this Ui container
     private PersonListPanel personListPanel;
     private ResultDisplay resultDisplay;
+
+    private PersonNoteArea personNoteArea;
     private HelpWindow helpWindow;
 
     @FXML
@@ -46,6 +49,9 @@ public class MainWindow extends UiPart<Stage> {
     private StackPane personListPanelPlaceholder;
 
     @FXML
+    private StackPane personNoteAreaPlaceholder;
+
+    @FXML
     private StackPane resultDisplayPlaceholder;
 
     @FXML
@@ -53,6 +59,10 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private AnchorPane reminderPanelPlaceholder;
+
+    @FXML
+    private VBox personNote;
+
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
      */
@@ -115,6 +125,11 @@ public class MainWindow extends UiPart<Stage> {
     void fillInnerParts() {
         personListPanel = new PersonListPanel(logic.getFilteredPersonList());
         personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+
+        personNoteArea = new PersonNoteArea(logic.getFilteredPersonList());
+        personNoteAreaPlaceholder.getChildren().add(personNoteArea.getRoot());
+        personNote.visibleProperty().bind(personNoteArea.getRoot().visibleProperty());
+        personNote.managedProperty().bind(personNoteArea.getRoot().visibleProperty());
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());

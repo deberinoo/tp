@@ -11,8 +11,9 @@ public class Phone {
 
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Phone numbers should only contain numbers, and it should be at least 3 digits long";
-    public static final String VALIDATION_REGEX = "\\d{3,}";
+            "Phone number must be exactly 8 digits long and contain only numbers (0-9). No spaces or special characters allowed.";
+    public static final String VALIDATION_REGEX = "^\\d{8}$";
+
     public final String value;
 
     /**
@@ -22,7 +23,7 @@ public class Phone {
      */
     public Phone(String phone) {
         requireNonNull(phone);
-        checkArgument(isValidPhone(phone), MESSAGE_CONSTRAINTS);
+        checkArgument(isValidPhone(phone), getErrorMessage(phone));
         value = phone;
     }
 
@@ -31,6 +32,19 @@ public class Phone {
      */
     public static boolean isValidPhone(String test) {
         return test.matches(VALIDATION_REGEX);
+    }
+
+    /**
+     * Returns a specific error message for invalid phone numbers.
+     */
+    private static String getErrorMessage(String phone) {
+        if (!phone.matches("\\d+")) {
+            return "Error: Phone number must contain only digits.";
+        }
+        if (phone.length() != 8) {
+            return "Error: Phone number must be exactly 8 digits long.";
+        }
+        return MESSAGE_CONSTRAINTS;
     }
 
     @Override

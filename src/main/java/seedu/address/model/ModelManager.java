@@ -13,6 +13,7 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.person.Person;
+import seedu.address.model.schedule.Session;
 
 /**
  * Represents the in-memory model of the address book data.
@@ -23,6 +24,7 @@ public class ModelManager implements Model {
     private final AddressBook addressBook;
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
+    private final ObservableList<Session> sessions = FXCollections.observableArrayList();
     private final ObservableList<Reminder> reminders;
     private final FilteredList<Reminder> filteredReminders;
 
@@ -149,8 +151,30 @@ public class ModelManager implements Model {
                 && userPrefs.equals(otherModelManager.userPrefs)
                 && filteredPersons.equals(otherModelManager.filteredPersons);
     }
+    
+    //=========== Sessions ================================================================================
+    @Override
+    public ObservableList<Session> getScheduleList() {
+        return sessions;
+    }
 
-    /**
+    @Override
+    public void addSession(Session session) {
+        requireNonNull(session);
+        sessions.add(session);
+    }
+
+    @Override
+    public void deleteSession(int index) {
+        sessions.remove(index);
+    }
+
+    @Override
+    public boolean hasSession(Session session) {
+        return sessions.contains(session);
+    }
+    //=========== Reminders ================================================================================
+      /**
      * Adds a reminder to the reminders list.
      */
     public void addReminder(Reminder reminder) {
@@ -159,7 +183,7 @@ public class ModelManager implements Model {
 
     @Override
     public ObservableList<Reminder> getFilteredReminderList() {
-        return filteredReminders; // Assuming you have a filteredReminders field in ModelManager.
+        return filteredReminders;
     }
 }
 
