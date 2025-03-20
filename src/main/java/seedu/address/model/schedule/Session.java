@@ -88,6 +88,10 @@ public class Session {
                 duration.toHours(), duration.toMinutesPart());
     }
 
+    /**
+     * Formats the duration for display
+     * @return formatted duration
+     */
     public String formatDurationForDisplay() {
         long hours = duration.toHours(); // Get total hours
         long minutes = duration.toMinutes() % 60; // Get remaining minutes (after hours)
