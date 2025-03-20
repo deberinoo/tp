@@ -14,7 +14,7 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.person.Person;
 import seedu.address.model.schedule.Session;
-import seedu.address.model.tag.Tag;
+import seedu.address.model.tag.Tag; 
 
 /**
  * Represents the in-memory model of the address book data.
@@ -26,6 +26,8 @@ public class ModelManager implements Model {
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
     private final ObservableList<Session> sessions = FXCollections.observableArrayList();
+    private final ObservableList<Reminder> reminders;
+    private final FilteredList<Reminder> filteredReminders;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -38,6 +40,8 @@ public class ModelManager implements Model {
         this.addressBook = new AddressBook(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
+        this.reminders = FXCollections.observableArrayList();
+        this.filteredReminders = new FilteredList<>(this.reminders);
     }
 
     public ModelManager() {
@@ -90,7 +94,7 @@ public class ModelManager implements Model {
     public ReadOnlyAddressBook getAddressBook() {
         return addressBook;
     }
-
+  
     @Override
     public ObservableList<Tag> getTagList() {
         return addressBook.getTagList();
@@ -175,5 +179,16 @@ public class ModelManager implements Model {
     public boolean hasSession(Session session) {
         return sessions.contains(session);
     }
+    //=========== Reminders ================================================================================
+      /**
+     * Adds a reminder to the reminders list.
+     */
+    public void addReminder(Reminder reminder) {
+        reminders.add(reminder);
+    }
 
+    @Override
+    public ObservableList<Reminder> getFilteredReminderList() {
+        return filteredReminders;
+    }
 }
