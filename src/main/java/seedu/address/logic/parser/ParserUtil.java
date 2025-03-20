@@ -135,19 +135,19 @@ public class ParserUtil {
     /**
      * Parses the given duration string into a {@code Duration}.
      */
-     public static Duration parseDuration(String durationStr) throws ParseException {
+    public static Duration parseDuration(String durationStr) throws ParseException {
         try {
             // Ensure the string matches the expected format: XhYm or Xh
             durationStr = durationStr.trim();
-            
+
             // Split the duration string into hours and minutes
             String[] parts = durationStr.split("h");
             long hours = Long.parseLong(parts[0].trim()); // Get the hours
 
-            long minutes = 0;  // Default minutes is 0
+            long minutes = 0; // Default minutes is 0
             if (parts.length > 1) {
                 String minutesPart = parts[1].trim();
-                
+
                 // Check if the minutes part ends with 'm'
                 if (minutesPart.endsWith("m")) {
                     minutes = Long.parseLong(minutesPart.substring(0, minutesPart.length() - 1).trim());

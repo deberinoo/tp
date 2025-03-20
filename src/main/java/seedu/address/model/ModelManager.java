@@ -14,7 +14,7 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.person.Person;
 import seedu.address.model.schedule.Session;
-import seedu.address.model.tag.Tag; 
+import seedu.address.model.tag.Tag;
 
 /**
  * Represents the in-memory model of the address book data.
@@ -94,7 +94,7 @@ public class ModelManager implements Model {
     public ReadOnlyAddressBook getAddressBook() {
         return addressBook;
     }
-  
+
     @Override
     public ObservableList<Tag> getTagList() {
         return addressBook.getTagList();
@@ -157,7 +157,7 @@ public class ModelManager implements Model {
                 && userPrefs.equals(otherModelManager.userPrefs)
                 && filteredPersons.equals(otherModelManager.filteredPersons);
     }
-    
+
     //=========== Sessions ================================================================================
     @Override
     public ObservableList<Session> getScheduleList() {
@@ -180,7 +180,7 @@ public class ModelManager implements Model {
         return sessions.contains(session);
     }
     //=========== Reminders ================================================================================
-      /**
+    /**
      * Adds a reminder to the reminders list.
      */
     public void addReminder(Reminder reminder) {

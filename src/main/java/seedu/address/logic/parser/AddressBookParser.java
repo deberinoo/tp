@@ -3,12 +3,11 @@ package seedu.address.logic.parser;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.Messages.MESSAGE_UNKNOWN_COMMAND;
 
-import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.List;
-import java.util.ArrayList;
 
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.commands.AddCommand;
@@ -51,6 +50,8 @@ public class AddressBookParser {
         commandClasses.add(NoteCommand.COMMAND_WORD);
         commandClasses.add(RemindCommand.COMMAND_WORD);
         commandClasses.add(TagsCommand.COMMAND_WORD);
+        commandClasses.add(HelpCommand.COMMAND_WORD);
+        commandClasses.add(ScheduleCommand.COMMAND_WORD);
         // Add more as necessary
     }
 
@@ -70,9 +71,9 @@ public class AddressBookParser {
         final String commandWord = matcher.group("commandWord");
         final String arguments = matcher.group("arguments");
 
-       // Try to find the closest matching command
-       String resolvedCommandWord = getFullCommandName(commandWord);
-        
+        // Try to find the closest matching command
+        String resolvedCommandWord = getFullCommandName(commandWord);
+
         // Note to developers: Change the log level in config.json to enable lower level (i.e., FINE, FINER and lower)
         // log messages such as the one below.
         // Lower level log messages are used sparingly to minimize noise in the code.
