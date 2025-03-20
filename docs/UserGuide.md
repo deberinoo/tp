@@ -38,6 +38,8 @@ AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized fo
    
    * `tags` : Lists all existing tags in the address book
 
+   * `schedule` : Schedules a new session with a student
+
 1. Refer to the [Features](#features) below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
@@ -185,6 +187,15 @@ Shows a list of all tags in the address book.
 
 Format: `tags`
 
+### Scheduling a session : `schedule`
+
+Schedules a session with a student.
+
+Format: `schedule n/[STUDENT_NAME] s/[SUBJECT] d/[DATE] t/[TIME] dur/[DURATION]`
+
+Examples:
+* `schedule n/John Doe s/Math d/2022-12-31 t/14:00 dur/1h` schedules a session with John Doe on 31st December 2022 at 2pm for 1 hour.
+
 ### Saving the data
 
 AddressBook data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
@@ -230,5 +241,6 @@ Action | Format, Examples
 **List** | `list`
 **Note** | `note INDEX [-a APPEND] [-o OVERWRITE] [-c]`<br> e.g., `note 2 -a Need help in long division`
 **Tags** | `tags`
+**Schedule** | `schedule n/[STUDENT_NAME] s/[SUBJECT] d/[DATE] t/[TIME] dur/[DURATION]`<br> e.g., `schedule n/John Doe s/Math d/2022-12-31 t/14:00 dur/1h`
 **Exit** | `exit`
 **Help** | `help`
