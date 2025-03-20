@@ -86,6 +86,9 @@ public interface Model {
      */
     void updateFilteredPersonList(Predicate<Person> predicate);
 
+    void addReminder(Reminder reminder);
+
+    ObservableList<Reminder> getFilteredReminderList();
      /**
      * Returns the list of scheduled sessions.
      */

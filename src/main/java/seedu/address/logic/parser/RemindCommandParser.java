@@ -1,15 +1,11 @@
 package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 
-import seedu.address.commons.exceptions.IllegalValueException;
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 import seedu.address.logic.commands.RemindCommand;
-import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.logic.parser.ArgumentMultimap;
-import seedu.address.logic.parser.ArgumentTokenizer;
-import seedu.address.logic.parser.ParserUtil;
-import seedu.address.logic.parser.Prefix;
 import seedu.address.logic.parser.exceptions.ParseException;
 /**
  * Parses input arguments and creates a new {@code RemindCommand} object
@@ -26,19 +22,22 @@ public class RemindCommandParser implements Parser<RemindCommand> {
      * and returns a {@code RemindCommand} object for execution.
      * @throws ParseException if the user input does not conform to the expected format
      */
+    @SuppressWarnings("checkstyle:LineLength")
     @Override
     public RemindCommand parse(String args) throws ParseException {
         requireNonNull(args);
 
         // Tokenize arguments using ArgumentTokenizer
-        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_EVENT, PREFIX_DATE, PREFIX_TIME);
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NAME,
+                PREFIX_EVENT, PREFIX_DATE, PREFIX_TIME);
 
         // Validate presence of required prefixes and values
         if (argMultimap.getValue(PREFIX_NAME).isEmpty()
                 || argMultimap.getValue(PREFIX_EVENT).isEmpty()
                 || argMultimap.getValue(PREFIX_DATE).isEmpty()
                 || argMultimap.getValue(PREFIX_TIME).isEmpty()) {
-            throw new ParseException(String.format("Invalid command format! Expected: %s", RemindCommand.MESSAGE_USAGE));
+            throw new ParseException(String.format("Invalid command format! Expected: %s",
+                    RemindCommand.MESSAGE_USAGE));
         }
 
         // Extract values from ArgumentMultimap
@@ -47,11 +46,6 @@ public class RemindCommandParser implements Parser<RemindCommand> {
         String date = argMultimap.getValue(PREFIX_DATE).get();
         String time = argMultimap.getValue(PREFIX_TIME).get();
 
-        // Validate date and time formats (to be added later)
-        // ParserUtil.validateFutureDate(date);
-        // ParserUtil.validateTimeFormat(time);
-        // try and catch,
-        // throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, RemarkCommand.MESSAGE_USAGE), ive);
-        return new RemindCommand(name, event, date, time);
+        return new RemindCommand(name, event, LocalDate.parse(date), LocalTime.parse(time));
     }
 }
