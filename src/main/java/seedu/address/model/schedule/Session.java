@@ -61,14 +61,18 @@ public class Session {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Session session = (Session) o;
-        return Objects.equals(studentName, session.studentName) &&
-               Objects.equals(subject, session.subject) &&
-               Objects.equals(date, session.date) &&
-               Objects.equals(time, session.time) &&
-               Objects.equals(duration, session.duration);
+        return Objects.equals(studentName, session.studentName)
+                && Objects.equals(subject, session.subject)
+                && Objects.equals(date, session.date)
+                && Objects.equals(time, session.time)
+                && Objects.equals(duration, session.duration);
     }
 
     @Override
@@ -84,26 +88,30 @@ public class Session {
                 duration.toHours(), duration.toMinutesPart());
     }
 
+    /**
+     * Formats the duration for display
+     * @return formatted duration
+     */
     public String formatDurationForDisplay() {
         long hours = duration.toHours(); // Get total hours
         long minutes = duration.toMinutes() % 60; // Get remaining minutes (after hours)
-    
+
         // Construct formatted string without PT prefix
         StringBuilder formattedDuration = new StringBuilder();
-    
+
         if (hours > 0) {
             formattedDuration.append(hours).append("h");
         }
-    
+
         if (minutes > 0) {
             formattedDuration.append(minutes).append("m");
         }
-    
+
         // If the duration is zero
         if (formattedDuration.length() == 0) {
             formattedDuration.append("0m");
         }
-    
+
         return formattedDuration.toString();
     }
 }

@@ -15,9 +15,9 @@ import seedu.address.logic.parser.AddressBookParser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.Reminder;
 import seedu.address.model.person.Person;
 import seedu.address.storage.Storage;
-import seedu.address.model.Reminder;
 
 /**
  * The main LogicManager of the app.

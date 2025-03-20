@@ -53,11 +53,11 @@ public class Messages {
     }
 
     /**
-     * Formats the {@code session} for display to the user.
-     */
-     public static String format(Session session) {
-        long hours = session.getDuration().toHours();  // Get hours from the duration
-        long minutes = session.getDuration().toMinutesPart();  // Get remaining minutes from the duration
+    * Formats the {@code session} for display to the user.
+    */
+    public static String format(Session session) {
+        long hours = session.getDuration().toHours(); // Get hours from the duration
+        long minutes = session.getDuration().toMinutesPart(); // Get remaining minutes from the duration
 
         return String.format("Session for %s in %s on %s at %s for %dh%02dm",
                 session.getStudentName(),

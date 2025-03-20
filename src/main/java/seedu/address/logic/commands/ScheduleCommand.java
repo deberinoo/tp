@@ -19,8 +19,8 @@ import seedu.address.model.schedule.Session;
 public class ScheduleCommand extends Command {
 
     public static final String COMMAND_WORD = "schedule";
-    
-        public static final String MESSAGE_USAGE = COMMAND_WORD + ": Schedules a session for a specific date and time. "
+
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Schedules a session for a specific date and time. "
             + "Parameters: "
             + PREFIX_NAME + "NAME "
             + PREFIX_SUBJECT + "SUBJECT "
@@ -54,7 +54,8 @@ public class ScheduleCommand extends Command {
         // Show the scheduled sessions after adding the new one
         String scheduledSessions = displayScheduledSessions(model);
 
-        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(toSchedule)  + "\n" + scheduledSessions));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(toSchedule)
+                + "\n" + scheduledSessions));
     }
 
     @Override
@@ -79,7 +80,7 @@ public class ScheduleCommand extends Command {
                 .toString();
     }
 
-     /**
+    /**
      * Displays all scheduled sessions in a structured format.
      *
      * @param model the model that holds the scheduled sessions

@@ -35,7 +35,7 @@ AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized fo
    * `clear` : Deletes all contacts.
 
    * `exit` : Exits the app.
-   
+
    * `tags` : Lists all existing tags in the address book
 
    * `schedule` : Schedules a new session with a student

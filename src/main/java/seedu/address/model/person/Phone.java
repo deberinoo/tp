@@ -11,7 +11,8 @@ public class Phone {
 
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Phone number must be exactly 8 digits long and contain only numbers (0-9). No spaces or special characters allowed.";
+            "Phone number must be exactly 8 digits long and contain only numbers (0-9). "
+                    + "No spaces or special characters allowed.";
     public static final String VALIDATION_REGEX = "^\\d{8}$";
 
     public final String value;
