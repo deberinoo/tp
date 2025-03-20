@@ -52,11 +52,5 @@ public class SampleDataUtil {
                 .map(Tag::new)
                 .collect(Collectors.toSet());
     }
-
-    public static Reminder[] getSampleReminders() {
-        return new Reminder[] {
-                new Reminder("John", "Meeting", LocalDate.of(2025, 3, 20), LocalTime.of(14, 0)),
-                new Reminder("Alice", "Doctor Appointment", LocalDate.of(2025, 3, 21), LocalTime.of(10, 30))
-        };
-    }
+    
 }
