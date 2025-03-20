@@ -35,6 +35,8 @@ AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized fo
    * `clear` : Deletes all contacts.
 
    * `exit` : Exits the app.
+   
+   * `tags` : Lists all existing tags in the address book
 
 1. Refer to the [Features](#features) below for details of each command.
 
@@ -177,6 +179,12 @@ Exits the program.
 
 Format: `exit`
 
+### Listing all tags : `tags`
+
+Shows a list of all tags in the address book.
+
+Format: `tags`
+
 ### Saving the data
 
 AddressBook data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
@@ -220,4 +228,7 @@ Action | Format, Examples
 **Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
 **Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
 **List** | `list`
+**Note** | `note INDEX [-a APPEND] [-o OVERWRITE] [-c]`<br> e.g., `note 2 -a Need help in long division`
+**Tags** | `tags`
+**Exit** | `exit`
 **Help** | `help`
