@@ -18,6 +18,7 @@ import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.Reminder;
 import seedu.address.model.person.Person;
 import seedu.address.storage.Storage;
+import seedu.address.model.schedule.Session;
 
 /**
  * The main LogicManager of the app.
@@ -92,4 +93,8 @@ public class LogicManager implements Logic {
         return model.getFilteredReminderList();
     }
 
+    @Override
+    public ObservableList<Session> getSessionList() {
+        return model.getSessionList();
+    }
 }

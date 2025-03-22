@@ -135,7 +135,7 @@ public class MainWindow extends UiPart<Stage> {
         CommandBox commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
 
-        reminderPanel = new ReminderPanel(logic.getFilteredReminderList());
+        reminderPanel = new ReminderPanel(logic.getFilteredReminderList(), logic.getSessionList());
         reminderPanelPlaceholder.getChildren().add(reminderPanel.getRoot());
     }
 

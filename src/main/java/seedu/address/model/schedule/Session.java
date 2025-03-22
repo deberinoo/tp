@@ -1,12 +1,11 @@
 package seedu.address.model.schedule;
 
-import static java.util.Objects.requireNonNull;
-
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
+import static java.util.Objects.requireNonNull;
 
 
 /**
@@ -82,7 +81,7 @@ public class Session {
 
     @Override
     public String toString() {
-        return String.format("%s - %s on %s at %s for %dh%02dm",
+        return String.format("Upcoming Session: %s - %s on %s at %s for %dh%02dm",
                 studentName, subject, date.format(DATE_FORMAT),
                 time.format(TIME_FORMAT),
                 duration.toHours(), duration.toMinutesPart());
