@@ -1,5 +1,6 @@
 package seedu.address.ui;
 
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -7,7 +8,6 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
 import seedu.address.model.Reminder;
-import seedu.address.model.schedule.Session;
 
 /**
  * Panel containing the list of reminders.
@@ -19,31 +19,33 @@ public class ReminderPanel extends UiPart<Region> {
     private ListView<Reminder> reminderListView;
 
     @FXML
-    private ListView<Session> sessionListView;
-
-    
-    @FXML
-    private Label sessionHeader; // Label for sessions
+    private Label reminderHeader;
 
     /**
      * Creates a {@code ReminderPanel} with the given list of reminders.
      */
-    public ReminderPanel(ObservableList<Reminder> reminderList, ObservableList<Session> sessionList) {
+    public ReminderPanel(ObservableList<Reminder> reminderList) {
         super(FXML);
+        
+        // Display reminders
         reminderListView.setItems(reminderList);
         reminderListView.setCellFactory(listView -> new ReminderListViewCell());
 
-        // Display scheduled sessions
-        sessionListView.setItems(sessionList);
-        sessionListView.setCellFactory(listView -> new SessionListViewCell());
+        // Set initial reminder header text
+        updateReminderHeader(reminderList);
 
-        // if (!sessionList.isEmpty()) {
-        //     sessionListView.setItems(sessionList);
-        //     sessionListView.setCellFactory(listView -> new SessionListViewCell());
-        //     sessionHeader.setText("Scheduled Sessions");
-        // } else {
-        //     sessionHeader.setText("No Scheduled Sessions");
-        // }
+        // Add a listener to the reminderList to update the header when the list changes
+        reminderList.addListener((ListChangeListener<Reminder>) change -> {
+            updateReminderHeader(reminderList);
+        });
+    }
+
+    private void updateReminderHeader(ObservableList<Reminder> reminderList) {
+        if (!reminderList.isEmpty()) {
+            reminderHeader.setText("Reminders");
+        } else {
+            reminderHeader.setText("No Reminders");
+        }
     }
 
     /**
@@ -59,23 +61,6 @@ public class ReminderPanel extends UiPart<Region> {
                 setText(null);
             } else {
                 setText(reminder.toString());
-            }
-        }
-    }
-
-    /**
-     * Custom {@code ListCell} that displays the graphics of a {@code Session}.
-     */
-    class SessionListViewCell extends ListCell<Session> {
-        @Override
-        protected void updateItem(Session session, boolean empty) {
-            super.updateItem(session, empty);
-
-            if (empty || session == null) {
-                setGraphic(null);
-                setText(null);
-            } else {
-                setText(session.toString());
             }
         }
     }

@@ -81,7 +81,7 @@ public class Session {
 
     @Override
     public String toString() {
-        return String.format("Upcoming Session: %s - %s on %s at %s for %dh%02dm",
+        return String.format("%s - %s on %s at %s for %dh%02dm",
                 studentName, subject, date.format(DATE_FORMAT),
                 time.format(TIME_FORMAT),
                 duration.toHours(), duration.toMinutesPart());

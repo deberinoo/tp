@@ -69,6 +69,6 @@ public class Reminder {
 
     @Override
     public String toString() {
-        return String.format("Reminder: %s - %s on %s at %s", name, event, date, time);
+        return String.format("%s - %s on %s at %s", name, event, date, time);
     }
 }
