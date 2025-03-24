@@ -26,6 +26,7 @@ import seedu.address.logic.commands.schedule.ScheduleCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.logic.parser.schedule.ScheduleCancelCommandParser;
 import seedu.address.logic.parser.schedule.ScheduleCommandParser;
+import seedu.address.logic.parser.schedule.ScheduleEditCommandParser;
 
 /**
  * Parses user input.
@@ -151,6 +152,10 @@ public class AddressBookParser {
      */
     private Command parseScheduleCommand(String arguments) throws ParseException {
         String trimmedArgs = arguments.trim();
+
+        if (trimmedArgs.startsWith("edit")) {
+            return new ScheduleEditCommandParser().parse(trimmedArgs.substring(4).trim()); // Remove "edit"
+        }
 
         if (trimmedArgs.startsWith("cancel")) {
             return new ScheduleCancelCommandParser().parse(trimmedArgs.substring(6).trim()); // Remove "cancel"
