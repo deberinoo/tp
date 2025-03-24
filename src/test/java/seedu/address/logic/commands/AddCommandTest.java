@@ -188,6 +188,11 @@ public class AddCommandTest {
         }
 
         @Override
+        public void updateSession(Session target, Session editedSession) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void deleteSession(int id) {
             // Implement your mock delete session logic here
             throw new AssertionError("This method should not be called.");

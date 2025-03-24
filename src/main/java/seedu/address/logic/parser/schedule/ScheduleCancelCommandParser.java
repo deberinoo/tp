@@ -3,7 +3,6 @@ package seedu.address.logic.parser.schedule;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 
 import seedu.address.commons.core.index.Index;
-import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.schedule.ScheduleCancelCommand;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.ParserUtil;
@@ -25,7 +24,7 @@ public class ScheduleCancelCommandParser implements Parser<ScheduleCancelCommand
             return new ScheduleCancelCommand(index);
         } catch (ParseException pe) {
             throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE), pe);
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, ScheduleCancelCommand.MESSAGE_USAGE), pe);
         }
     }
 }
