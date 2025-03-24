@@ -25,7 +25,7 @@ public class ModelManager implements Model {
     private final AddressBook addressBook;
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
-    private final ObservableList<Session> sessions = FXCollections.observableArrayList();
+    private final ObservableList<Session> sessions;
     private final ObservableList<Reminder> reminders;
     private final FilteredList<Reminder> filteredReminders;
 
@@ -42,6 +42,7 @@ public class ModelManager implements Model {
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
         this.reminders = FXCollections.observableArrayList();
         this.filteredReminders = new FilteredList<>(this.reminders);
+        this.sessions = FXCollections.observableArrayList();
     }
 
     public ModelManager() {
@@ -160,7 +161,7 @@ public class ModelManager implements Model {
 
     //=========== Sessions ================================================================================
     @Override
-    public ObservableList<Session> getScheduleList() {
+    public ObservableList<Session> getSessionList() {
         return sessions;
     }
 
@@ -171,8 +172,8 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void deleteSession(int index) {
-        sessions.remove(index);
+    public void deleteSession(Session session) {
+        sessions.remove(session);
     }
 
     @Override

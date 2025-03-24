@@ -10,6 +10,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.Reminder;
 import seedu.address.model.person.Person;
+import seedu.address.model.schedule.Session;
 /**
  * API of the Logic component
  */
@@ -49,4 +50,6 @@ public interface Logic {
     void setGuiSettings(GuiSettings guiSettings);
 
     ObservableList<Reminder> getFilteredReminderList();
+
+    ObservableList<Session> getSessionList();
 }

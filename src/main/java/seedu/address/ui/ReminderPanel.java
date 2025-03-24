@@ -1,7 +1,9 @@
 package seedu.address.ui;
 
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
@@ -16,6 +18,9 @@ public class ReminderPanel extends UiPart<Region> {
     @FXML
     private ListView<Reminder> reminderListView;
 
+    @FXML
+    private Label reminderHeader;
+
     /**
      * Creates a {@code ReminderPanel} with the given list of reminders.
      */
@@ -25,6 +30,22 @@ public class ReminderPanel extends UiPart<Region> {
         // Display reminders
         reminderListView.setItems(reminderList);
         reminderListView.setCellFactory(listView -> new ReminderListViewCell());
+
+        // Set initial reminder header text
+        updateReminderHeader(reminderList);
+
+        // Add a listener to the reminderList to update the header when the list changes
+        reminderList.addListener((ListChangeListener<Reminder>) change -> {
+            updateReminderHeader(reminderList);
+        });
+    }
+
+    private void updateReminderHeader(ObservableList<Reminder> reminderList) {
+        if (!reminderList.isEmpty()) {
+            reminderHeader.setText("Reminders");
+        } else {
+            reminderHeader.setText("No Reminders");
+        }
     }
 
     /**

@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.stage.*?>
 
-<fx:root minHeight="700" minWidth="450" onCloseRequest="#handleExit" title="Address App" type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root minHeight="700" minWidth="450" onCloseRequest="#handleExit" title="EduEase" type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
   <icons>
     <Image url="@/images/address_book_32.png" />
   </icons>
@@ -41,28 +41,39 @@
           </padding>
         </StackPane>
 
-        <VBox fx:id="personList" maxHeight="240" minWidth="340" prefWidth="340" styleClass="pane-with-border" VBox.vgrow="ALWAYS">
-          <padding>
-            <Insets bottom="10" left="10" right="10" top="10" />
-          </padding>
-          <StackPane fx:id="personListPanelPlaceholder" minHeight="105.0" VBox.vgrow="ALWAYS" />
-          <StackPane fx:id="personNoteAreaPlaceholder" minHeight="105.0" VBox.vgrow="ALWAYS" visible="false"/>
-        </VBox>
-        <!-- Add the placeholder for ReminderPanel -->
-        <VBox fx:id="reminderPanel" minWidth="340" prefHeight="118.0" prefWidth="340.0" styleClass="pane-with-border" VBox.vgrow="ALWAYS">
-          <padding>
-            <Insets bottom="5" left="10" right="10" top="5" />
-          </padding>
-          <StackPane fx:id="reminderPanelPlaceholder" VBox.vgrow="ALWAYS" />
-        </VBox>
+        <!-- TabPane for switching between different panels -->
+        <TabPane minHeight="400" maxHeight="600" prefHeight="500" VBox.vgrow="ALWAYS">
+          <!-- Tab for Person List -->
+          <Tab text="Contacts">
+            <VBox fx:id="personList" minWidth="340" prefWidth="340" styleClass="pane-with-border" VBox.vgrow="ALWAYS">
+              <padding>
+                <Insets bottom="10" left="10" right="10" top="10" />
+              </padding>
+              <StackPane fx:id="personListPanelPlaceholder" maxHeight="315" VBox.vgrow="ALWAYS" />
+              <StackPane fx:id="personNoteAreaPlaceholder" VBox.vgrow="ALWAYS" visible="false"/>
+            </VBox>
+          </Tab>
 
-<!--        <VBox fx:id="personNote" minWidth="340" prefWidth="340" styleClass="pane-with-border" VBox.vgrow="ALWAYS">-->
-<!--          <padding>-->
-<!--            <Insets bottom="5" left="10" right="10" top="5" />-->
-<!--          </padding>-->
-<!--          <StackPane fx:id="personNoteAreaPlaceholder" VBox.vgrow="ALWAYS" />-->
-<!--        </VBox>-->
+          <!-- Tab for Reminder Panel -->
+          <Tab text="Reminders">
+            <VBox fx:id="reminderPanel" minWidth="340" prefHeight="200.0" prefWidth="340.0" styleClass="pane-with-border" VBox.vgrow="ALWAYS">
+              <padding>
+                <Insets bottom="5" left="10" right="10" top="5" />
+              </padding>
+              <StackPane fx:id="reminderPanelPlaceholder" VBox.vgrow="ALWAYS" />
+            </VBox>
+          </Tab>
 
+          <!-- Tab for Sessions -->
+          <Tab text="Sessions">
+            <VBox fx:id="sessionPanel" minWidth="340" prefHeight="200.0" prefWidth="340.0" styleClass="pane-with-border" VBox.vgrow="ALWAYS">
+              <padding>
+                <Insets bottom="5" left="10" right="10" top="5" />
+              </padding>
+              <StackPane fx:id="sessionPanelPlaceholder" VBox.vgrow="ALWAYS" />
+            </VBox>
+          </Tab>
+        </TabPane>
         <StackPane fx:id="statusbarPlaceholder" prefHeight="91.0" prefWidth="340.0" VBox.vgrow="NEVER" />
       </VBox>
     </Scene>

@@ -5,9 +5,7 @@
 
 <?import javafx.scene.layout.VBox?>
 <VBox xmlns:fx="http://javafx.com/fxml/1">
-    <Label fx:id="reminderHeader"/>
-    <ListView fx:id="reminderListView"/>
+    <Label fx:id="sessionHeader"/>
+    <ListView fx:id="sessionListView"/>
 </VBox>
-
-
 

@@ -1,4 +1,4 @@
-package seedu.address.logic.commands;
+package seedu.address.logic.commands.schedule;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE;
@@ -8,7 +8,8 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_SUBJECT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TIME;
 
 import seedu.address.commons.util.ToStringBuilder;
-import seedu.address.logic.Messages;
+import seedu.address.logic.commands.Command;
+import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.schedule.Session;
@@ -52,10 +53,9 @@ public class ScheduleCommand extends Command {
         model.addSession(toSchedule);
 
         // Show the scheduled sessions after adding the new one
-        String scheduledSessions = displayScheduledSessions(model);
+        // String scheduledSessions = displayScheduledSessions(model);
 
-        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(toSchedule)
-                + "\n" + scheduledSessions));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, toSchedule.toString()));
     }
 
     @Override
@@ -78,32 +78,5 @@ public class ScheduleCommand extends Command {
         return new ToStringBuilder(this)
                 .add("toSchedule", toSchedule)
                 .toString();
-    }
-
-    /**
-     * Displays all scheduled sessions in a structured format.
-     *
-     * @param model the model that holds the scheduled sessions
-     * @return The formatted string displaying all scheduled sessions.
-     */
-    private String displayScheduledSessions(Model model) {
-        if (model.getScheduleList().isEmpty()) {
-            return "No sessions are scheduled.";
-        }
-
-        StringBuilder sb = new StringBuilder();
-        sb.append("Scheduled Sessions:\n");
-
-        for (Session session : model.getScheduleList()) {
-            sb.append("--------------------------------------------------\n");
-            sb.append("Name: ").append(session.getStudentName()).append("\n");
-            sb.append("Subject: ").append(session.getSubject()).append("\n");
-            sb.append("Date: ").append(session.getDate()).append("\n");
-            sb.append("Time: ").append(session.getTime()).append("\n");
-            sb.append("Duration: ").append(session.formatDurationForDisplay()).append("\n");
-            sb.append("--------------------------------------------------\n");
-        }
-
-        return sb.toString();
     }
 }

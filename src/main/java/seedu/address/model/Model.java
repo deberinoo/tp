@@ -99,7 +99,7 @@ public interface Model {
     /**
      * Returns the list of scheduled sessions.
      */
-    ObservableList<Session> getScheduleList();
+    ObservableList<Session> getSessionList();
 
     /**
      * Adds a new session to the model.
@@ -109,7 +109,7 @@ public interface Model {
     /**
      * Deletes the session at the specified index.
      */
-    void deleteSession(int index);
+    void deleteSession(Session session);
 
     /**
      * Checks if the given session exists in the model.

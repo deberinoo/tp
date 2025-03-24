@@ -34,6 +34,7 @@ public class MainWindow extends UiPart<Stage> {
     private PersonListPanel personListPanel;
     private ResultDisplay resultDisplay;
     private ReminderPanel reminderPanel;
+    private SessionPanel sessionPanel;
 
     private PersonNoteArea personNoteArea;
     private HelpWindow helpWindow;
@@ -58,6 +59,9 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane reminderPanelPlaceholder;
+
+    @FXML
+    private StackPane sessionPanelPlaceholder;
 
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
@@ -137,6 +141,9 @@ public class MainWindow extends UiPart<Stage> {
 
         reminderPanel = new ReminderPanel(logic.getFilteredReminderList());
         reminderPanelPlaceholder.getChildren().add(reminderPanel.getRoot());
+
+        sessionPanel = new SessionPanel(logic.getSessionList());
+        sessionPanelPlaceholder.getChildren().add(sessionPanel.getRoot());
     }
 
     /**

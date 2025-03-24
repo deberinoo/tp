@@ -1,4 +1,4 @@
-package seedu.address.logic.parser;
+package seedu.address.logic.parser.schedule;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
@@ -12,7 +12,11 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-import seedu.address.logic.commands.ScheduleCommand;
+import seedu.address.logic.commands.schedule.ScheduleCommand;
+import seedu.address.logic.parser.ArgumentMultimap;
+import seedu.address.logic.parser.ArgumentTokenizer;
+import seedu.address.logic.parser.Parser;
+import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.schedule.Session;
 
