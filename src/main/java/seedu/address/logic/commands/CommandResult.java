@@ -19,6 +19,9 @@ public class CommandResult {
     /** The application should exit. */
     private final boolean exit;
 
+    /** The Command should be confirmed. */
+    private boolean confirmReq = false;
+
     /**
      * Constructs a {@code CommandResult} with the specified fields.
      */
@@ -26,6 +29,16 @@ public class CommandResult {
         this.feedbackToUser = requireNonNull(feedbackToUser);
         this.showHelp = showHelp;
         this.exit = exit;
+    }
+
+    /**
+     * Constructs a {@code CommandResult} with the specified fields.
+     */
+    public CommandResult(String feedbackToUser, boolean showHelp, boolean exit, boolean confirmReq) {
+        this.feedbackToUser = requireNonNull(feedbackToUser);
+        this.showHelp = showHelp;
+        this.exit = exit;
+        this.confirmReq = confirmReq;
     }
 
     /**
@@ -47,6 +60,9 @@ public class CommandResult {
     public boolean isExit() {
         return exit;
     }
+    public boolean isConfirmReq() {
+        return confirmReq;
+    }
 
     @Override
     public boolean equals(Object other) {
@@ -62,12 +78,13 @@ public class CommandResult {
         CommandResult otherCommandResult = (CommandResult) other;
         return feedbackToUser.equals(otherCommandResult.feedbackToUser)
                 && showHelp == otherCommandResult.showHelp
-                && exit == otherCommandResult.exit;
+                && exit == otherCommandResult.exit
+                && confirmReq == otherCommandResult.confirmReq;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(feedbackToUser, showHelp, exit);
+        return Objects.hash(feedbackToUser, showHelp, exit, confirmReq);
     }
 
     @Override
@@ -76,6 +93,7 @@ public class CommandResult {
                 .add("feedbackToUser", feedbackToUser)
                 .add("showHelp", showHelp)
                 .add("exit", exit)
+                .add("confirmReq", confirmReq)
                 .toString();
     }
 
