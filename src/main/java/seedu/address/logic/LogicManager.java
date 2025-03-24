@@ -10,10 +10,14 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
+import seedu.address.logic.commands.FindCommand;
+import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.UndoCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.AddressBookParser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
+import seedu.address.model.ModelStateManager;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.Reminder;
 import seedu.address.model.person.Person;
@@ -31,7 +35,7 @@ public class LogicManager implements Logic {
 
     private final Logger logger = LogsCenter.getLogger(LogicManager.class);
 
-    private final Model model;
+    private Model model;
     private final Storage storage;
     private final AddressBookParser addressBookParser;
 
@@ -42,6 +46,7 @@ public class LogicManager implements Logic {
         this.model = model;
         this.storage = storage;
         addressBookParser = new AddressBookParser();
+        ModelStateManager.addState(model);
     }
 
     @Override
@@ -50,7 +55,13 @@ public class LogicManager implements Logic {
 
         CommandResult commandResult;
         Command command = addressBookParser.parseCommand(commandText);
-        commandResult = command.execute(model);
+
+        this.model = model.copy();
+        commandResult = command.execute(this.model);
+        if (!(command instanceof UndoCommand) && !(command instanceof ListCommand)
+                && !(command instanceof FindCommand)) {
+            ModelStateManager.addState(this.model);
+        }
 
         try {
             storage.saveAddressBook(model.getAddressBook());

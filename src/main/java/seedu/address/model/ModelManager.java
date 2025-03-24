@@ -48,6 +48,14 @@ public class ModelManager implements Model {
         this(new AddressBook(), new UserPrefs());
     }
 
+    /**
+     * Creates a copy of the given ModelManager.
+     */
+    @Override
+    public Model copy() {
+        return new ModelManager(addressBook.copy(), userPrefs);
+    }
+
     //=========== UserPrefs ==================================================================================
 
     @Override

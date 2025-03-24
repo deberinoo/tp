@@ -44,6 +44,17 @@ public class AddressBook implements ReadOnlyAddressBook {
         resetData(toBeCopied);
     }
 
+    /**
+     * Create and returns a copy of the current address book.
+     */
+    public AddressBook copy() {
+        AddressBook copy = new AddressBook();
+        for (Person person : this.getPersonList()) {
+            copy.addPerson(person);
+        }
+        return copy;
+    }
+
     //// list overwrite operations
 
     /**
