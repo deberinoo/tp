@@ -21,6 +21,8 @@ public class ReminderPanel extends UiPart<Region> {
      */
     public ReminderPanel(ObservableList<Reminder> reminderList) {
         super(FXML);
+
+        // Display reminders
         reminderListView.setItems(reminderList);
         reminderListView.setCellFactory(listView -> new ReminderListViewCell());
     }
