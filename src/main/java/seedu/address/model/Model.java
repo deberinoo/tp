@@ -99,7 +99,7 @@ public interface Model {
     /**
      * Returns the list of scheduled sessions.
      */
-    ObservableList<Session> getScheduleList();
+    ObservableList<Session> getSessionList();
 
     /**
      * Adds a new session to the model.

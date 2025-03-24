@@ -1,9 +1,7 @@
 package seedu.address.model;
 
-import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
-
 import java.nio.file.Path;
+import static java.util.Objects.requireNonNull;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -12,6 +10,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import seedu.address.model.person.Person;
 import seedu.address.model.schedule.Session;
 import seedu.address.model.tag.Tag;
@@ -25,7 +24,7 @@ public class ModelManager implements Model {
     private final AddressBook addressBook;
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
-    private final ObservableList<Session> sessions = FXCollections.observableArrayList();
+    private final ObservableList<Session> sessions;
     private final ObservableList<Reminder> reminders;
     private final FilteredList<Reminder> filteredReminders;
 
@@ -42,6 +41,7 @@ public class ModelManager implements Model {
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
         this.reminders = FXCollections.observableArrayList();
         this.filteredReminders = new FilteredList<>(this.reminders);
+        this.sessions = FXCollections.observableArrayList();
     }
 
     public ModelManager() {
@@ -160,7 +160,7 @@ public class ModelManager implements Model {
 
     //=========== Sessions ================================================================================
     @Override
-    public ObservableList<Session> getScheduleList() {
+    public ObservableList<Session> getSessionList() {
         return sessions;
     }
 
