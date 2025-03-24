@@ -286,6 +286,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | tutor   | create custom tags for students                                                               | filter and group them more efficiently                                                 |
 | `* *`    | tutor   | edit existing student contacts                                                                | keep student information up to date                                                    |
 | `* *`    | tutor   | add notes about each student's progress                                                       | personalize my lessons                                                                 |
+| `* *`    | tutor   | clear all student contacts                                                                    | remove all contacts quickly                                                            |
 | `* *`    | tutor   | categorize my contacts (Eg. Current students, past students, etc.)                            | manage them efficiently                                                                |
 | `* *`    | tutor   | manually schedule tutoring sessions                                                           | keep track of upcoming classes                                                         |
 | `* *`    | tutor   | view all scheduled sessions in a simple calendar                                              | stay organized                                                                         |

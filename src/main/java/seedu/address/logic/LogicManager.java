@@ -10,6 +10,7 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
+import seedu.address.logic.commands.CommandWithConfirmation;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.AddressBookParser;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -17,8 +18,8 @@ import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.Reminder;
 import seedu.address.model.person.Person;
-import seedu.address.storage.Storage;
 import seedu.address.model.schedule.Session;
+import seedu.address.storage.Storage;
 
 /**
  * The main LogicManager of the app.
@@ -50,6 +51,15 @@ public class LogicManager implements Logic {
 
         CommandResult commandResult;
         Command command = addressBookParser.parseCommand(commandText);
+
+        // If the command requires confirmation, execute it with confirmation
+        if (command instanceof CommandWithConfirmation) {
+            CommandWithConfirmation commandWithConfirmation = (CommandWithConfirmation) command;
+            boolean confirmed = commandWithConfirmation.executeWithConfirmation();
+            if (!confirmed) {
+                return new CommandResult("Command canceled.");
+            }
+        }
         commandResult = command.execute(model);
 
         try {
