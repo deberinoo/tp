@@ -20,7 +20,7 @@ public class SessionPanel extends UiPart<Region> {
 
     @FXML
     private Label sessionHeader;
-    
+
     /**
      * Creates a {@code ReminderPanel} with the given list of reminders.
      */
