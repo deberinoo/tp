@@ -1,11 +1,12 @@
 package seedu.address.model.schedule;
 
+import static java.util.Objects.requireNonNull;
+
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
-import static java.util.Objects.requireNonNull;
 
 
 /**

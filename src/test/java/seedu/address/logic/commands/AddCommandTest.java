@@ -1,13 +1,16 @@
 package seedu.address.logic.commands;
 
+import static java.util.Objects.requireNonNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static seedu.address.testutil.Assert.assertThrows;
+import static seedu.address.testutil.TypicalPersons.ALICE;
+
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
-import static java.util.Objects.requireNonNull;
 import java.util.function.Predicate;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import org.junit.jupiter.api.Test;
 
 import javafx.collections.FXCollections;
@@ -23,9 +26,7 @@ import seedu.address.model.Reminder;
 import seedu.address.model.person.Person;
 import seedu.address.model.schedule.Session;
 import seedu.address.model.tag.Tag;
-import static seedu.address.testutil.Assert.assertThrows;
 import seedu.address.testutil.PersonBuilder;
-import static seedu.address.testutil.TypicalPersons.ALICE;
 
 public class AddCommandTest {
 
