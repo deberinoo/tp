@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 import java.time.Duration;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
@@ -56,6 +57,10 @@ public class Session {
 
     public Duration getDuration() {
         return duration;
+    }
+
+    public LocalDateTime getDateTime() {
+        return LocalDateTime.of(date, time);  // Combine date and time into LocalDateTime
     }
 
     @Override

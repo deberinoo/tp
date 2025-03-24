@@ -60,7 +60,8 @@ public class SessionPanel extends UiPart<Region> {
                 setGraphic(null);
                 setText(null);
             } else {
-                setText(session.toString());
+                String displayText = (getIndex() + 1) + ". " + session.toString();
+                setText(displayText);
             }
         }
     }
