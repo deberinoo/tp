@@ -52,9 +52,6 @@ public class ScheduleCommand extends Command {
 
         model.addSession(toSchedule);
 
-        // Show the scheduled sessions after adding the new one
-        // String scheduledSessions = displayScheduledSessions(model);
-
         return new CommandResult(String.format(MESSAGE_SUCCESS, toSchedule.toString()));
     }
 
