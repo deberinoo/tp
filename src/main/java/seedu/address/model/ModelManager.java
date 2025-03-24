@@ -172,6 +172,16 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void updateSession(Session target, Session editedSession) {
+        requireNonNull(target);
+        requireNonNull(editedSession);
+
+        if (!target.equals(editedSession)) {
+            sessions.set(sessions.indexOf(target), editedSession);
+        }
+    }
+
+    @Override
     public void deleteSession(Session session) {
         sessions.remove(session);
     }
