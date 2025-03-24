@@ -2,6 +2,7 @@ package seedu.address.logic.commands.schedule;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.Comparator;
 import java.util.List;
 
 import seedu.address.commons.core.index.Index;
@@ -37,7 +38,7 @@ public class ScheduleCancelCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        List<Session> lastShownList = model.getSessionList();
+        List<Session> lastShownList = model.getSessionList().sorted(Comparator.comparing(Session::getDateTime));
 
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(MESSAGE_INVALID_INDEX);
