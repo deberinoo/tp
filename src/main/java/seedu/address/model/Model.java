@@ -109,7 +109,7 @@ public interface Model {
     /**
      * Deletes the session at the specified index.
      */
-    void deleteSession(int index);
+    void deleteSession(Session session);
 
     /**
      * Checks if the given session exists in the model.

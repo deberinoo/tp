@@ -1,7 +1,9 @@
 package seedu.address.model;
 
-import java.nio.file.Path;
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+
+import java.nio.file.Path;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -10,7 +12,6 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
-import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import seedu.address.model.person.Person;
 import seedu.address.model.schedule.Session;
 import seedu.address.model.tag.Tag;
@@ -171,8 +172,8 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void deleteSession(int index) {
-        sessions.remove(index);
+    public void deleteSession(Session session) {
+        sessions.remove(session);
     }
 
     @Override
