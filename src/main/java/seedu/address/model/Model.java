@@ -106,6 +106,8 @@ public interface Model {
      */
     void addSession(Session session);
 
+    void updateSession(Session target, Session editedSession);
+
     /**
      * Deletes the session at the specified index.
      */
