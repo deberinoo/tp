@@ -1,4 +1,4 @@
-package seedu.address.logic.commands;
+package seedu.address.logic.commands.schedule;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE;
@@ -8,6 +8,8 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_SUBJECT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TIME;
 
 import seedu.address.commons.util.ToStringBuilder;
+import seedu.address.logic.commands.Command;
+import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.schedule.Session;
@@ -49,9 +51,6 @@ public class ScheduleCommand extends Command {
         }
 
         model.addSession(toSchedule);
-
-        // Show the scheduled sessions after adding the new one
-        // String scheduledSessions = displayScheduledSessions(model);
 
         return new CommandResult(String.format(MESSAGE_SUCCESS, toSchedule.toString()));
     }

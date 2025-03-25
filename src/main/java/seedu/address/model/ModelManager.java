@@ -172,8 +172,8 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void deleteSession(int index) {
-        sessions.remove(index);
+    public void deleteSession(Session session) {
+        sessions.remove(session);
     }
 
     @Override

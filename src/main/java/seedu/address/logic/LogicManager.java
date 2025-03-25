@@ -3,6 +3,7 @@ package seedu.address.logic;
 import java.io.IOException;
 import java.nio.file.AccessDeniedException;
 import java.nio.file.Path;
+import java.util.Comparator;
 import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
@@ -105,6 +106,6 @@ public class LogicManager implements Logic {
 
     @Override
     public ObservableList<Session> getSessionList() {
-        return model.getSessionList();
+        return model.getSessionList().sorted(Comparator.comparing(Session::getDateTime));
     }
 }
