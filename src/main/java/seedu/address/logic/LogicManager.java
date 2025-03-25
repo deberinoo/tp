@@ -17,12 +17,13 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.AddressBookParser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
-import seedu.address.model.ModelStateManager;
+import seedu.address.model.AddressBookStateManager;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.Reminder;
 import seedu.address.model.person.Person;
 import seedu.address.storage.Storage;
 import seedu.address.model.schedule.Session;
+import seedu.address.ui.MainWindow;
 
 /**
  * The main LogicManager of the app.
@@ -46,8 +47,10 @@ public class LogicManager implements Logic {
         this.model = model;
         this.storage = storage;
         addressBookParser = new AddressBookParser();
-        ModelStateManager.addState(model);
+        AddressBookStateManager.addState(model.getAddressBook().copy());
     }
+
+    private MainWindow mainWindow;
 
     @Override
     public CommandResult execute(String commandText) throws CommandException, ParseException {
@@ -56,12 +59,14 @@ public class LogicManager implements Logic {
         CommandResult commandResult;
         Command command = addressBookParser.parseCommand(commandText);
 
-        this.model = model.copy();
+
         commandResult = command.execute(this.model);
         if (!(command instanceof UndoCommand) && !(command instanceof ListCommand)
                 && !(command instanceof FindCommand)) {
-            ModelStateManager.addState(this.model);
+            AddressBookStateManager.addState(model.getAddressBook().copy());
         }
+
+        AddressBookStateManager.printStates();
 
         try {
             storage.saveAddressBook(model.getAddressBook());

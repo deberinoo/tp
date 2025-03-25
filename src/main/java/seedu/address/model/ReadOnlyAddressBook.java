@@ -20,4 +20,9 @@ public interface ReadOnlyAddressBook {
      * This list will not contain any duplicate tags.
      */
     ObservableList<Tag> getTagList();
+
+    /**
+     * Creates and returns a copy of the current address book.
+     */
+    AddressBook copy();
 }

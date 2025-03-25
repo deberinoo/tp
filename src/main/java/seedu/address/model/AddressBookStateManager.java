@@ -7,26 +7,26 @@ import seedu.address.model.exceptions.NoPreviousModelStateException;
 /**
  * StateList class that contains the states of TaskLists
  */
-public class ModelStateManager {
-    private static final ArrayList<Model> states = new ArrayList<>();
+public class AddressBookStateManager {
+    private static final ArrayList<AddressBook> states = new ArrayList<>();
     private static int currentState = 0;
 
     /**
      * Instantiate task list with old task list data loaded in.
      */
-    public ModelStateManager() {
+    public AddressBookStateManager() {
     }
 
     /**
      * Add a new state and move current state number forward by one.
      */
-    public static void addState(Model state) {
+    public static void addState(AddressBook state) {
         while (states.size() > currentState) {
             states.remove(states.size() - 1);
         }
 
-        ModelStateManager.states.add(state);
-        ModelStateManager.currentState++;
+        AddressBookStateManager.states.add(state);
+        AddressBookStateManager.currentState++;
         printStates();
     }
 
@@ -44,7 +44,7 @@ public class ModelStateManager {
     /**
      * Get the current state.
      */
-    public static Model getCurrentState() {
+    public static AddressBook getCurrentState() {
         printStates();
         return states.get(currentState - 1);
     }
@@ -56,9 +56,9 @@ public class ModelStateManager {
     public static void printStates() {
         System.out.println("All States:");
         int i = 0;
-        for (Model state : states) {
+        for (AddressBook state : states) {
             System.out.println("State " + i);
-            System.out.println(state.getAddressBook().getPersonList());
+            System.out.println(state.getPersonList());
             i++;
         }
         System.out.println("Current State Pointer: " + currentState);
