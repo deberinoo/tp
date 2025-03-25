@@ -3,6 +3,7 @@ package seedu.address.logic;
 import java.io.IOException;
 import java.nio.file.AccessDeniedException;
 import java.nio.file.Path;
+import java.util.Comparator;
 import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
@@ -10,6 +11,7 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
+import seedu.address.logic.commands.CommandWithConfirmation;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.AddressBookParser;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -50,6 +52,15 @@ public class LogicManager implements Logic {
 
         CommandResult commandResult;
         Command command = addressBookParser.parseCommand(commandText);
+
+        // If the command requires confirmation, execute it with confirmation
+        if (command instanceof CommandWithConfirmation) {
+            CommandWithConfirmation commandWithConfirmation = (CommandWithConfirmation) command;
+            boolean confirmed = commandWithConfirmation.executeWithConfirmation();
+            if (!confirmed) {
+                return new CommandResult("Command canceled.");
+            }
+        }
         commandResult = command.execute(model);
 
         try {
@@ -95,6 +106,6 @@ public class LogicManager implements Logic {
 
     @Override
     public ObservableList<Session> getSessionList() {
-        return model.getSessionList();
+        return model.getSessionList().sorted(Comparator.comparing(Session::getDateTime));
     }
 }

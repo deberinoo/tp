@@ -193,15 +193,13 @@ public class AddCommandTest {
         }
 
         @Override
-        public void deleteSession(int id) {
-            // Implement your mock delete session logic here
+        public void deleteSession(Session session) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
         public boolean hasSession(Session session) {
-            // Implement the logic to check if the session exists
-            return false; // Example, adjust to your needs
+            return false;
         }
     }
 

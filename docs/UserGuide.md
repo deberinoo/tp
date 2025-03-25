@@ -150,12 +150,12 @@ Examples:
 
 Updates the note of  the specified person from the address book.
 
-Format: `note INDEX [-a APPEND] [-o OVERWRITE] [-c]`
+Format: `note INDEX [a/ APPEND] [o/ OVERWRITE] [c/]`
 
 * Update notes of the person at the specified `INDEX` based on parameters.
-  * `-a` will append the new note with the old note with a newline.
-  * `-o` will overwrite the old note with the new note.
-  * `-c` will clear the note.
+  * `a/` will append the new note with the old note with a newline.
+  * `o/` will overwrite the old note with the new note.
+  * `/c` will clear the note.
 * If multiple additional parameter is present, priority is as follows, append > overwrite > clear.
 * If no additional parameter is present, there will be no change and the old note will be shown.
 * The index refers to the index number shown in the displayed person list.
@@ -163,11 +163,11 @@ Format: `note INDEX [-a APPEND] [-o OVERWRITE] [-c]`
 
 Examples:
 * `list` followed by `note 2` will show the note of the 2nd person in the address book.
-* `note 1 -o Need help in long division` will overwrite previous note.
+* `note 1 o/ Need help in long division` will overwrite previous note.
   * Returns `Need help in long division`.
-* `note 1 -a Also need help in 7th multiplication` will append to the previous note.
+* `note 1 a/ Also need help in 7th multiplication` will append to the previous note.
   * Returns `Need help in long division\nAlso need help in 7th multiplication`
-* `note 1 -c` clears the note.
+* `note 1 c/` clears the note.
 
 ### Clearing all entries : `clear`
 
@@ -239,7 +239,7 @@ Action | Format, Examples
 **Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
 **Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
 **List** | `list`
-**Note** | `note INDEX [-a APPEND] [-o OVERWRITE] [-c]`<br> e.g., `note 2 -a Need help in long division`
+**Note** | `note INDEX [a/ APPEND] [o/ OVERWRITE] [c/]`<br> e.g., `note 2 a/ Need help in long division`
 **Tags** | `tags`
 **Schedule** | `schedule n/[STUDENT_NAME] s/[SUBJECT] d/[DATE] t/[TIME] dur/[DURATION]`<br> e.g., `schedule n/John Doe s/Math d/2022-12-31 t/14:00 dur/1h`
 **Exit** | `exit`
