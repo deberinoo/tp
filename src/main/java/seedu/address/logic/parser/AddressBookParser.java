@@ -117,7 +117,7 @@ public class AddressBookParser {
             return new RemindCommandParser().parse(arguments);
 
         case TagsCommand.COMMAND_WORD:
-            return new TagsCommand();
+            return new TagsCommandParser().parse(arguments);
 
         default:
             logger.finer("This user input caused a ParseException: " + userInput);
