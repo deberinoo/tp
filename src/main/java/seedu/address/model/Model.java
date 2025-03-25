@@ -106,10 +106,12 @@ public interface Model {
      */
     void addSession(Session session);
 
+    void updateSession(Session target, Session editedSession);
+
     /**
      * Deletes the session at the specified index.
      */
-    void deleteSession(int index);
+    void deleteSession(Session session);
 
     /**
      * Checks if the given session exists in the model.

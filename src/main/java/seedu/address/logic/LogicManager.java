@@ -3,6 +3,7 @@ package seedu.address.logic;
 import java.io.IOException;
 import java.nio.file.AccessDeniedException;
 import java.nio.file.Path;
+import java.util.Comparator;
 import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
@@ -13,6 +14,7 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.UndoCommand;
+import seedu.address.logic.commands.CommandWithConfirmation;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.AddressBookParser;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -21,9 +23,8 @@ import seedu.address.model.AddressBookStateManager;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.Reminder;
 import seedu.address.model.person.Person;
-import seedu.address.storage.Storage;
 import seedu.address.model.schedule.Session;
-import seedu.address.ui.MainWindow;
+import seedu.address.storage.Storage;
 
 /**
  * The main LogicManager of the app.
@@ -59,14 +60,20 @@ public class LogicManager implements Logic {
         CommandResult commandResult;
         Command command = addressBookParser.parseCommand(commandText);
 
-
-        commandResult = command.execute(this.model);
+        // If the command requires confirmation, execute it with confirmation
+        if (command instanceof CommandWithConfirmation) {
+            CommandWithConfirmation commandWithConfirmation = (CommandWithConfirmation) command;
+            boolean confirmed = commandWithConfirmation.executeWithConfirmation();
+            if (!confirmed) {
+                return new CommandResult("Command canceled.");
+            }
+        }
+        commandResult = command.execute(model);
+        
         if (!(command instanceof UndoCommand) && !(command instanceof ListCommand)
                 && !(command instanceof FindCommand)) {
             AddressBookStateManager.addState(model.getAddressBook().copy());
         }
-
-        AddressBookStateManager.printStates();
 
         try {
             storage.saveAddressBook(model.getAddressBook());
@@ -111,6 +118,6 @@ public class LogicManager implements Logic {
 
     @Override
     public ObservableList<Session> getSessionList() {
-        return model.getSessionList();
+        return model.getSessionList().sorted(Comparator.comparing(Session::getDateTime));
     }
 }

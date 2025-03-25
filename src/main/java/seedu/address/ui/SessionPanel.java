@@ -1,5 +1,7 @@
 package seedu.address.ui;
 
+import java.util.Comparator;
+
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -20,23 +22,25 @@ public class SessionPanel extends UiPart<Region> {
 
     @FXML
     private Label sessionHeader;
-    
+
     /**
      * Creates a {@code ReminderPanel} with the given list of reminders.
      */
     public SessionPanel(ObservableList<Session> sessionList) {
         super(FXML);
 
+        ObservableList<Session> sortedList = sessionList.sorted(Comparator.comparing(Session::getDateTime));
+
         // Display scheduled sessions
-        sessionListView.setItems(sessionList);
+        sessionListView.setItems(sortedList);
         sessionListView.setCellFactory(listView -> new SessionListViewCell());
 
         // Set initial session header text
-        updateSessionHeader(sessionList);
+        updateSessionHeader(sortedList);
 
         // Add a listener to the sessionList to update the header when the list changes
         sessionList.addListener((ListChangeListener<Session>) change -> {
-            updateSessionHeader(sessionList);
+            updateSessionHeader(sortedList);
         });
     }
 
@@ -60,7 +64,8 @@ public class SessionPanel extends UiPart<Region> {
                 setGraphic(null);
                 setText(null);
             } else {
-                setText(session.toString());
+                String displayText = (getIndex() + 1) + ". " + session.toString();
+                setText(displayText);
             }
         }
     }

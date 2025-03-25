@@ -21,10 +21,13 @@ import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.NoteCommand;
 import seedu.address.logic.commands.RemindCommand;
-import seedu.address.logic.commands.ScheduleCommand;
 import seedu.address.logic.commands.TagsCommand;
 import seedu.address.logic.commands.UndoCommand;
+import seedu.address.logic.commands.schedule.ScheduleCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.logic.parser.schedule.ScheduleCancelCommandParser;
+import seedu.address.logic.parser.schedule.ScheduleCommandParser;
+import seedu.address.logic.parser.schedule.ScheduleEditCommandParser;
 
 /**
  * Parses user input.
@@ -104,7 +107,7 @@ public class AddressBookParser {
             return new NoteCommandParser().parse(arguments);
 
         case ScheduleCommand.COMMAND_WORD:
-            return new ScheduleCommandParser().parse(arguments);
+            return parseScheduleCommand(arguments);
 
         case ExitCommand.COMMAND_WORD:
             return new ExitCommand();
@@ -116,7 +119,7 @@ public class AddressBookParser {
             return new RemindCommandParser().parse(arguments);
 
         case TagsCommand.COMMAND_WORD:
-            return new TagsCommand();
+            return new TagsCommandParser().parse(arguments);
 
         case UndoCommand.COMMAND_WORD:
             return new UndoCommand();
@@ -147,5 +150,22 @@ public class AddressBookParser {
     private boolean isSimilar(String commandInput, String fullCommand) {
         // Example: Compare "lis" with "list"
         return fullCommand.startsWith(commandInput) || commandInput.startsWith(fullCommand);
+    }
+
+    /**
+     * Parses subcommands under "schedule".
+     */
+    private Command parseScheduleCommand(String arguments) throws ParseException {
+        String trimmedArgs = arguments.trim();
+
+        if (trimmedArgs.startsWith("edit")) {
+            return new ScheduleEditCommandParser().parse(trimmedArgs.substring(4).trim()); // Remove "edit"
+        }
+
+        if (trimmedArgs.startsWith("cancel")) {
+            return new ScheduleCancelCommandParser().parse(trimmedArgs.substring(6).trim()); // Remove "cancel"
+        }
+
+        return new ScheduleCommandParser().parse(arguments);
     }
 }
