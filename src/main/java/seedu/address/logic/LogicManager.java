@@ -13,6 +13,7 @@ import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.RedoCommand;
 import seedu.address.logic.commands.UndoCommand;
 import seedu.address.logic.commands.CommandWithConfirmation;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -51,8 +52,6 @@ public class LogicManager implements Logic {
         AddressBookStateManager.addState(model.getAddressBook().copy());
     }
 
-    private MainWindow mainWindow;
-
     @Override
     public CommandResult execute(String commandText) throws CommandException, ParseException {
         logger.info("----------------[USER COMMAND][" + commandText + "]");
@@ -69,10 +68,17 @@ public class LogicManager implements Logic {
             }
         }
         commandResult = command.execute(model);
-        
+
+        // list, and find commands should not change the addressbook state. undo commands should function outside
+        // the addressbook state
         if (!(command instanceof UndoCommand) && !(command instanceof ListCommand)
                 && !(command instanceof FindCommand)) {
             AddressBookStateManager.addState(model.getAddressBook().copy());
+        }
+
+        // redo commands do not change the previous command and should not be saved in the state manager.
+        if (!(command instanceof RedoCommand)) {
+            AddressBookStateManager.setPreviousCommand(command);
         }
 
         try {

@@ -2,6 +2,8 @@ package seedu.address.model;
 
 import java.util.ArrayList;
 
+import seedu.address.logic.commands.Command;
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.exceptions.NoPreviousModelStateException;
 
 /**
@@ -10,6 +12,7 @@ import seedu.address.model.exceptions.NoPreviousModelStateException;
 public class AddressBookStateManager {
     private static final ArrayList<AddressBook> states = new ArrayList<>();
     private static int currentState = 0;
+    private static Command previousCommand = null;
 
     /**
      * Instantiate task list with old task list data loaded in.
@@ -27,7 +30,6 @@ public class AddressBookStateManager {
 
         AddressBookStateManager.states.add(state);
         AddressBookStateManager.currentState++;
-        printStates();
     }
 
     /**
@@ -45,22 +47,24 @@ public class AddressBookStateManager {
      * Get the current state.
      */
     public static AddressBook getCurrentState() {
-        printStates();
         return states.get(currentState - 1);
     }
 
+    /**
+     * Get the previous command.
+     */
+    public static Command getPreviousCommand() throws CommandException {
+        if (previousCommand != null) {
+            return previousCommand;
+        } else {
+            throw new CommandException("No previous command found");
+        }
+    }
 
     /**
-     * Print all states and their respective task lists for debugging.
+     * Set the previous command.
      */
-    public static void printStates() {
-        System.out.println("All States:");
-        int i = 0;
-        for (AddressBook state : states) {
-            System.out.println("State " + i);
-            System.out.println(state.getPersonList());
-            i++;
-        }
-        System.out.println("Current State Pointer: " + currentState);
+    public static void setPreviousCommand(Command command) {
+        previousCommand = command;
     }
 }
