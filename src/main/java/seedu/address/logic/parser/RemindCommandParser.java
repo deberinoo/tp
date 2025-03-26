@@ -43,9 +43,12 @@ public class RemindCommandParser implements Parser<RemindCommand> {
         // Extract values from ArgumentMultimap
         String name = argMultimap.getValue(PREFIX_NAME).get();
         String event = argMultimap.getValue(PREFIX_EVENT).get();
-        String date = argMultimap.getValue(PREFIX_DATE).get();
-        String time = argMultimap.getValue(PREFIX_TIME).get();
+        String dateStr = argMultimap.getValue(PREFIX_DATE).get();
+        String timeStr = argMultimap.getValue(PREFIX_TIME).get();
 
-        return new RemindCommand(name, event, LocalDate.parse(date), LocalTime.parse(time));
+        // Parsing date and time strings
+        LocalDate date = ParserUtil.parseDate(dateStr);
+        LocalTime time = ParserUtil.parseTime(timeStr);
+        return new RemindCommand(name, event, date, time);
     }
 }
