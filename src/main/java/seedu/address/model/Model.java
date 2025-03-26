@@ -117,4 +117,9 @@ public interface Model {
      * Checks if the given session exists in the model.
      */
     boolean hasSession(Session session);
+
+    /**
+     * Undo latest addressbook command
+     */
+    Model copy();
 }

@@ -50,6 +50,18 @@ public class Person {
         this.note = note;
     }
 
+    /**
+     * Creates and returns a copy of the current Person.
+     */
+    public Person copy() {
+        Set<Tag> copiedTags = new HashSet<>();
+        for (Tag tag : this.tags) {
+            copiedTags.add(new Tag(tag.tagName));
+        }
+        return new Person(new Name(this.name.fullName), new Phone(this.phone.value),
+                new Phone(this.parentPhone.value), new Email(this.email.value), copiedTags, this.note);
+    }
+
     public Name getName() {
         return name;
     }
@@ -133,5 +145,4 @@ public class Person {
                 .add("tags", tags)
                 .toString();
     }
-
 }
