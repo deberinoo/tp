@@ -109,6 +109,11 @@ public class AddressBookTest {
         public ObservableList<Tag> getTagList() {
             return tags;
         }
+
+        @Override
+        public AddressBook copy() {
+            return null;
+        }
     }
 
 }
