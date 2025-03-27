@@ -182,6 +182,11 @@ public class RemindCommandTest {
         }
 
         @Override
+        public void updateSession(Session target, Session editedSession) {
+
+        }
+
+        @Override
         public ObservableList<Session> getSessionList() {
             // Return a mock list or an empty list
             return FXCollections.observableArrayList();
@@ -195,6 +200,11 @@ public class RemindCommandTest {
         @Override
         public boolean hasSession(Session session) {
             return false;
+        }
+
+        @Override
+        public Model copy() {
+            return null;
         }
     }
 
