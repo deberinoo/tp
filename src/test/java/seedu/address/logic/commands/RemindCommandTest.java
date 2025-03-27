@@ -1,28 +1,27 @@
 package seedu.address.logic.commands;
 
-import static java.util.Objects.requireNonNull;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static seedu.address.testutil.Assert.assertThrows;
-
 import java.nio.file.Path;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import static java.util.Objects.requireNonNull;
 import java.util.function.Predicate;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import org.junit.jupiter.api.Test;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.Reminder;
-import seedu.address.model.Model;
 import seedu.address.model.person.Person;
 import seedu.address.model.schedule.Session;
 import seedu.address.model.tag.Tag;
+import static seedu.address.testutil.Assert.assertThrows;
 
 /**
  * Test class for RemindCommand.
@@ -193,8 +192,18 @@ public class RemindCommandTest {
         }
 
         @Override
+        public void updateSession(Session target, Session editedSession) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public boolean hasSession(Session session) {
             return false;
+        }
+
+        @Override
+        public Model copy() {
+            throw new AssertionError("This method should not be called.");
         }
     }
 
