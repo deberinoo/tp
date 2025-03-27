@@ -66,6 +66,18 @@ For example, the `Logic` component defines its API in the `Logic.java` interface
 
 The sections below give more details of each component.
 
+**Schedule Command Sequence Diagram**
+The Schedule Sequence Diagram shows how components interact when the user issues the `schedule` command.
+
+1. LogicManager receives the schedule command and delegates it to the Parser.
+2. The Parser tokenizes the command and extracts details like date, time, and duration, requesting Session to parse them.
+3. Parser creates a Session object with parsed details and sends it back to LogicManager.
+4. LogicManager passes the session to the Model, which checks if the session already exists.
+5. If valid, the Model adds the session to the SessionList.
+6. LogicManager creates a CommandResult confirming the session was scheduled successfully and returns it to the user.
+
+<img src="images/ScheduleSequenceDiagram.png" width="574" />
+
 ### UI component
 
 The **API** of this component is specified in [`Ui.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/Ui.java)
@@ -491,6 +503,66 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 2c1. EduEase will prioritise appending to the note.
 
       Use case resumes at step 3.
+
+**Use case: Schedule a tutoring session**
+
+**MSS**
+
+1. Tutor enters the command to schedule a session.
+2. EduEase validates the input parameters (student name, subject, date, time, and duration).
+3. If all parameters are valid, EduEase schedules the session.
+4. EduEase confirms the session has been scheduled with a success message, displaying the session details.
+  
+  Use case ends.
+
+**Extensions**
+* 2a. If a parameter is missing or invalid.
+
+    * 2a1. EduEase displays an error message based on the specific issue.
+
+      Use case resumes at step 1.
+
+* 2b. If any argument is invalid.
+
+    * 2b1. EduEase displays the original session details.
+
+      Use case resumes at step 3.
+
+**Use case: Edit a scheduled session**
+
+**MSS**
+
+1. Tutor enters the command to edit a scheduled session.
+2. EduEase validates the input parameters (session index, student name, subject, date, time, and duration).
+3. If all parameters are valid, EduEase updates the scheduled session.
+4. EduEase confirms the session has been updated with a success message, displaying the updated session details.
+  
+  Use case ends.
+
+**Extensions**
+* 2a. If the session index is missing or invalid.
+
+    * 2a1. EduEase displays an error message based on the specific issue.
+
+      Use case resumes at step 1.
+
+**Use case: Cancel a scheduled session**
+
+**MSS**
+
+1. Tutor enters the command to cancel a scheduled session.
+2. EduEase validates the input parameter (session index).
+3. If the session exists, EduEase cancels the session.
+4. EduEase confirms the session has been cancelled with a success message, indicating the session has been removed.
+  
+  Use case ends.
+
+**Extensions**
+* 2a. If the session index is missing or invalid.
+
+    * 2a1. EduEase displays an error message based on the specific issue.
+
+      Use case resumes at step 1.
 
 *{More to be added}*
 

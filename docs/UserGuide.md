@@ -148,7 +148,7 @@ Examples:
 
 ### Updating a Note for a person : `note`
 
-Updates the note of  the specified person from the address book.
+Updates the note of the specified person from the address book.
 
 Format: `note INDEX [a/ APPEND] [o/ OVERWRITE] [c/]`
 
@@ -196,6 +196,25 @@ Format: `schedule n/[STUDENT_NAME] s/[SUBJECT] d/[DATE] t/[TIME] dur/[DURATION]`
 Examples:
 * `schedule n/John Doe s/Math d/2022-12-31 t/14:00 dur/1h` schedules a session with John Doe on 31st December 2022 at 2pm for 1 hour.
 
+### Editing a session : `schedule cancel`
+
+Edits an existing session with a student.
+
+Format: `schedule edit [INDEX]`
+
+* Edits the session at the specified `INDEX`. The index refers to the index number shown in the sessions list. The index **must be a positive integer** 1, 2, 3, …​
+* At least one of the optional fields must be provided.
+* Existing values will be updated to the input values.
+
+Examples:
+*  `schedule edit 1 n/John Doe s/Science` Edits the student name and subject of the 1st session to be `John Doe` and `Science` respectively.
+
+### Cancelling a session : `schedule cancel`
+
+Deletes a session with a student.
+
+Format: `schedule cancel [INDEX]`
+
 ### Saving the data
 
 AddressBook data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
@@ -242,5 +261,7 @@ Action | Format, Examples
 **Note** | `note INDEX [a/ APPEND] [o/ OVERWRITE] [c/]`<br> e.g., `note 2 a/ Need help in long division`
 **Tags** | `tags`
 **Schedule** | `schedule n/[STUDENT_NAME] s/[SUBJECT] d/[DATE] t/[TIME] dur/[DURATION]`<br> e.g., `schedule n/John Doe s/Math d/2022-12-31 t/14:00 dur/1h`
+**Schedule Edit** | `schedule edit INDEX [n/STUDENT_NAME] [s/SUBJECT] [d/DATE] [t/TIME] [dur/DURATION]`<br> e.g., `schedule edit 1 n/John Doe s/Math d/2023-12-31 t/15:00 dur/2h`
+**Schedule Cancel** | `schedule cancel INDEX`<br> e.g., `schedule cancel 1`
 **Exit** | `exit`
 **Help** | `help`
