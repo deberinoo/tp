@@ -40,6 +40,10 @@ AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized fo
 
    * `schedule` : Schedules a new session with a student
 
+   * `undo` : Undoes the last command
+   
+   * `redo` : Redoes the last known command
+
 1. Refer to the [Features](#features) below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
@@ -70,7 +74,7 @@ AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized fo
 
 ### Viewing help : `help`
 
-Shows a message explaning how to access the help page.
+Shows a message explaining how to access the help page.
 
 ![help message](images/helpMessage.png)
 
@@ -196,6 +200,18 @@ Format: `schedule n/[STUDENT_NAME] s/[SUBJECT] d/[DATE] t/[TIME] dur/[DURATION]`
 Examples:
 * `schedule n/John Doe s/Math d/2022-12-31 t/14:00 dur/1h` schedules a session with John Doe on 31st December 2022 at 2pm for 1 hour.
 
+### Undoing the last command : `undo`
+
+Undoes the last command that changes the data. If there is no command to undo, the user will be informed.
+
+Format: `undo`
+
+### Redoing the last command : `redo`
+
+Redoes the last command that changes the data. If there is no command to redo, the user will be informed.
+
+Format: `redo`
+
 ### Saving the data
 
 AddressBook data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
@@ -242,5 +258,7 @@ Action | Format, Examples
 **Note** | `note INDEX [a/ APPEND] [o/ OVERWRITE] [c/]`<br> e.g., `note 2 a/ Need help in long division`
 **Tags** | `tags`
 **Schedule** | `schedule n/[STUDENT_NAME] s/[SUBJECT] d/[DATE] t/[TIME] dur/[DURATION]`<br> e.g., `schedule n/John Doe s/Math d/2022-12-31 t/14:00 dur/1h`
+**Undo** | `undo`
+**Redo** | `redo`
 **Exit** | `exit`
 **Help** | `help`
