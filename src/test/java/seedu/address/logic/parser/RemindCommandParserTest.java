@@ -36,7 +36,7 @@ public class RemindCommandParserTest {
 
         // Valid input with all fields present
         assertParseSuccess(parser,
-                PREFIX_NAME + VALID_NAME + " "
+                " " + PREFIX_NAME + VALID_NAME + " "
                         + PREFIX_EVENT + VALID_EVENT + " "
                         + PREFIX_DATE + VALID_DATE + " "
                         + PREFIX_TIME + VALID_TIME,
