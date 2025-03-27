@@ -1,0 +1,78 @@
+@startuml
+!include style.puml
+skinparam ArrowFontStyle plain
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant ":ScheduleCommandParser" as Parser LOGIC_COLOR
+participant ":ScheduleCommand" as Command LOGIC_COLOR
+participant ":Model" as Model LOGIC_COLOR
+participant "Session" as Session LOGIC_COLOR
+participant "CommandResult" as CommandResult LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant "SessionList" as SessionList MODEL_COLOR
+end box
+
+[-> LogicManager : execute("schedule ...")
+activate LogicManager
+
+LogicManager -> Parser : parseCommand("schedule ...")
+activate Parser
+
+Parser -> Parser : tokenizeArgs(...)
+activate Parser
+
+Parser -> Session : parseDate("2025-03-18")
+activate Session
+
+Session --> Parser : date
+deactivate Session
+
+Parser -> Session : parseTime("14:00")
+activate Session
+
+Session --> Parser : time
+deactivate Session
+
+Parser -> Session : parseDuration("1h30m")
+activate Session
+
+Session --> Parser : duration
+deactivate Session
+
+Parser -> Command : createSession(studentName, subject, date, time, duration)
+activate Command
+
+Command --> Parser : new Session
+deactivate Command
+
+Parser --> LogicManager : new ScheduleCommand(session)
+deactivate Parser
+
+LogicManager -> Model : addSession(session)
+activate Model
+
+Model -> Model : checkSessionExistence(session)
+activate Model
+
+Model --> Model : sessionExists
+deactivate Model
+
+Model -> SessionList : add(session)
+activate SessionList
+
+SessionList --> Model : session added
+deactivate SessionList
+
+Model --> LogicManager : success
+deactivate Model
+
+LogicManager -> CommandResult : createCommandResult("New session scheduled: session details")
+activate CommandResult
+
+CommandResult --> LogicManager : result
+deactivate CommandResult
+
+@enduml
