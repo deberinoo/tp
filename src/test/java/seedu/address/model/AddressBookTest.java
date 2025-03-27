@@ -111,9 +111,7 @@ public class AddressBookTest {
 
         @Override
         public AddressBook copy() {
-            AddressBook copiedAddressBook = new AddressBook();
-            copiedAddressBook.resetData(this); // Copies data from this stub
-            return copiedAddressBook;
+            return null;
         }
     }
 

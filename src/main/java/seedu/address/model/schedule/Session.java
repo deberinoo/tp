@@ -60,7 +60,7 @@ public class Session {
     }
 
     public LocalDateTime getDateTime() {
-        return LocalDateTime.of(date, time);  // Combine date and time into LocalDateTime
+        return LocalDateTime.of(date, time); // Combine date and time into LocalDateTime
     }
 
     @Override
