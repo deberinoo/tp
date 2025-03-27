@@ -20,7 +20,7 @@ public class RemindCommandParserTest {
     private static final String VALID_TIME = "09:00";
 
     private static final String INVALID_DATE = "2025-02-30"; // Invalid date
-    private static final String INVALID_TIME = "25:00";      // Invalid time
+    private static final String INVALID_TIME = "25:00"; // Invalid time
 
     private static final String PREFIX_NAME = "n/";
     private static final String PREFIX_EVENT = "e/";
