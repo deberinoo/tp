@@ -171,7 +171,7 @@ Step 3. `LogicManager` checks if the command requires confirmation (instanceof `
 
 Step 4. The `executeWithConfirmation()` method is invoked, triggering `showConfirmationDialog()`.
 
-Step 5. If the user confirms, `execute()` is called to perform the command. 
+Step 5. If the user confirms, `execute()` is called to perform the command.
 If the user cancels, the command is aborted, and a message is displayed.
 
 
