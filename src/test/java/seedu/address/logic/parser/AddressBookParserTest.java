@@ -114,16 +114,14 @@ public class AddressBookParserTest {
     @Test
     public void parseCommand_tagsWithInvalidFormat_throwsParseException() {
         // Test with invalid prefix
-        assertThrows(ParseException.class,
-                () -> parser.parseCommand(TagsCommand.COMMAND_WORD + " x/friends"));
+        assertThrows(ParseException.class, () -> parser.parseCommand(TagsCommand.COMMAND_WORD + " x/friends"));
 
         // Test with empty tag value
-        assertThrows(ParseException.class,
-                () -> parser.parseCommand(TagsCommand.COMMAND_WORD + " t/"));
+        assertThrows(ParseException.class, () -> parser.parseCommand(TagsCommand.COMMAND_WORD + " t/"));
 
         // Test with preamble text
-        assertThrows(ParseException.class,
-                () -> parser.parseCommand(TagsCommand.COMMAND_WORD + " something t/friends"));
+        assertThrows(ParseException.class, () -> parser.parseCommand(TagsCommand.COMMAND_WORD
+                + " something t/friends"));
     }
 
     @Test
