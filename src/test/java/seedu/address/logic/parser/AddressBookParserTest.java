@@ -11,10 +11,12 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.ClearCommand;
+import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
@@ -22,6 +24,7 @@ import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.TagsCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
@@ -86,6 +89,39 @@ public class AddressBookParserTest {
     public void parseCommand_list() throws Exception {
         assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD) instanceof ListCommand);
         assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD + " 3") instanceof ListCommand);
+    }
+
+    @Test
+    public void parseCommand_tags() throws Exception {
+        // Test basic tags command
+        assertTrue(parser.parseCommand(TagsCommand.COMMAND_WORD) instanceof TagsCommand);
+        assertTrue(parser.parseCommand(TagsCommand.COMMAND_WORD + " ") instanceof TagsCommand);
+
+        // Test tags command with valid tag
+        String validTag = " t/friends";
+        Command command = parser.parseCommand(TagsCommand.COMMAND_WORD + validTag);
+        assertTrue(parser.parseCommand(TagsCommand.COMMAND_WORD + validTag) instanceof TagsCommand);
+
+        // Test tags command with multiple valid tags
+        String multipleTags = " t/friends t/colleagues";
+        Command multipleTagsCommand = parser.parseCommand(TagsCommand.COMMAND_WORD + multipleTags);
+        assertTrue(multipleTagsCommand instanceof TagsCommand);
+
+        // Test case insensitivity
+        assertTrue(parser.parseCommand("TAGS") instanceof TagsCommand);
+        assertTrue(parser.parseCommand("TaGs") instanceof TagsCommand);
+    }
+
+    @Test
+    public void parseCommand_tagsWithInvalidFormat_throwsParseException() {
+        // Test with invalid prefix
+        assertThrows(ParseException.class, () -> parser.parseCommand(TagsCommand.COMMAND_WORD + " x/friends"));
+
+        // Test with empty tag value
+        assertThrows(ParseException.class, () -> parser.parseCommand(TagsCommand.COMMAND_WORD + " t/"));
+
+        // Test with preamble text
+        assertThrows(ParseException.class, () -> parser.parseCommand(TagsCommand.COMMAND_WORD + " something t/friends"));
     }
 
     @Test
