@@ -1,5 +1,8 @@
 package seedu.address.logic.commands;
 
+import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
+import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
+
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -7,8 +10,6 @@ import java.time.LocalTime;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
-import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import seedu.address.logic.commands.schedule.ScheduleCommand;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
