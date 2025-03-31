@@ -1,7 +1,6 @@
 package seedu.address.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
@@ -22,33 +21,33 @@ import seedu.address.testutil.PersonBuilder;
 public class TagsCommandTest {
     private Model model;
     private Model expectedModel;
-    private Person Alice;
-    private Person Bob;
-    private Person Charlie;
-    private Person Dave;
+    private Person alice;
+    private Person bob;
+    private Person charlie;
+    private Person dave;
 
     @BeforeEach
     public void setUp() {
         // Create test persons with known tags
-        Alice = new PersonBuilder().withName("Alice")
+        alice = new PersonBuilder().withName("Alice")
                 .withTags("friends").build();
-        Bob = new PersonBuilder().withName("Bob")
+        bob = new PersonBuilder().withName("Bob")
                 .withTags("friends", "colleagues").build();
-        Charlie = new PersonBuilder().withName("Charlie")
+        charlie = new PersonBuilder().withName("Charlie")
                 .withTags("colleagues").build();
-        Dave = new PersonBuilder().withName("Dave").build();
+        dave = new PersonBuilder().withName("Dave").build();
 
         // Create model with test data
         model = new ModelManager();
         expectedModel = new ModelManager();
-        model.addPerson(Alice);
-        model.addPerson(Bob);
-        model.addPerson(Charlie);
-        model.addPerson(Dave);
-        expectedModel.addPerson(Alice);
-        expectedModel.addPerson(Bob);
-        expectedModel.addPerson(Charlie);
-        expectedModel.addPerson(Dave);
+        model.addPerson(alice);
+        model.addPerson(bob);
+        model.addPerson(charlie);
+        model.addPerson(dave);
+        expectedModel.addPerson(alice);
+        expectedModel.addPerson(bob);
+        expectedModel.addPerson(charlie);
+        expectedModel.addPerson(dave);
     }
 
     @Test
@@ -71,8 +70,8 @@ public class TagsCommandTest {
         // Makes sure the filter person list is correct
         List<Person> filteredPersons = model.getFilteredPersonList();
         assertEquals(2, filteredPersons.size());
-        assertTrue(filteredPersons.contains(Alice));
-        assertTrue(filteredPersons.contains(Bob));
+        assertTrue(filteredPersons.contains(alice));
+        assertTrue(filteredPersons.contains(bob));
     }
 
     @Test
@@ -89,7 +88,7 @@ public class TagsCommandTest {
         // Makes sure the filter person list is correct
         List<Person> filteredPersons = model.getFilteredPersonList();
         assertEquals(1, filteredPersons.size());
-        assertTrue(filteredPersons.contains(Bob));
+        assertTrue(filteredPersons.contains(bob));
     }
 
     @Test

@@ -11,7 +11,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.AddCommand;
@@ -115,13 +114,16 @@ public class AddressBookParserTest {
     @Test
     public void parseCommand_tagsWithInvalidFormat_throwsParseException() {
         // Test with invalid prefix
-        assertThrows(ParseException.class, () -> parser.parseCommand(TagsCommand.COMMAND_WORD + " x/friends"));
+        assertThrows(ParseException.class,
+                () -> parser.parseCommand(TagsCommand.COMMAND_WORD + " x/friends"));
 
         // Test with empty tag value
-        assertThrows(ParseException.class, () -> parser.parseCommand(TagsCommand.COMMAND_WORD + " t/"));
+        assertThrows(ParseException.class,
+                () -> parser.parseCommand(TagsCommand.COMMAND_WORD + " t/"));
 
         // Test with preamble text
-        assertThrows(ParseException.class, () -> parser.parseCommand(TagsCommand.COMMAND_WORD + " something t/friends"));
+        assertThrows(ParseException.class,
+                () -> parser.parseCommand(TagsCommand.COMMAND_WORD + " something t/friends"));
     }
 
     @Test
