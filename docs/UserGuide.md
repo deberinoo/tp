@@ -159,7 +159,7 @@ Format: `note INDEX [a/ APPEND] [o/ OVERWRITE] [c/]`
 * Update notes of the person at the specified `INDEX` based on parameters.
   * `a/` will append the new note with the old note with a newline.
   * `o/` will overwrite the old note with the new note.
-  * `/c` will clear the note.
+  * `c/` will clear the note.
 * If multiple additional parameter is present, priority is as follows, append > overwrite > clear.
 * If no additional parameter is present, there will be no change and the old note will be shown.
 * The index refers to the index number shown in the displayed person list.
@@ -175,7 +175,7 @@ Examples:
 
 ### Clearing all entries : `clear`
 
-Clears all entries from the address book.
+Clears all entries from the address book. Requires a confirmation from user.
 
 Format: `clear`
 
