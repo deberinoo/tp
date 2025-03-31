@@ -213,11 +213,6 @@ public class AddCommandTest {
         public Model copy() {
             return null;
         }
-
-        @Override
-        public Model copy() {
-            throw new AssertionError("This method should not be called.");
-        }
     }
 
     /**
