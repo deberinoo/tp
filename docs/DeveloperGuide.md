@@ -163,6 +163,38 @@ Classes used by multiple components are in the `seedu.address.commons` package.
 
 This section describes some noteworthy details on how certain features are implemented.
 
+### Command with confirmation
+The `CommandWithConfirmation` interface is designed for commands that require user confirmation before execution.
+This ensures that irreversible or sensitive actions prompt the user for explicit approval before proceeding.
+
+* `CommandWithConfirmation` is an interface implemented by commands that require confirmation.
+* `CommandWithConfirmation#showConfirmationDialog()` is a default method that prompts the user for confirmation
+
+`LogicManager` is responsible for identifying and executing confirmation-based commands.
+`UI` handles displaying the confirmation dialog.
+
+Given below is an example usage scenario and how the confirmation mechanism behaves at each step.
+
+Step 1. The user inputs a command that implements `CommandWithConfirmation` (e.g., clear).
+
+Step 2. `LogicManager` calls `AddressBookParser` to parse the command and instantiate it.
+
+Step 3. `LogicManager` checks if the command requires confirmation (instanceof `CommandWithConfirmation`).
+
+Step 4. The `executeWithConfirmation()` method is invoked, triggering `showConfirmationDialog()`.
+
+Step 5. If the user confirms, `execute()` is called to perform the command. 
+If the user cancels, the command is aborted, and a message is displayed.
+
+
+The following sequence diagram illustrates the execution flow of a command requiring confirmation:
+
+![CommandWithConfirmationSequenceDiagram](images/CommandWithConfirmationSequenceDiagram.png)
+
+This confirmation dialog acts as an extra safeguard,
+ensuring users are aware of the consequences before executing commands,
+while undo provides an additional safety net.
+
 ### \[Proposed\] Undo/redo feature
 
 #### Proposed Implementation
