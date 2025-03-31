@@ -28,7 +28,7 @@ public class SessionTest {
     private static final Session MATH_SESSION = new Session(
             VALID_STUDENT_NAME_MATH, VALID_SUBJECT_MATH, VALID_DATE_MATH, VALID_TIME_MATH, VALID_DURATION_MATH);
     private static final Session SCIENCE_SESSION = new Session(
-            VALID_STUDENT_NAME_SCIENCE, VALID_SUBJECT_SCIENCE, 
+            VALID_STUDENT_NAME_SCIENCE, VALID_SUBJECT_SCIENCE,
             VALID_DATE_SCIENCE, VALID_TIME_SCIENCE, VALID_DURATION_SCIENCE);
 
     @Test
