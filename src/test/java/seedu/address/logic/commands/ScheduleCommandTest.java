@@ -38,7 +38,7 @@ public class ScheduleCommandTest {
     @Test
     public void execute_newSession_success() {
         // Creating a valid session using LocalDate, LocalTime, and Duration
-        Session validSession = new Session("Math Tutoring", "Math", LocalDate.of(2025, 3, 18), 
+        Session validSession = new Session("Math Tutoring", "Math", LocalDate.of(2025, 3, 18),
                                            LocalTime.of(14, 0), Duration.ofHours(1).plusMinutes(30));
 
         // Create the command with the valid session
@@ -57,7 +57,7 @@ public class ScheduleCommandTest {
     @Test
     public void execute_duplicateSession_throwsCommandException() {
         // Creating a duplicate session
-        Session duplicateSession = new Session("Math Tutoring", "Math", LocalDate.of(2025, 3, 18), 
+        Session duplicateSession = new Session("Math Tutoring", "Math", LocalDate.of(2025, 3, 18),
                                                LocalTime.of(14, 0), Duration.ofHours(1).plusMinutes(30));
 
         // Add the session to the model first

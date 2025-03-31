@@ -72,7 +72,7 @@ public class SessionTest {
         // Update the expected string to include student names
         String expectedMathString = "John Doe - Math on 2025-03-18 at 14:00 for 1h30m";
         String expectedScienceString = "Jane Smith - Science on 2025-03-20 at 16:00 for 2h00m";
-        
+
         // Test to ensure the toString() method formats correctly
         assertEquals(expectedMathString, MATH_SESSION.toString());
         assertEquals(expectedScienceString, SCIENCE_SESSION.toString());

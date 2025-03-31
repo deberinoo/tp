@@ -41,7 +41,7 @@ AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized fo
    * `schedule` : Schedules a new session with a student
 
    * `undo` : Undoes the last command
-   
+
    * `redo` : Redoes the last known command
 
 1. Refer to the [Features](#features) below for details of each command.

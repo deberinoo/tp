@@ -514,7 +514,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 2. EduEase validates the input parameters (student name, subject, date, time, and duration).
 3. If all parameters are valid, EduEase schedules the session.
 4. EduEase confirms the session has been scheduled with a success message, displaying the session details.
-  
+
   Use case ends.
 
 **Extensions**
@@ -538,7 +538,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 2. EduEase validates the input parameters (session index, student name, subject, date, time, and duration).
 3. If all parameters are valid, EduEase updates the scheduled session.
 4. EduEase confirms the session has been updated with a success message, displaying the updated session details.
-  
+
   Use case ends.
 
 **Extensions**
@@ -556,7 +556,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 2. EduEase validates the input parameter (session index).
 3. If the session exists, EduEase cancels the session.
 4. EduEase confirms the session has been cancelled with a success message, indicating the session has been removed.
-  
+
   Use case ends.
 
 **Extensions**
