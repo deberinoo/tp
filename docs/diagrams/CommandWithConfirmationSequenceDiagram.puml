@@ -1,0 +1,55 @@
+@startuml
+!include style.puml
+skinparam ArrowFontStyle plain
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant ":AddressBookParser" as AddressBookParser LOGIC_COLOR
+participant "c:ClearCommand" as ClearCommand LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant ":Model" as Model MODEL_COLOR
+end box
+
+[-> LogicManager : execute("clear")
+activate LogicManager
+
+LogicManager -> AddressBookParser: parseCommand("clear")
+activate AddressBookParser
+
+create ClearCommand
+AddressBookParser -> ClearCommand
+activate ClearCommand
+
+ClearCommand --> AddressBookParser
+deactivate ClearCommand
+
+AddressBookParser --> LogicManager : c
+deactivate AddressBookParser
+
+LogicManager -> ClearCommand: executeWithConfirmation()
+activate ClearCommand
+ClearCommand -> ClearCommand: showConfirmationDialog()
+ClearCommand --> LogicManager: return confirmation result
+deactivate ClearCommand
+
+alt not confirmed
+    <-- LogicManager : return CommandResult("Command canceled.")
+else confirmed
+    LogicManager -> ClearCommand: execute(model)
+    activate ClearCommand
+    ClearCommand -> Model: setAddressBook(new AddressBook())
+    activate Model
+    Model --> ClearCommand
+    deactivate Model
+    ClearCommand --> LogicManager: return CommandResult("Address book has been cleared!")
+    deactivate ClearCommand
+    'Hidden arrow to position the destroy marker below the end of the activation bar.'
+    ClearCommand -[hidden]-> LogicManager
+    destroy ClearCommand
+end
+
+[<--LogicManager
+deactivate LogicManager
+@enduml
