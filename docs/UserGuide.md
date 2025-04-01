@@ -214,7 +214,7 @@ Format: `schedule n/[STUDENT_NAME] s/[SUBJECT] d/[DATE] t/[TIME] dur/[DURATION]`
 Examples:
 * `schedule n/John Doe s/Math d/2022-12-31 t/14:00 dur/1h` schedules a session with John Doe on 31st December 2022 at 2pm for 1 hour.
 
-### Editing a session : `schedule cancel`
+### Editing a session : `schedule edit`
 
 Edits an existing session with a student.
 
