@@ -33,6 +33,7 @@ public class TagsCommandParser implements Parser<TagsCommand> {
                 throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, TagsCommand.MESSAGE_USAGE));
             }
             try {
+                // The Tag constructor will handle case normalization
                 tags.add(ParserUtil.parseTag(tagName));
             } catch (ParseException pe) {
                 throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, TagsCommand.MESSAGE_USAGE), pe);
