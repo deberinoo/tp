@@ -3,7 +3,8 @@ layout: page
 title: User Guide
 ---
 
-AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB3 can get your contact management tasks done faster than traditional GUI apps.
+**EduEase** is a modified version of the AddressBook Level 3 (AB3) project, 
+tailored specifically for private tutors with young tutees.<br>
 
 * Table of Contents
 {:toc}
@@ -28,13 +29,15 @@ AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized fo
 
    * `list` : Lists all contacts.
 
-   * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe` to the Address Book.
+   * `add n/John Doe p/98765432 pp/98765433 e/johnd@example.com` : Adds a contact named `John Doe` to the Address Book.
 
    * `delete 3` : Deletes the 3rd contact shown in the current list.
 
    * `clear` : Deletes all contacts.
 
    * `exit` : Exits the app.
+
+   * `note 1 a/ Needs help in multiplication of 2 digits`: Appends a note to the 1st contact in the current list.
 
    * `tags` : Lists all existing tags in the address book
 
@@ -85,15 +88,15 @@ Format: `help`
 
 Adds a person to the address book.
 
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​`
+Format: `add n/NAME p/PHONE_NUMBER pp/PARENT_PHONE e/EMAIL  [t/TAG]…​`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 A person can have any number of tags (including 0)
 </div>
 
 Examples:
-* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
-* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
+* `add n/John Doe p/98765432 pp/98765433 e/johnd@example.com`
+* `add n/Betsy Crowe t/Math e/betsycrowe@example.com p/1234567 t/P3`
 
 ### Listing all persons : `list`
 
@@ -105,7 +108,7 @@ Format: `list`
 
 Edits an existing person in the address book.
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
+Format: `edit INDEX [n/NAME] [p/PHONE] [pp/PARENT_PHONE] [e/EMAIL] [t/TAG]…​`
 
 * Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
@@ -152,7 +155,8 @@ Examples:
 
 ### Updating a Note for a person : `note`
 
-Updates the note of the specified person from the address book.
+Updates the note of  the specified person from the address book. 
+The note are meant to be temporary or single-use.
 
 Format: `note INDEX [a/ APPEND] [o/ OVERWRITE] [c/]`
 
