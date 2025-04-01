@@ -15,6 +15,7 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.person.Person;
 import seedu.address.model.schedule.Session;
 import seedu.address.model.tag.Tag;
+import seedu.address.ui.MainWindow;
 
 /**
  * Represents the in-memory model of the address book data.
@@ -28,6 +29,7 @@ public class ModelManager implements Model {
     private final ObservableList<Session> sessions;
     private final ObservableList<Reminder> reminders;
     private final FilteredList<Reminder> filteredReminders;
+    private MainWindow mainWindow;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -55,6 +57,18 @@ public class ModelManager implements Model {
     @Override
     public Model copy() {
         return new ModelManager(addressBook.copy(), userPrefs);
+    }
+
+    /**
+     * Sets the main window of the app.
+     */
+    @Override
+    public void setMainWindow(MainWindow mainWindow) {
+        this.mainWindow = mainWindow;
+    }
+
+    public MainWindow getMainWindow() {
+        return this.mainWindow;
     }
 
     //=========== UserPrefs ==================================================================================

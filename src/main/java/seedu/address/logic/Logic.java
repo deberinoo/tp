@@ -11,10 +11,15 @@ import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.Reminder;
 import seedu.address.model.person.Person;
 import seedu.address.model.schedule.Session;
+import seedu.address.ui.MainWindow;
+
 /**
  * API of the Logic component
  */
 public interface Logic {
+
+    void setMainWindow(MainWindow mainWindow);
+
     /**
      * Executes the command and returns the result.
      * @param commandText The command as entered by the user.

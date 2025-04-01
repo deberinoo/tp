@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.AccessDeniedException;
 import java.nio.file.Path;
 import java.util.Comparator;
+import java.util.Objects;
 import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
@@ -26,6 +27,7 @@ import seedu.address.model.Reminder;
 import seedu.address.model.person.Person;
 import seedu.address.model.schedule.Session;
 import seedu.address.storage.Storage;
+import seedu.address.ui.MainWindow;
 
 /**
  * The main LogicManager of the app.
@@ -41,6 +43,7 @@ public class LogicManager implements Logic {
     private Model model;
     private final Storage storage;
     private final AddressBookParser addressBookParser;
+    private MainWindow mainWindow;
 
     /**
      * Constructs a {@code LogicManager} with the given {@code Model} and {@code Storage}.
@@ -50,6 +53,14 @@ public class LogicManager implements Logic {
         this.storage = storage;
         addressBookParser = new AddressBookParser();
         AddressBookStateManager.addState(model.getAddressBook().copy());
+    }
+
+    /**
+     * Sets the main window of the app.
+     */
+    public void setMainWindow(MainWindow mainWindow) {
+        this.mainWindow = mainWindow;
+        this.model.setMainWindow(mainWindow);
     }
 
     @Override
@@ -67,6 +78,7 @@ public class LogicManager implements Logic {
                 return new CommandResult("Command canceled.");
             }
         }
+
         commandResult = command.execute(model);
 
         // list, and find commands should not change the addressbook state. undo commands should function outside

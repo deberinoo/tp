@@ -64,4 +64,8 @@ public class ReminderPanel extends UiPart<Region> {
             }
         }
     }
+
+    public void refresh() {
+        reminderListView.refresh();
+    }
 }

@@ -42,9 +42,9 @@
         </StackPane>
 
         <!-- TabPane for switching between different panels -->
-        <TabPane minHeight="400" maxHeight="600" prefHeight="500" VBox.vgrow="ALWAYS">
+        <TabPane fx:id="tabPane" minHeight="400" maxHeight="600" prefHeight="500" VBox.vgrow="ALWAYS">
           <!-- Tab for Person List -->
-          <Tab text="Contacts">
+          <Tab text="Contacts" closable="false">
             <VBox fx:id="personList" minWidth="340" prefWidth="340" styleClass="pane-with-border" VBox.vgrow="ALWAYS">
               <padding>
                 <Insets bottom="10" left="10" right="10" top="10" />
@@ -55,7 +55,7 @@
           </Tab>
 
           <!-- Tab for Reminder Panel -->
-          <Tab text="Reminders">
+          <Tab text="Reminders" closable="false">
             <VBox fx:id="reminderPanel" minWidth="340" prefHeight="200.0" prefWidth="340.0" styleClass="pane-with-border" VBox.vgrow="ALWAYS">
               <padding>
                 <Insets bottom="5" left="10" right="10" top="5" />
@@ -65,7 +65,7 @@
           </Tab>
 
           <!-- Tab for Sessions -->
-          <Tab text="Sessions">
+          <Tab text="Sessions" closable="false">
             <VBox fx:id="sessionPanel" minWidth="340" prefHeight="200.0" prefWidth="340.0" styleClass="pane-with-border" VBox.vgrow="ALWAYS">
               <padding>
                 <Insets bottom="5" left="10" right="10" top="5" />
