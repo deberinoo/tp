@@ -280,7 +280,7 @@ Action | Format, Examples
 **Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
 **List** | `list`
 **Note** | `note INDEX [a/ APPEND] [o/ OVERWRITE] [c/]`<br> e.g., `note 2 a/ Need help in long division`
-**Tags** | `tags`
+**Tags** | `tags [t/TAG]…​`<br>e.g., `tags`, `tags t/math`, `tags t/math t/p3`
 **Schedule** | `schedule n/[STUDENT_NAME] s/[SUBJECT] d/[DATE] t/[TIME] dur/[DURATION]`<br> e.g., `schedule n/John Doe s/Math d/2022-12-31 t/14:00 dur/1h`
 **Schedule Edit** | `schedule edit INDEX [n/STUDENT_NAME] [s/SUBJECT] [d/DATE] [t/TIME] [dur/DURATION]`<br> e.g., `schedule edit 1 n/John Doe s/Math d/2023-12-31 t/15:00 dur/2h`
 **Schedule Cancel** | `schedule cancel INDEX`<br> e.g., `schedule cancel 1`
