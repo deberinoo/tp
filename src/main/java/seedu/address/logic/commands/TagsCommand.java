@@ -2,14 +2,11 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
-import java.util.List;
 import java.util.stream.Collectors;
 
 import javafx.collections.ObservableList;
 import seedu.address.model.Model;
-import seedu.address.model.person.Person;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.tag.UniqueTagList;
 
@@ -20,10 +17,9 @@ public class TagsCommand extends Command {
 
     public static final String COMMAND_WORD = "tags";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Shows all existing tags in the address book "
-            + "or lists all persons with the specified tag.\n"
-            + "Parameters: [" + PREFIX_TAG + "TAG]\n"
-            + "Example 1: " + COMMAND_WORD + " (shows all tags)\n"
-            + "Example 2: " + COMMAND_WORD + " " + PREFIX_TAG + "friends (lists persons tagged as 'friends')";
+            + "or lists all persons with the specified tag.\n" + "Parameters: [" + PREFIX_TAG + "TAG]\n" + "Example 1: "
+            + COMMAND_WORD + " (shows all tags)\n" + "Example 2: " + COMMAND_WORD + " " + PREFIX_TAG
+            + "friends (lists persons tagged as 'friends')";
 
     public static final String MESSAGE_SUCCESS = "Listing all tags: %1$s";
     public static final String MESSAGE_PERSONS_WITH_TAG = "Listed all persons with tag: %1$s";
@@ -52,8 +48,7 @@ public class TagsCommand extends Command {
         if (tagToFilter == null) {
             // Displays all tags
             ObservableList<Tag> tags = model.getTagList();
-            String formattedTags = UniqueTagList.getSortedTags(tags).stream()
-                    .map(Tag::toString)
+            String formattedTags = UniqueTagList.getSortedTags(tags).stream().map(Tag::toString)
                     .collect(Collectors.joining(", "));
             return new CommandResult(String.format(MESSAGE_SUCCESS, formattedTags));
         } else {

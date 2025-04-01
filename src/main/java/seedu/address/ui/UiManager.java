@@ -11,7 +11,6 @@ import seedu.address.MainApp;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.Logic;
-import seedu.address.logic.LogicManager;
 
 /**
  * The manager of the UI component.
@@ -31,6 +30,26 @@ public class UiManager implements Ui {
      */
     public UiManager(Logic logic) {
         this.logic = logic;
+    }
+
+    /**
+     * Shows an alert dialog on {@code owner} with the given parameters.
+     * This method only returns after the user has closed the alert dialog.
+     */
+    private static void showAlertDialogAndWait(Stage owner, AlertType type, String title, String headerText,
+                                               String contentText) {
+        final Alert alert = new Alert(type);
+        alert.getDialogPane().getStylesheets().add("view/WhiteTheme.css");
+        alert.initOwner(owner);
+        alert.setTitle(title);
+        alert.setHeaderText(headerText);
+        alert.setContentText(contentText);
+        alert.getDialogPane().setId(ALERT_DIALOG_PANE_FIELD_ID);
+        alert.showAndWait();
+    }
+
+    void showAlertDialogAndWait(Alert.AlertType type, String title, String headerText, String contentText) {
+        showAlertDialogAndWait(mainWindow.getPrimaryStage(), type, title, headerText, contentText);
     }
 
     @Override
@@ -53,26 +72,6 @@ public class UiManager implements Ui {
 
     private Image getImage(String imagePath) {
         return new Image(MainApp.class.getResourceAsStream(imagePath));
-    }
-
-    void showAlertDialogAndWait(Alert.AlertType type, String title, String headerText, String contentText) {
-        showAlertDialogAndWait(mainWindow.getPrimaryStage(), type, title, headerText, contentText);
-    }
-
-    /**
-     * Shows an alert dialog on {@code owner} with the given parameters.
-     * This method only returns after the user has closed the alert dialog.
-     */
-    private static void showAlertDialogAndWait(Stage owner, AlertType type, String title, String headerText,
-                                               String contentText) {
-        final Alert alert = new Alert(type);
-        alert.getDialogPane().getStylesheets().add("view/WhiteTheme.css");
-        alert.initOwner(owner);
-        alert.setTitle(title);
-        alert.setHeaderText(headerText);
-        alert.setContentText(contentText);
-        alert.getDialogPane().setId(ALERT_DIALOG_PANE_FIELD_ID);
-        alert.showAndWait();
     }
 
     /**

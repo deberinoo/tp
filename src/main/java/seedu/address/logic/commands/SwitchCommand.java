@@ -8,13 +8,16 @@ import java.util.Arrays;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 
+/**
+ * Switches the panel to the specified panel.
+ */
 public class SwitchCommand extends Command {
     public static final String COMMAND_WORD = "switch";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Changes the panel to the specified panel.\n"
             + "Parameters: PANEL_NAME\n"
             + "Example: " + COMMAND_WORD + " contacts" + "\n" + "Example: " + COMMAND_WORD + " reminders" + "\n"
             + "Example: " + COMMAND_WORD + " sessions";
-    public static final ArrayList<String> panelNames = new ArrayList<>(
+    public static final ArrayList<String> PANELNAMES = new ArrayList<>(
             Arrays.asList("contacts", "reminders", "sessions"));
     private final String panelName;
 

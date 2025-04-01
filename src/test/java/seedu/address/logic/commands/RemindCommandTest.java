@@ -16,13 +16,14 @@ import org.junit.jupiter.api.Test;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.Reminder;
-import seedu.address.model.Model;
 import seedu.address.model.person.Person;
 import seedu.address.model.schedule.Session;
 import seedu.address.model.tag.Tag;
+import seedu.address.ui.MainWindow;
 
 /**
  * Test class for RemindCommand.
@@ -92,12 +93,12 @@ public class RemindCommandTest {
      */
     private class ModelStub implements Model {
         @Override
-        public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {
+        public ReadOnlyUserPrefs getUserPrefs() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public ReadOnlyUserPrefs getUserPrefs() {
+        public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -127,12 +128,12 @@ public class RemindCommandTest {
         }
 
         @Override
-        public void setAddressBook(ReadOnlyAddressBook newData) {
+        public ReadOnlyAddressBook getAddressBook() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public ReadOnlyAddressBook getAddressBook() {
+        public void setAddressBook(ReadOnlyAddressBook newData) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -188,6 +189,11 @@ public class RemindCommandTest {
         }
 
         @Override
+        public void updateSession(Session target, Session editedSession) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void deleteSession(Session session) {
             throw new AssertionError("This method should not be called.");
         }
@@ -195,6 +201,21 @@ public class RemindCommandTest {
         @Override
         public boolean hasSession(Session session) {
             return false;
+        }
+
+        @Override
+        public Model copy() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public MainWindow getMainWindow() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setMainWindow(MainWindow mainWindow) {
+            throw new AssertionError("This method should not be called.");
         }
     }
 
