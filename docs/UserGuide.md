@@ -189,9 +189,9 @@ Exits the program.
 
 Format: `exit`
 
-### Listing all tags : `tags`
+### Listing persons based on tags : `tags`
 
-Shows a unique list of tags in the address book. Tags are case-insensitive, `math` is treated the same as `MATH` and `MaTh`
+Shows contacts based on tags. Tags are case-insensitive, `math` is treated the same as `MATH` and `MaTh`
 
 Format: `tags [t/TAG]…​` 
 
@@ -200,7 +200,7 @@ A person can have any number of tags (including 0)
 </div>
 
 Examples:
-* `tags` shows a unique list of all tags in the address book.
+* `tags` shows a unique list of all tags and persons in the address book.
 * `tags t/Math` shows a unique list of persons with the `Math` tag.
 * `tags t/Math t/P3` shows a unique list of persons with the tag combination of `Math` and `P3`.
 
