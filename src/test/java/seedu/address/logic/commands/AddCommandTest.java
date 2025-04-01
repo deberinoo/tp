@@ -208,11 +208,6 @@ public class AddCommandTest {
         }
 
         @Override
-        public Model copy() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
         public MainWindow getMainWindow() {
             throw new AssertionError("This method should not be called.");
         }
