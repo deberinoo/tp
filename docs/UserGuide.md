@@ -191,9 +191,18 @@ Format: `exit`
 
 ### Listing all tags : `tags`
 
-Shows a list of all tags in the address book.
+Shows a unique list of tags in the address book.
 
-Format: `tags`
+Format: `tags [t/TAG]...` 
+
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+A person can have any number of tags (including 0)
+</div>
+
+Examples:
+* `tags` shows a unique list of all tags in the address book.
+* `tags t/Math` shows a unique list of persons with the `Math` tag.
+* `tags t/Math t/P3` shows a unique list of persons with the tag combination of `Math` and `P3`.
 
 ### Scheduling a session : `schedule`
 
