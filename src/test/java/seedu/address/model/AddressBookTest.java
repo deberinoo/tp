@@ -112,9 +112,7 @@ public class AddressBookTest {
 
         @Override
         public AddressBook copy() {
-            AddressBook copy = new AddressBook();
-            copy.setPersons(this.getPersonList());
-            return copy;
+            return null;
         }
     }
 

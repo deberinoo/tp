@@ -3,7 +3,8 @@ package seedu.address.logic.parser;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
-import java.util.stream.Stream;
+import java.util.HashSet;
+import java.util.Set;
 
 import seedu.address.logic.commands.TagsCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -35,11 +36,19 @@ public class TagsCommandParser implements Parser<TagsCommand> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, TagsCommand.MESSAGE_USAGE));
         }
 
-        if (arePrefixesPresent(argMultimap, PREFIX_TAG)) {
-            Tag tag = ParserUtil.parseTag(argMultimap.getValue(PREFIX_TAG).get());
-            return new TagsCommand(tag);
-        } else {
-            return new TagsCommand();
+        Set<Tag> tags = new HashSet<>();
+        for (String tagName : argMultimap.getAllValues(PREFIX_TAG)) {
+            if (tagName.trim().isEmpty()) {
+                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, TagsCommand.MESSAGE_USAGE));
+            }
+            try {
+                // The Tag constructor will handle case normalization
+                tags.add(ParserUtil.parseTag(tagName));
+            } catch (ParseException pe) {
+                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, TagsCommand.MESSAGE_USAGE), pe);
+            }
         }
+
+        return tags.isEmpty() ? new TagsCommand() : new TagsCommand(tags);
     }
 }

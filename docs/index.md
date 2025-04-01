@@ -8,7 +8,7 @@ title: EduEase
 
 ![Ui](images/Ui.png)
 
-**EduEase** is a modified version of the AddressBook Level 3 (AB3) project, tailored specifically for private tutors.<br>
+**EduEase** is a modified version of the AddressBook Level 3 (AB3) project, tailored specifically for private tutors with young tutees.<br>
 
 * If you are interested in using EduEase, head over to the [_Quick Start_ section of the **User Guide**](UserGuide.html#quick-start).
 * If you are interested about developing EduEase, the [**Developer Guide**](DeveloperGuide.html) is a good place to start.

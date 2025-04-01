@@ -23,8 +23,7 @@ public class ReminderTest {
     private static final Reminder MATH_EXAM_REMINDER = new Reminder(VALID_NAME_MATH_EXAM, VALID_EVENT_MATH_EXAM,
             VALID_DATE_MATH_EXAM, VALID_TIME_MATH_EXAM);
     private static final Reminder SCIENCE_TEST_REMINDER = new Reminder(VALID_NAME_SCIENCE_TEST,
-            VALID_EVENT_SCIENCE_TEST,
-            VALID_DATE_SCIENCE_TEST, VALID_TIME_SCIENCE_TEST);
+            VALID_EVENT_SCIENCE_TEST, VALID_DATE_SCIENCE_TEST, VALID_TIME_SCIENCE_TEST);
 
     @Test
     public void equals_sameObject_returnsTrue() {

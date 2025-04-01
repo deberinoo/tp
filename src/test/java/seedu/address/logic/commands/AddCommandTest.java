@@ -13,7 +13,6 @@ import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
 
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.Messages;
@@ -178,29 +177,34 @@ public class AddCommandTest {
         }
 
         @Override
+        public ObservableList<Session> getSessionList() {
+            return null;
+        }
+
+        @Override
         public void addSession(Session session) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public ObservableList<Session> getSessionList() {
-            // Return a mock list or an empty list
-            return FXCollections.observableArrayList();
-        }
-
-        @Override
         public void updateSession(Session target, Session editedSession) {
-            throw new AssertionError("This method should not be called.");
+
         }
 
         @Override
         public void deleteSession(Session session) {
-            throw new AssertionError("This method should not be called.");
+
         }
 
         @Override
         public boolean hasSession(Session session) {
-            return false;
+            // Implement the logic to check if the session exists
+            return false; // Example, adjust to your needs
+        }
+
+        @Override
+        public Model copy() {
+            return null;
         }
 
         @Override

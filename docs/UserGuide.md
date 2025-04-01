@@ -3,7 +3,8 @@ layout: page
 title: User Guide
 ---
 
-AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB3 can get your contact management tasks done faster than traditional GUI apps.
+**EduEase** is a modified version of the AddressBook Level 3 (AB3) project, 
+tailored specifically for private tutors with young tutees.<br>
 
 * Table of Contents
 {:toc}
@@ -28,7 +29,7 @@ AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized fo
 
    * `list` : Lists all contacts.
 
-   * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe` to the Address Book.
+   * `add n/John Doe p/98765432 pp/98765433 e/johnd@example.com` : Adds a contact named `John Doe` to the Address Book.
 
    * `delete 3` : Deletes the 3rd contact shown in the current list.
 
@@ -36,9 +37,15 @@ AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized fo
 
    * `exit` : Exits the app.
 
-   * `tags` : Lists all existing tags in the address book
+   * `note 1 a/ Needs help in multiplication of 2 digits`: Appends a note to the 1st contact in the current list.
+
+   * `tags [t/TAG]…​` : Lists contacts based on tags.
 
    * `schedule` : Schedules a new session with a student
+
+   * `undo` : Undoes the last command
+
+   * `redo` : Redoes the last known command
 
 1. Refer to the [Features](#features) below for details of each command.
 
@@ -70,7 +77,7 @@ AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized fo
 
 ### Viewing help : `help`
 
-Shows a message explaning how to access the help page.
+Shows a message explaining how to access the help page.
 
 ![help message](images/helpMessage.png)
 
@@ -81,15 +88,15 @@ Format: `help`
 
 Adds a person to the address book.
 
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​`
+Format: `add n/NAME p/PHONE_NUMBER pp/PARENT_PHONE e/EMAIL  [t/TAG]…​`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 A person can have any number of tags (including 0)
 </div>
 
 Examples:
-* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
-* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
+* `add n/John Doe p/98765432 pp/98765433 e/johnd@example.com`
+* `add n/Betsy Crowe t/Math e/betsycrowe@example.com p/1234567 t/P3`
 
 ### Listing all persons : `list`
 
@@ -101,7 +108,7 @@ Format: `list`
 
 Edits an existing person in the address book.
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
+Format: `edit INDEX [n/NAME] [p/PHONE] [pp/PARENT_PHONE] [e/EMAIL] [t/TAG]…​`
 
 * Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
@@ -148,14 +155,15 @@ Examples:
 
 ### Updating a Note for a person : `note`
 
-Updates the note of  the specified person from the address book.
+Updates the note of  the specified person from the address book. 
+The note are meant to be temporary or single-use.
 
 Format: `note INDEX [a/ APPEND] [o/ OVERWRITE] [c/]`
 
 * Update notes of the person at the specified `INDEX` based on parameters.
   * `a/` will append the new note with the old note with a newline.
   * `o/` will overwrite the old note with the new note.
-  * `/c` will clear the note.
+  * `c/` will clear the note.
 * If multiple additional parameter is present, priority is as follows, append > overwrite > clear.
 * If no additional parameter is present, there will be no change and the old note will be shown.
 * The index refers to the index number shown in the displayed person list.
@@ -171,7 +179,7 @@ Examples:
 
 ### Clearing all entries : `clear`
 
-Clears all entries from the address book.
+Clears all entries from the address book. Requires a confirmation from user.
 
 Format: `clear`
 
@@ -181,11 +189,21 @@ Exits the program.
 
 Format: `exit`
 
-### Listing all tags : `tags`
+### Listing persons based on tags : `tags`
 
-Shows a list of all tags in the address book.
+Shows an unique list of tags or contacts filtered based on tags. Tags are case-insensitive, `math` is treated the same as `MATH` and `MaTh`
 
-Format: `tags`
+Format: `tags [t/TAG]…​` 
+
+<div markdown="span" class="alert alert-primary">:bulb: **Tip 1:**
+A person can have any number of tags (including 0). <br>
+:bulb: **Tip 2:** Use `list` if you want to see all contacts, `tags` does not do so.
+</div>
+
+Examples:
+* `tags` shows an unique list of all tags in the address book.
+* `tags t/Math` shows a unique list of persons with the `Math` tag.
+* `tags t/Math t/P3` shows a unique list of persons with the tag combination of `Math` and `P3`.
 
 ### Scheduling a session : `schedule`
 
@@ -195,6 +213,38 @@ Format: `schedule n/[STUDENT_NAME] s/[SUBJECT] d/[DATE] t/[TIME] dur/[DURATION]`
 
 Examples:
 * `schedule n/John Doe s/Math d/2022-12-31 t/14:00 dur/1h` schedules a session with John Doe on 31st December 2022 at 2pm for 1 hour.
+
+### Editing a session : `schedule edit`
+
+Edits an existing session with a student.
+
+Format: `schedule edit [INDEX]`
+
+* Edits the session at the specified `INDEX`. The index refers to the index number shown in the sessions list. The index **must be a positive integer** 1, 2, 3, …​
+* At least one of the optional fields must be provided.
+* Existing values will be updated to the input values.
+
+Examples:
+*  `schedule edit 1 n/John Doe s/Science` Edits the student name and subject of the 1st session to be `John Doe` and `Science` respectively.
+
+### Cancelling a session : `schedule cancel`
+
+Deletes a session with a student.
+
+Format: `schedule cancel [INDEX]`
+
+### Undoing the last command : `undo`
+
+Undoes the last command that changes the data. If there is no command to undo, the user will be informed.
+
+Format: `undo`
+
+### Redoing the last command : `redo`
+
+Redoes the last command that changes the data. If there is no command to redo, the user will be informed.
+
+Format: `redo`
+
 
 ### Saving the data
 
@@ -240,7 +290,11 @@ Action | Format, Examples
 **Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
 **List** | `list`
 **Note** | `note INDEX [a/ APPEND] [o/ OVERWRITE] [c/]`<br> e.g., `note 2 a/ Need help in long division`
-**Tags** | `tags`
+**Tags** | `tags [t/TAG]…​`<br>e.g., `tags`, `tags t/math`, `tags t/math t/p3`
 **Schedule** | `schedule n/[STUDENT_NAME] s/[SUBJECT] d/[DATE] t/[TIME] dur/[DURATION]`<br> e.g., `schedule n/John Doe s/Math d/2022-12-31 t/14:00 dur/1h`
+**Schedule Edit** | `schedule edit INDEX [n/STUDENT_NAME] [s/SUBJECT] [d/DATE] [t/TIME] [dur/DURATION]`<br> e.g., `schedule edit 1 n/John Doe s/Math d/2023-12-31 t/15:00 dur/2h`
+**Schedule Cancel** | `schedule cancel INDEX`<br> e.g., `schedule cancel 1`
+**Undo** | `undo`
+**Redo** | `redo`
 **Exit** | `exit`
 **Help** | `help`

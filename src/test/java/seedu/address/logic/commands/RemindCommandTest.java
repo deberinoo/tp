@@ -23,7 +23,6 @@ import seedu.address.model.Reminder;
 import seedu.address.model.person.Person;
 import seedu.address.model.schedule.Session;
 import seedu.address.model.tag.Tag;
-import seedu.address.ui.MainWindow;
 
 /**
  * Test class for RemindCommand.
@@ -93,12 +92,12 @@ public class RemindCommandTest {
      */
     private class ModelStub implements Model {
         @Override
-        public ReadOnlyUserPrefs getUserPrefs() {
+        public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {
+        public ReadOnlyUserPrefs getUserPrefs() {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -128,12 +127,12 @@ public class RemindCommandTest {
         }
 
         @Override
-        public ReadOnlyAddressBook getAddressBook() {
+        public void setAddressBook(ReadOnlyAddressBook newData) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void setAddressBook(ReadOnlyAddressBook newData) {
+        public ReadOnlyAddressBook getAddressBook() {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -183,14 +182,14 @@ public class RemindCommandTest {
         }
 
         @Override
-        public ObservableList<Session> getSessionList() {
-            // Return a mock list or an empty list
-            return FXCollections.observableArrayList();
+        public void updateSession(Session target, Session editedSession) {
+
         }
 
         @Override
-        public void updateSession(Session target, Session editedSession) {
-            throw new AssertionError("This method should not be called.");
+        public ObservableList<Session> getSessionList() {
+            // Return a mock list or an empty list
+            return FXCollections.observableArrayList();
         }
 
         @Override
@@ -205,17 +204,7 @@ public class RemindCommandTest {
 
         @Override
         public Model copy() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public MainWindow getMainWindow() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public void setMainWindow(MainWindow mainWindow) {
-            throw new AssertionError("This method should not be called.");
+            return null;
         }
     }
 
