@@ -189,11 +189,21 @@ Exits the program.
 
 Format: `exit`
 
-### Listing all tags : `tags`
+### Listing persons based on tags : `tags`
 
-Shows a list of all tags in the address book.
+Shows an unique list of tags or contacts filtered based on tags. Tags are case-insensitive, `math` is treated the same as `MATH` and `MaTh`
 
-Format: `tags`
+Format: `tags [t/TAG]…​` 
+
+<div markdown="span" class="alert alert-primary">:bulb: **Tip 1:**
+A person can have any number of tags (including 0). <br>
+:bulb: **Tip 2:** Use `list` if you want to see all contacts, `tags` does not do so.
+</div>
+
+Examples:
+* `tags` shows an unique list of all tags in the address book.
+* `tags t/Math` shows a unique list of persons with the `Math` tag.
+* `tags t/Math t/P3` shows a unique list of persons with the tag combination of `Math` and `P3`.
 
 ### Scheduling a session : `schedule`
 
