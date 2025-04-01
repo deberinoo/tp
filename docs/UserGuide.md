@@ -191,9 +191,9 @@ Format: `exit`
 
 ### Listing all tags : `tags`
 
-Shows a unique list of tags in the address book.
+Shows a unique list of tags in the address book. Tags are case-insensitive, `math` is treated the same as `MATH` and `MaTh`
 
-Format: `tags [t/TAG]...` 
+Format: `tags [t/TAG]…​` 
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 A person can have any number of tags (including 0)
