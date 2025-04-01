@@ -39,7 +39,7 @@ tailored specifically for private tutors with young tutees.<br>
 
    * `note 1 a/ Needs help in multiplication of 2 digits`: Appends a note to the 1st contact in the current list.
 
-   * `tags` : Lists all existing tags in the address book
+   * `tags [t/TAG]…​` : Lists contacts based on tags.
 
    * `schedule` : Schedules a new session with a student
 
