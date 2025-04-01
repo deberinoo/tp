@@ -16,6 +16,7 @@ public class Tag {
     public static final String VALIDATION_REGEX = "\\p{Alnum}+";
 
     public final String tagName;
+    private final String normalizedTagName; // For case-insensitive comparison
 
     /**
      * Constructs a {@code Tag}.
@@ -26,6 +27,7 @@ public class Tag {
         requireNonNull(tagName);
         checkArgument(isValidTagName(tagName), MESSAGE_CONSTRAINTS);
         this.tagName = tagName;
+        this.normalizedTagName = tagName.toLowerCase(); // Store lowercase version for comparison
     }
 
     /**
@@ -46,18 +48,18 @@ public class Tag {
             return false;
         }
 
-        return tagName.equals(otherTag.tagName);
+        return normalizedTagName.equals(otherTag.normalizedTagName); // Case-insensitive comparison
     }
 
     @Override
     public int hashCode() {
-        return tagName.hashCode();
+        return normalizedTagName.hashCode(); // Consistent with equals
     }
 
     /**
      * Format state as text for viewing.
      */
     public String toString() {
-        return tagName;
+        return tagName; // Preserve original case for display
     }
 }

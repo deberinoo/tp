@@ -67,4 +67,36 @@ public class TagsCommandParserTest {
         assertParseFailure(parser, "something" + friendsTag,
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, TagsCommand.MESSAGE_USAGE));
     }
+
+    @Test
+    public void parse_caseInsensitiveTags_consideredSame() {
+        Set<Tag> expectedTags = new HashSet<>();
+        expectedTags.add(new Tag("friends"));
+
+        // Different case variations should all map to the same tag
+        assertParseSuccess(parser, " " + PREFIX_TAG + "Friends", new TagsCommand(expectedTags));
+        assertParseSuccess(parser, " " + PREFIX_TAG + "FRIENDS", new TagsCommand(expectedTags));
+        assertParseSuccess(parser, " " + PREFIX_TAG + "frIeNds", new TagsCommand(expectedTags));
+    }
+
+    @Test
+    public void parse_multipleCaseVariations_consolidatedToOneTag() {
+        Set<Tag> expectedTags = new HashSet<>();
+        expectedTags.add(new Tag("friends"));
+
+        // Multiple case variations should be consolidated to one tag
+        String input = " " + PREFIX_TAG + "Friends " + PREFIX_TAG + "friends " + PREFIX_TAG + "FRIENDS";
+        assertParseSuccess(parser, input, new TagsCommand(expectedTags));
+    }
+
+    @Test
+    public void parse_mixedCaseTagsWithDifferentMeanings_consideredDifferent() {
+        Set<Tag> expectedTags = new HashSet<>();
+        expectedTags.add(new Tag("friends"));
+        expectedTags.add(new Tag("colleagues"));
+
+        // Different tags with different meanings should remain distinct
+        String input = " " + PREFIX_TAG + "Friends " + PREFIX_TAG + "Colleagues";
+        assertParseSuccess(parser, input, new TagsCommand(expectedTags));
+    }
 }
