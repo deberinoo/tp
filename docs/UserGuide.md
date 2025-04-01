@@ -191,16 +191,17 @@ Format: `exit`
 
 ### Listing persons based on tags : `tags`
 
-Shows contacts based on tags. Tags are case-insensitive, `math` is treated the same as `MATH` and `MaTh`
+Shows an unique list of tags or contacts filtered based on tags. Tags are case-insensitive, `math` is treated the same as `MATH` and `MaTh`
 
 Format: `tags [t/TAG]…​` 
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-A person can have any number of tags (including 0)
+<div markdown="span" class="alert alert-primary">:bulb: **Tip 1:**
+A person can have any number of tags (including 0). <br>
+:bulb: **Tip 2:** Use `list` if you want to see all contacts, `tags` does not do so.
 </div>
 
 Examples:
-* `tags` shows a unique list of all tags and persons in the address book.
+* `tags` shows an unique list of all tags in the address book.
 * `tags t/Math` shows a unique list of persons with the `Math` tag.
 * `tags t/Math t/P3` shows a unique list of persons with the tag combination of `Math` and `P3`.
 
