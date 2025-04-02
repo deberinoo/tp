@@ -3,7 +3,6 @@ package seedu.address.model;
 import java.util.ArrayList;
 
 import seedu.address.logic.commands.Command;
-import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.exceptions.NoPreviousModelStateException;
 
@@ -21,6 +20,9 @@ public class AddressBookStateManager {
     public AddressBookStateManager() {
     }
 
+    /**
+     * Reset the state manager.
+     */
     public static void reset() {
         states.clear();
         currentState = 0;
