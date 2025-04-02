@@ -3,6 +3,7 @@ package seedu.address.model;
 import java.util.ArrayList;
 
 import seedu.address.logic.commands.Command;
+import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.exceptions.NoPreviousModelStateException;
 
@@ -18,6 +19,12 @@ public class AddressBookStateManager {
      * Instantiate task list with old task list data loaded in.
      */
     public AddressBookStateManager() {
+    }
+
+    public static void reset() {
+        states.clear();
+        currentState = 0;
+        previousCommand = null;
     }
 
     /**
@@ -48,6 +55,13 @@ public class AddressBookStateManager {
      */
     public static AddressBook getCurrentState() {
         return states.get(currentState - 1);
+    }
+
+    /**
+     * Set the previous command.
+     */
+    public static void resetPreviousCommand() {
+        previousCommand = null;
     }
 
     /**
