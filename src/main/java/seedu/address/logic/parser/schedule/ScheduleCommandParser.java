@@ -11,6 +11,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_TIME;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 import seedu.address.logic.commands.schedule.ScheduleCommand;
 import seedu.address.logic.parser.ArgumentMultimap;
@@ -57,7 +58,28 @@ public class ScheduleCommandParser implements Parser<ScheduleCommand> {
         // Parse date, time, and duration using ParserUtil
         LocalDate date = ParserUtil.parseDate(dateStr);
         LocalTime time = ParserUtil.parseTime(timeStr);
-        Duration duration = ParserUtil.parseDuration(durationStr); // Assuming you have a parseDuration method
+        Duration duration = ParserUtil.parseDuration(durationStr);
+
+        // Validate that the date is in the future
+        LocalDate today = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String formattedToday = today.format(formatter);
+        String errorMessage = String.format(
+                "Invalid date! Expected: "
+                        + "The specified date must be in the future (after today: %s).",
+                formattedToday
+        );
+        if (!date.isAfter(today)) {
+            throw new ParseException(errorMessage);
+        }
+
+        // Add duration validation
+        if (duration.isZero() || duration.isNegative()) {
+            throw new ParseException("Duration cannot be zero or negative!");
+        }
+        if (duration.toHours() > 24) {
+            throw new ParseException("Duration cannot be more than 24 hours!");
+        }
 
         // Create a new Session (representing the schedule)
         Session session = new Session(studentName, subject, date, time, duration);

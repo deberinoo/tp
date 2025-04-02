@@ -3,7 +3,7 @@ layout: page
 title: User Guide
 ---
 
-**EduEase** is a modified version of the AddressBook Level 3 (AB3) project, 
+**EduEase** is a modified version of the AddressBook Level 3 (AB3) project,
 tailored specifically for private tutors with young tutees.<br>
 
 * Table of Contents
@@ -155,7 +155,7 @@ Examples:
 
 ### Updating a Note for a person : `note`
 
-Updates the note of  the specified person from the address book. 
+Updates the note of  the specified person from the address book.
 The note are meant to be temporary or single-use.
 
 Format: `note INDEX [a/ APPEND] [o/ OVERWRITE] [c/]`
@@ -193,7 +193,7 @@ Format: `exit`
 
 Shows an unique list of tags or contacts filtered based on tags. Tags are case-insensitive, `math` is treated the same as `MATH` and `MaTh`
 
-Format: `tags [t/TAG]…​` 
+Format: `tags [t/TAG]…​`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip 1:**
 A person can have any number of tags (including 0). <br>
