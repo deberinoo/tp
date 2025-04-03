@@ -358,189 +358,169 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 *{More to be added}*
 
-### Use cases
+### Use Cases
 
 (For all use cases below, the **System** is the `EduEase` and the **Actor** is the `user`, unless specified otherwise)
+
+---
 
 **Use case: Add a new student contact**
 
 **MSS**
 
-1.  Tutor enters the command to add a new student with details (name, phone number, email, parent contact)
-2.  EduEase validates the input fields
-3.  If all fields are valid, EduEase saves the student contact
-4.  EduEase confirms the addition with a success message
+1. Tutor enters the command to add a new student with details (name, phone number, email, parent contact).
+2. EduEase validates the input fields.
+3. If all fields are valid, EduEase saves the student contact.
+4. EduEase confirms the addition with a success message.
 
-    Use case ends.
+   Use case ends.
 
 **Extensions**
 
 * 2a. Invalid input format.
-
-    * 2a1. EduEase displays an appropriate error message and prompts for correction.
-
+    * 2a1. EduEase displays an appropriate error message and prompts for correction.  
       Use case resumes at step 1.
 
 * 2b. Duplicate student detected
-
-    * 2b1. EduEase notifies the tutor that the student already exists
-    * 2b2. Tutor decides to update existing information or cancel the operation
-
+    * 2b1. EduEase notifies the tutor that the student already exists.
+    * 2b2. Tutor decides to update existing information or cancel the operation.  
       Use case resumes at step 2.
+
+---
 
 **Use case: Delete a student contact**
 
 **MSS**
 
-1.  Tutor enters the command to delete a student by rank
-2.  EduEase checks if the rank is valid
-3.  If valid, EduEase deletes the student contact
-4.  EduEase confirms the deletion with a success message
+1. Tutor enters the command to delete a student by rank.
+2. EduEase checks if the rank is valid.
+3. If valid, EduEase deletes the student contact.
+4. EduEase confirms the deletion with a success message.
 
-    Use case ends.
+   Use case ends.
 
 **Extensions**
 
 * 2a. The rank does not exist.
-
-   * 2a1. EduEase displays an error message.
-
+    * 2a1. EduEase displays an error message.  
       Use case resumes at step 1.
 
 * 2b. A non-integer value is entered.
-
-    * 2a1. EduEase prompts for a correct format.
-
+    * 2b1. EduEase prompts for a correct format.  
       Use case resumes at step 1.
+
+---
 
 **Use case: List student contacts**
 
 **MSS**
 
-1.  Tutor enters the command to list all student contacts
-2.  EduEase retrieves and displays a list of students, including their details (name, phone number, email, parent contact, tags)
+1. Tutor enters the command to list all student contacts.
+2. EduEase retrieves and displays a list of students, including their details (name, phone number, email, parent contact, tags).
 
-    Use case ends.
+   Use case ends.
 
 **Extensions**
 
 * 2a. If no students exist.
-
-   * 2a1. EduEase displays a message indicating that the list is empty.
-
+    * 2a1. EduEase displays a message indicating that the list is empty.  
       Use case ends.
 
 * 2b. If an invalid command is entered.
-
-    * 2b1. EduEase displays an error message.
-
+    * 2b1. EduEase displays an error message.  
       Use case resumes at step 1.
+
+---
 
 **Use case: Set reminders for upcoming exams or important dates**
 
 **MSS**
 
-1.  Tutor enters the command to set a reminder
-2.  EduEase validates the input parameters
-3.  If all parameters are valid, EduEase saves the reminder
-4.  EduEase confirms the addition with a success message
+1. Tutor enters the command to set a reminder.
+2. EduEase validates the input parameters.
+3. If all parameters are valid, EduEase saves the reminder.
+4. EduEase confirms the addition with a success message.
 
-    Use case ends.
+   Use case ends.
 
 **Extensions**
 
 * 2a. If any parameter is missing or invalid or there is additional preamble.
-
-   * 2a1. EduEase displays an error message based on the specific issue.
-
+    * 2a1. EduEase displays an error message based on the specific issue.  
       Use case resumes at step 1.
 
 * 2b. If the date is in the past.
-
-    * 2b1. EduEase displays an error message based on the date today.
-
+    * 2b1. EduEase displays an error message based on the date today.  
       Use case resumes at step 1.
 
-* 2c.  If the student does not exist.
-
-    * 2c1. EduEase displays an error message.
-
+* 2c. If the student does not exist.
+    * 2c1. EduEase displays an error message.  
       Use case resumes at step 1.
 
-* 2d.  If a duplicate reminder exists.
-
+* 2d. If a duplicate reminder exists.
     * 2d1. EduEase notifies the tutor that a similar reminder already exists.
-    * 2d2. Tutor decides to update existing information or cancel the operation
-
+    * 2d2. Tutor decides to update existing information or cancel the operation.  
       Use case resumes at step 1.
+
+---
 
 **Use case: Add tags to student contacts**
 
 **MSS**
 
-1.  Tutor enters the command to add a student with tags
-2.  EduEase validates the tag parameters
-3.  If all parameters are valid, EduEase adds the student with the specified tags
-4.  EduEase confirms the addition with a success message
+1. Tutor enters the command to add a student with tags.
+2. EduEase validates the tag parameters.
+3. If all parameters are valid, EduEase adds the student with the specified tags.
+4. EduEase confirms the addition with a success message.
 
-    Use case ends.
+   Use case ends.
 
 **Extensions**
 
 * 2a. If a tag contains invalid characters or exceeds 25 characters.
-
-   * 2a1. EduEase displays an error message based on the specific issue.
-
+    * 2a1. EduEase displays an error message based on the specific issue.  
       Use case resumes at step 1.
 
-* 2b.  If more than 5 tags are provided.
-
-    * 2b1. EduEase displays an error message.
-
+* 2b. If more than 5 tags are provided.
+    * 2b1. EduEase displays an error message.  
       Use case resumes at step 1.
 
-* 2c.  If a duplicate tag is entered for the same student.
-
-    * 2c1. EduEase does not add the duplicate tag.
-
+* 2c. If a duplicate tag is entered for the same student.
+    * 2c1. EduEase does not add the duplicate tag.  
       Use case resumes at step 1.
 
-* 2d.  If a tag is empty.
-
-    * 2d1. EduEase displays an error message.
-
+* 2d. If a tag is empty.
+    * 2d1. EduEase displays an error message.  
       Use case resumes at step 1.
+
+---
 
 **Use case: Set notes for each student**
 
 **MSS**
 
-1.  Tutor enters the command to set a note
-2.  EduEase validates the input parameters
-3.  If all parameters are valid, EduEase saves the note
-4.  EduEase confirms the addition with a success message and display the note
+1. Tutor enters the command to set a note.
+2. EduEase validates the input parameters.
+3. If all parameters are valid, EduEase saves the note.
+4. EduEase confirms the addition with a success message and displays the note.
 
-    Use case ends.
+   Use case ends.
 
 **Extensions**
 
 * 2a. If index parameter is missing or invalid.
-
-    * 2a1. EduEase displays an error message based on the specific issue.
-
+    * 2a1. EduEase displays an error message based on the specific issue.  
       Use case resumes at step 1.
 
 * 2b. If the arguments are invalid.
-
-    * 2b1. EduEase displays original note.
-
+    * 2b1. EduEase displays the original note.  
       Use case resumes at step 3.
 
-* 2c If multiple arguments exists.
-
-    * 2c1. EduEase will prioritise appending to the note.
-
+* 2c. If multiple arguments exist.
+    * 2c1. EduEase will prioritise appending to the note.  
       Use case resumes at step 3.
+
+---
 
 **Use case: Schedule a tutoring session**
 
@@ -551,20 +531,19 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 3. If all parameters are valid, EduEase schedules the session.
 4. EduEase confirms the session has been scheduled with a success message, displaying the session details.
 
-  Use case ends.
+   Use case ends.
 
 **Extensions**
+
 * 2a. If a parameter is missing or invalid.
-
-    * 2a1. EduEase displays an error message based on the specific issue.
-
+    * 2a1. EduEase displays an error message based on the specific issue.  
       Use case resumes at step 1.
 
 * 2b. If any argument is invalid.
-
-    * 2b1. EduEase displays the original session details.
-
+    * 2b1. EduEase displays the original session details.  
       Use case resumes at step 3.
+
+---
 
 **Use case: Edit a scheduled session**
 
@@ -575,14 +554,15 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 3. If all parameters are valid, EduEase updates the scheduled session.
 4. EduEase confirms the session has been updated with a success message, displaying the updated session details.
 
-  Use case ends.
+   Use case ends.
 
 **Extensions**
+
 * 2a. If the session index is missing or invalid.
-
-    * 2a1. EduEase displays an error message based on the specific issue.
-
+    * 2a1. EduEase displays an error message based on the specific issue.  
       Use case resumes at step 1.
+
+---
 
 **Use case: Cancel a scheduled session**
 
@@ -593,16 +573,15 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 3. If the session exists, EduEase cancels the session.
 4. EduEase confirms the session has been cancelled with a success message, indicating the session has been removed.
 
-  Use case ends.
+   Use case ends.
 
 **Extensions**
+
 * 2a. If the session index is missing or invalid.
-
-    * 2a1. EduEase displays an error message based on the specific issue.
-
+    * 2a1. EduEase displays an error message based on the specific issue.  
       Use case resumes at step 1.
 
-*{More to be added}*
+---
 
 **Use case: Undo the last action**
 
@@ -616,11 +595,12 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
    Use case ends.
 
 **Extensions**
-* 2a. If there is no action to undo.*
-    
-    * 2a1. EduEase displays an error message.
 
+* 2a. If there is no action to undo.
+    * 2a1. EduEase displays an error message.  
       Use case ends.
+
+---
 
 **Use case: Redo the last undone action**
 
@@ -634,10 +614,12 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
    Use case ends.
 
 **Extensions**
-* 2a. If there is no action to redo.
-    * 2a1. EduEase displays an error message.
 
+* 2a. If there is no action to redo.
+    * 2a1. EduEase displays an error message.  
       Use case ends.
+
+---
 
 **Use case: Switch between different tabs**
 
@@ -651,10 +633,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
    Use case ends.
 
 **Extensions**
-* 2a. If the tab identifier is invalid.
-    * 2a1. EduEase displays an error message.
 
+* 2a. If the tab identifier is invalid.
+    * 2a1. EduEase displays an error message.  
       Use case ends.
+
+---
+
 
 ### Non-Functional Requirements
 
@@ -720,33 +705,29 @@ testers are expected to do more *exploratory* testing.
 
 ---
 
-### Adding a Note to a Person
+### Adding Notes to a Person
 
-1. Prerequisites
-    * Have at least one person in the address book.
-    * View this person using `list` or `find`.
+1. Viewing an existing note
+    1. Prerequisites: Have at least one person in the address book. View this person using the `list` or `find` command.
+    2. Test case: `note 1`  
+       Expected: Note of the person is displayed. It will be empty if there are no previous notes.
 
-2. Test case: `note 1`  
-   Expected: Note of person displayed. Empty if there are no previous notes.
+2. Appending a note
+    1. Prerequisites: Have at least one person in the address book. View this person using the `list` or `find` command.
+    2. Test case: `note 1 a/Need help with multiplication`  
+       Expected: Note is appended to the first person's notes. Updated note is displayed.
 
-3. Test case: `note 1 a/Need help with multiplication`  
-   Expected: Note is appended to the first person's notes. Updated note is displayed.
+3. Overwriting a note
+    1. Prerequisites: Have at least one person in the address book. View this person using the `list` or `find` command.
+    2. Test case: `note 1 o/Need help with division`  
+       Expected: Note is overwritten with the new note. Updated note is displayed.
 
-4. Test case: `note 1 o/Need help with division`  
-   Expected: Note is overwritten with new note. Updated note is displayed.
+4. Clearing a note
+    1. Prerequisites: Have at least one person in the address book. View this person using the `list` or `find` command.
+    2. Test case: `note 1 c/`  
+       Expected: Note is cleared. Empty note is displayed.
 
-5. Test case: `note 1 c/`  
-   Expected: Note is cleared. Empty note is displayed.
-
-6. *{ more test cases ... }*
-
----
-
-### Saving Data
-
-1. Dealing with missing/corrupted data files
-    1. *{ explain how to simulate a missing/corrupted file, and the expected behavior }*
-    2. *{ more test cases ... }*
+5. *{ more test cases ... }*
 
 ---
 
