@@ -604,7 +604,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 *{More to be added}*
 
-### Use case: Undo the last action
+**Use case: Undo the last action**
 
 **MSS**
 
@@ -622,7 +622,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-### Use case: Redo the last undone action
+**Use case: Redo the last undone action**
 
 **MSS**
 
@@ -639,7 +639,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-### Use case: Switch between different tabs
+**Use case: Switch between different tabs**
 
 **MSS**
 
@@ -763,3 +763,86 @@ testers are expected to do more *exploratory* testing.
     2. Test case: `tags [t/TAG]...`<br>
        Expected: Shows a list of contacts based on tags combination. Else, no contacts will be shown.
 1. _{ more test cases …​ }_
+
+### Listing student contacts
+1. Listing all student contacts
+    1. Test case: `list`
+    - Prerequisites: Have at least 1 student contact added.
+    - Expected: Displays a list of all student contacts. Else, nothing will be shown.
+
+### Setting reminders
+1. Setting a reminder with valid details
+    1. Test case: `remind n/John Doe d/2025-12-25 t/10:00`
+    - Expected: Reminder is set. Success message is displayed.
+
+2. Setting a reminder with invalid date
+    1. Test case: `remind n/John Doe d/invalid_date t/10:00`
+    - Expected: Error message is displayed indicating invalid date.
+
+### Undo the last action
+
+1. Undoing the last action
+    1. Prerequisites: A previous action has been performed.
+    2. Test case: `undo`
+    - Expected: The last action is undone. Success message is displayed.
+
+2. Undoing when there is no action to undo
+    1. Test case: `undo`
+    - Expected: Error message is displayed indicating no action to undo.
+
+### Redo the last undone action
+
+1. Redoing the last undone action
+    1. Prerequisites: An undo action has been performed.
+    2. Test case: `redo`
+    - Expected: The last undone action is redone. Success message is displayed.
+
+2. Redoing when there is no action to redo
+    1. Test case: `redo`
+    - Expected: Error message is displayed indicating no action to redo.
+
+### Switching between tabs
+
+1. Switching to a valid tab
+    1. Test case: `switch 1`
+    - Expected: Switches to the specified tab. Success message is displayed.
+
+2. Switching to an invalid tab
+    1. Test case: `switch invalid_tab`
+    - Expected: Error message is displayed indicating invalid tab identifier.
+
+### Scheduling a tutoring session
+
+1. Scheduling a session with valid details
+    1. Test case: `schedule n/John Doe s/Math d/2025-12-25 t/10:00 dur/1h`
+    - Expected: Session is scheduled. Success message is displayed.
+
+2. Scheduling a session with invalid date
+    1. Test case: `schedule n/John Doe s/Math d/invalid_date t/10:00 dur/1h`
+    - Expected: Error message is displayed indicating invalid date.
+
+3. Scheduling a session with invalid duration
+    1. Test case: `schedule n/John Doe s/Math d/2025-12-25 t/10:00 dur/0h'
+    - Expected: Error message is displayed indicating student does not exist.
+
+### Editing a scheduled session
+
+1. Editing a session with valid details
+    1. Prerequisites: A session exists.
+    2. Test case: `schedule edit 1 n/John Doe s/Science d/2025-12-26 t/11:00 dur/2h`
+    - Expected: Session is edited. Success message is displayed.
+
+2. Editing a session with invalid index
+    1. Test case: `schedule edit invalid_index n/John Doe s/Science d/2025-12-26 t/11:00 dur/2h`
+    - Expected: Error message is displayed indicating invalid session index.
+
+### Canceling a scheduled session
+
+1. Canceling a session with valid index
+    1. Prerequisites: A session exists.
+    2. Test case: `schedule cancel 1`
+    - Expected: Session is canceled. Success message is displayed.
+
+2. Canceling a session with invalid index
+    1. Test case: `schedule cancel invalid_index`
+    - Expected: Error message is displayed indicating invalid session index.
