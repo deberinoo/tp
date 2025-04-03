@@ -12,25 +12,21 @@ import seedu.address.model.Model;
  */
 public class RedoCommand extends Command {
     public static final String COMMAND_WORD = "redo";
-    public static final String MESSAGE_SUCCESS = "Executed previous command";
-    public static final String MESSAGE_FAILURE = "Unable to execute previous command";
+    public static final String MESSAGE_SUCCESS = "Reverted to before Undo command";
+    public static final String MESSAGE_FAILURE = "No redoable state found";
 
 
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
 
-        String successMessage = MESSAGE_SUCCESS + ": ";
         try {
-            Command previousCommand = AddressBookStateManager.getPreviousCommand();
-
-            CommandResult previousCommandResult = previousCommand.execute(model);
-            String previousCommandFeedback = previousCommandResult.getFeedbackToUser();
-            successMessage += previousCommandFeedback;
+            AddressBookStateManager.redo();
         } catch (CommandException e) {
-            return new CommandResult(MESSAGE_FAILURE + ": " + e.getMessage());
+            return new CommandResult(MESSAGE_FAILURE);
         }
+        model.setAddressBook(AddressBookStateManager.getCurrentState());
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
-        return new CommandResult(successMessage);
+        return new CommandResult(MESSAGE_SUCCESS);
     }
 }
