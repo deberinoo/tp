@@ -24,7 +24,7 @@ public class ScheduleCancelCommand extends Command {
             + "Example: schedule cancel 1";
 
     public static final String MESSAGE_SUCCESS = "Cancelled session: %1$s";
-    public static final String MESSAGE_INVALID_INDEX = "Invalid index! Please provide a valid session number.";
+    public static final String MESSAGE_INVALID_INDEX = "Invalid index! Available sessions: %1$s (Please use 1 to %2$d)";
 
     private final Index targetIndex;
 
@@ -40,8 +40,25 @@ public class ScheduleCancelCommand extends Command {
         requireNonNull(model);
         List<Session> lastShownList = model.getSessionList().sorted(Comparator.comparing(Session::getDateTime));
 
-        if (targetIndex.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(MESSAGE_INVALID_INDEX);
+        if (lastShownList.isEmpty()) {
+            throw new CommandException("No sessions available to cancel.");
+        }
+
+        if (targetIndex.getZeroBased() >= lastShownList.size() || targetIndex.getZeroBased() < 0) {
+            // Generate list of available indexes
+            StringBuilder availableIndexes = new StringBuilder();
+            for (int i = 0; i < lastShownList.size(); i++) {
+                if (i > 0) {
+                    availableIndexes.append(", ");
+                }
+                availableIndexes.append(i + 1); // Convert to 1-based index
+            }
+
+            throw new CommandException(String.format(
+                "Invalid index! Available sessions: %s (Please use 1 to %d)",
+                availableIndexes.toString(),
+                lastShownList.size()
+            ));
         }
 
         Session sessionToCancel = lastShownList.get(targetIndex.getZeroBased());

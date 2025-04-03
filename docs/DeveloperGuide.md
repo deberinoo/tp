@@ -66,18 +66,6 @@ For example, the `Logic` component defines its API in the `Logic.java` interface
 
 The sections below give more details of each component.
 
-**Schedule Command Sequence Diagram**
-The Schedule Sequence Diagram shows how components interact when the user issues the `schedule` command.
-
-1. LogicManager receives the schedule command and delegates it to the Parser.
-2. The Parser tokenizes the command and extracts details like date, time, and duration, requesting Session to parse them.
-3. Parser creates a Session object with parsed details and sends it back to LogicManager.
-4. LogicManager passes the session to the Model, which checks if the session already exists.
-5. If valid, the Model adds the session to the SessionList.
-6. LogicManager creates a CommandResult confirming the session was scheduled successfully and returns it to the user.
-
-<img src="images/ScheduleSequenceDiagram.png" width="574" />
-
 ### UI component
 
 The **API** of this component is specified in [`Ui.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/Ui.java)
@@ -193,6 +181,25 @@ The following sequence diagram illustrates the execution flow of a command requi
 This confirmation dialog acts as an extra safeguard,
 ensuring users are aware of the consequences before executing commands,
 while undo provides an additional safety net.
+
+### Scheduling a Session
+The `Schedule Command` follows a structured sequence to ensure that a session is scheduled properly. Below is an explanation of how the components interact when the user issues the schedule command.
+
+Step 1. LogicManager receives the schedule command and delegates it to the Parser.
+
+Step 2. The Parser tokenizes the command and extracts details such as date, time, and duration, then requests Session to parse them.
+
+Step 3. The Parser creates a Session object with the parsed details and sends it back to LogicManager.
+
+Step 4. LogicManager passes the session to the Model, which checks if the session already exists.
+
+Step 5. If valid, the Model adds the session to the SessionList.
+
+Step 6. LogicManager creates a CommandResult, confirming that the session was successfully scheduled, and returns it to the user.
+
+The following Schedule Sequence Diagram visually represents these interactions.
+
+<img src="images/ScheduleSequenceDiagram.png" width="574" />
 
 ### \[Proposed\] Undo/redo feature
 
