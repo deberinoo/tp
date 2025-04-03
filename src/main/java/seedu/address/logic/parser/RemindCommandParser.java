@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 import seedu.address.logic.commands.RemindCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -22,7 +23,6 @@ public class RemindCommandParser implements Parser<RemindCommand> {
      * and returns a {@code RemindCommand} object for execution.
      * @throws ParseException if the user input does not conform to the expected format
      */
-    @SuppressWarnings("checkstyle:LineLength")
     @Override
     public RemindCommand parse(String args) throws ParseException {
         requireNonNull(args);
@@ -35,7 +35,8 @@ public class RemindCommandParser implements Parser<RemindCommand> {
         if (argMultimap.getValue(PREFIX_NAME).isEmpty()
                 || argMultimap.getValue(PREFIX_EVENT).isEmpty()
                 || argMultimap.getValue(PREFIX_DATE).isEmpty()
-                || argMultimap.getValue(PREFIX_TIME).isEmpty()) {
+                || argMultimap.getValue(PREFIX_TIME).isEmpty()
+                || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format("Invalid command format! Expected: %s",
                     RemindCommand.MESSAGE_USAGE));
         }
@@ -49,6 +50,19 @@ public class RemindCommandParser implements Parser<RemindCommand> {
         // Parsing date and time strings
         LocalDate date = ParserUtil.parseDate(dateStr);
         LocalTime time = ParserUtil.parseTime(timeStr);
+
+        // Validate that the date is in the future
+        LocalDate today = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String formattedToday = today.format(formatter);
+        String errorMessage = String.format(
+                "Invalid date! Expected: "
+                        + "The specified date must be in the future (after today: %s).",
+                formattedToday
+        );
+        if (!date.isAfter(today)) {
+            throw new ParseException(errorMessage);
+        }
         return new RemindCommand(name, event, date, time);
     }
 }
