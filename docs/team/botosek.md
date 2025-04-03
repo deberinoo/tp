@@ -20,30 +20,24 @@ Given below are my contributions to the project.
   * Justification: This feature improves the product significantly because a user would want to switch between tabs to view different information. This feature allows the user to do so without having to use the mouse.
   * Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.
 
-* **Code contributed**: [RepoSense link]()
+* **Code contributed**: [RepoSense link](https://nus-cs2103-ay2425s2.github.io/tp-dashboard/#/widget/?search=botosek&sort=groupTitle&sortWithin=title&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=true&checkedFileTypes=docs~functional-code~test-code~other&since=2025-02-21&tabOpen=true&tabType=zoom&zA=botosek&zR=AY2425S2-CS2103-F09-2%2Ftp%5Bmaster%5D&zACS=202.53846153846155&zS=2025-02-21&zFS=F09-2&zU=2025-04-03&zMG=false&zFTF=commit&zFGS=groupByRepos&zFR=false&chartGroupIndex=0&chartIndex=0)
 
 * **Project management**:
-  * Managed releases `v1.3` - `v1.5rc` (3 releases) on GitHub
+  * Managed releases `v1.3`, `v1.4`, `v1.5` (3 releases) on GitHub
 
 * **Enhancements to existing features**:
-  * Updated the GUI color scheme (Pull requests [\#33](), [\#34]())
-  * Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests [\#36](), [\#38]())
+  * Enhanced tabs feature by adding `switch` command to enable switching between tabs from the command line. Additionally, made tabs not closable as well. (Pull requests [\#126](https://github.com/AY2425S2-CS2103-F09-2/tp/pull/126))
 
 * **Documentation**:
   * User Guide:
-    * Added documentation for the features `delete` and `find` [\#72]()
-    * Did cosmetic tweaks to existing documentation of features `clear`, `exit`: [\#74]()
+    * Added documentation for the features `redo`, `undo`, and `switch` [\#158](https://github.com/AY2425S2-CS2103-F09-2/tp/pull/158)
   * Developer Guide:
-    * Added implementation details of the `delete` feature.
+    * Added documentation for the features `redo`, `undo`, and `switch` [\#158](https://github.com/AY2425S2-CS2103-F09-2/tp/pull/158)
 
 * **Community**:
-  * PRs reviewed (with non-trivial review comments): [\#12](), [\#32](), [\#19](), [\#42]()
-  * Contributed to forum discussions (examples: [1](), [2](), [3](), [4]())
-  * Reported bugs and suggestions for other teams in the class (examples: [1](), [2](), [3]())
-  * Some parts of the history feature I added was adopted by several other class mates ([1](), [2]())
+  * PRs reviewed (with non-trivial review comments): [\#121](https://github.com/AY2425S2-CS2103-F09-2/tp/pull/121), [\#85](https://github.com/AY2425S2-CS2103-F09-2/tp/pull/85)
 
 * **Tools**:
-  * Integrated a third party library (Natty) to the project ([\#42]())
-  * Integrated a new Github plugin (CircleCI) to the team repo
+  * 
 
 * _{you can add/remove categories in the list above}_
