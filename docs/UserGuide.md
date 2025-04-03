@@ -20,7 +20,7 @@ tailored specifically for private tutors with young tutees.<br>
 
 1. Copy the file to the folder you want to use as the _home folder_ for your AddressBook.
 
-1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar addressbook.jar` command to run the application.<br>
+1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar eduease.jar` command to run the application.<br>
    A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
    ![Ui](images/Ui.png)
 
@@ -96,7 +96,7 @@ A person can have any number of tags (including 0)
 
 Examples:
 * `add n/John Doe p/98765432 pp/98765433 e/johnd@example.com`
-* `add n/Betsy Crowe t/Math e/betsycrowe@example.com p/1234567 t/P3`
+* `add n/Betsy Crowe t/Math e/betsycrowe@example.com p/1234567 pp/1234568 t/P3`
 
 ### Listing all persons : `list`
 
