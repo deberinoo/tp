@@ -340,7 +340,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* *`    | tutor   | filter my schedule by student                                                                 | see sessions for a specific student                                                    |
 | `* *`    | tutor   | set recurring sessions for regular students                                                   | avoid manually scheduling them every week                                              |
 | `* *`    | tutor   | undo the last action                                                                          | recover from mistakes                                                                  |
-| `* *`    | tutor   | redo the last known command                                                                   | repeat the last action if needed                                                       |
+| `* *`    | tutor   | undoes undo commands                                                                          | revert undo commands                                                                   |
 | `* *`    | tutor   | switch between different tabs                                                                 | view a different tab                                                                   |
 | `*`      | tutor   | manually save my student data as a local file                                                 | back up my records                                                                     |
 | `*`      | tutor   | write notes after a session                                                                   | review what was covered                                                                |
