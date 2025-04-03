@@ -73,6 +73,7 @@ The **API** of this component is specified in [`Ui.java`](https://github.com/se-
 ![Structure of the UI Component](images/UiClassDiagram.png)
 
 The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
+Inside the 'MainWindow', there are three panels 'PersonListPanel', ReminderPanel' and 'SessionPanel'.
 
 The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/resources/view/MainWindow.fxml)
 
@@ -82,7 +83,7 @@ The `UI` component,
 * listens for changes to `Model` data so that the UI can be updated with the modified data.
 * keeps a reference to the `Logic` component, because the `UI` relies on the `Logic` to execute commands.
 * depends on some classes in the `Model` component, as it displays `Person` object residing in the `Model`.
-
+* it displays 'Reminder' object residing in the 'Model' in a separate tab.
 ### Logic component
 
 **API** : [`Logic.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/logic/Logic.java)
@@ -127,7 +128,7 @@ The `Model` component,
 * does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components)
 * has a `Tag` list in the `AddressBook` which `Person` references.
 * `AddressBook` only requires one `Tag` object per unique tag, instead of each `Person` needing their own `Tag` objects.
-
+* stores the list of reminders i.e., ObservableList<Reminder> object
 
 ### Storage component
 
@@ -451,15 +452,15 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 2a. If any parameter is missing or invalid.
+* 2a. If any parameter is missing or invalid or there is additional preamble.
 
    * 2a1. EduEase displays an error message based on the specific issue.
 
       Use case resumes at step 1.
 
-* 2b. If the date/time is in the past.
+* 2b. If the date is in the past.
 
-    * 2b1. EduEase displays an error message.
+    * 2b1. EduEase displays an error message based on the date today.
 
       Use case resumes at step 1.
 
