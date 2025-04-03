@@ -6,11 +6,9 @@ box Logic LOGIC_COLOR_T1
 participant ":LogicManager" as LogicManager LOGIC_COLOR
 participant ":AddressBookParser" as AddressBookParser LOGIC_COLOR
 participant "u:UndoCommand" as UndoCommand LOGIC_COLOR
+participant ":AddressBookStateManager" as AddressBookStateManager LOGIC_COLOR
 end box
 
-box Model MODEL_COLOR_T1
-participant ":Model" as Model MODEL_COLOR
-end box
 [-> LogicManager : execute(undo)
 activate LogicManager
 
@@ -30,11 +28,11 @@ deactivate AddressBookParser
 LogicManager -> UndoCommand : execute()
 activate UndoCommand
 
-UndoCommand -> Model : undoAddressBook()
-activate Model
+UndoCommand -> AddressBookStateManager: undo()
+activate AddressBookStateManager
 
-Model --> UndoCommand
-deactivate Model
+AddressBookStateManager --> UndoCommand
+deactivate AddressBookStateManager
 
 UndoCommand --> LogicManager : result
 deactivate UndoCommand
