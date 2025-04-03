@@ -810,7 +810,7 @@ testers are expected to do more *exploratory* testing.
 ### Switching Between Tabs
 
 1. Switching to a valid tab
-    1. Test case: `switch 1`  
+    1. Test case: `switch contacts`  
        Expected: Switches to specified tab. Success message is displayed.
 
 2. Switching to an invalid tab
