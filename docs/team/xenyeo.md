@@ -9,38 +9,24 @@ EduEase simplifies the management of student contact details, helping private tu
 
 Given below are my contributions to the project.
 
-* **New Feature**: Added the ability to undo/redo previous commands.
-  * What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.
-  * Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.
-  * Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.
-  * Credits: *{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}*
+* **New Feature**: Added the ability to filter contacts based on tags.
+  * What it does: Allows users to filter their list of contacts by specifying one or more tags. Contacts matching the selected tags will be displayed, making it easier to locate specific groups of people.
+  * Justification: This feature enhances the user experience by offering a streamlined way to search for and organize contacts. It adds significant value for users managing large contact lists, ensuring quick accessibility based on relevant criteria.
+  * Highlights: Implementing this feature involved designing an efficient filtering algorithm that handles multiple tags seamlessly. A significant challenge was ensuring that every tag object is treated as unique, even if tags share the same name, to maintain data integrity and proper association with contacts.
 
-* **New Feature**: Added a history command that allows the user to navigate to previous commands using up/down keys.
-
-* **Code contributed**: [RepoSense link]()
-
+* **Code contributed**: [RepoSense link](https://nus-cs2103-ay2425s2.github.io/tp-dashboard/#/widget/?search=&sort=groupTitle&sortWithin=title&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=true&checkedFileTypes=docs~functional-code~test-code~other&since=2025-02-21&chartGroupIndex=5&chartIndex=4)
 * **Project management**:
-  * Managed releases `v1.3` - `v1.5rc` (3 releases) on GitHub
+  * Managed releases `v1.3`, `v1.4`, `v1.5` (3 releases) on GitHub
 
 * **Enhancements to existing features**:
-  * Updated the GUI color scheme (Pull requests [\#33](), [\#34]())
-  * Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests [\#36](), [\#38]())
+  * Added new data type to AddressBook to handle tags using UniqueTagList class [\#41](https://github.com/AY2425S2-CS2103-F09-2/tp/pull/41)
 
 * **Documentation**:
   * User Guide:
-    * Added documentation for the features `delete` and `find` [\#72]()
-    * Did cosmetic tweaks to existing documentation of features `clear`, `exit`: [\#74]()
+    * Added documentation for the features `tags` (Pull requests [\#121](https://github.com/AY2425S2-CS2103-F09-2/tp/pull/121), [\#122](https://github.com/AY2425S2-CS2103-F09-2/tp/pull/122), [\#123](https://github.com/AY2425S2-CS2103-F09-2/tp/issues/123))
   * Developer Guide:
-    * Added implementation details of the `delete` feature.
+    * Updated model component to a more OOP version (Pull requests [\#41](https://github.com/AY2425S2-CS2103-F09-2/tp/issues/41), [\#85](https://github.com/AY2425S2-CS2103-F09-2/tp/pull/85), [\#148](https://github.com/AY2425S2-CS2103-F09-2/tp/issues/148))
 
 * **Community**:
-  * PRs reviewed (with non-trivial review comments): [\#12](), [\#32](), [\#19](), [\#42]()
-  * Contributed to forum discussions (examples: [1](), [2](), [3](), [4]())
-  * Reported bugs and suggestions for other teams in the class (examples: [1](), [2](), [3]())
-  * Some parts of the history feature I added was adopted by several other class mates ([1](), [2]())
-
-* **Tools**:
-  * Integrated a third party library (Natty) to the project ([\#42]())
-  * Integrated a new Github plugin (CircleCI) to the team repo
-
-* _{you can add/remove categories in the list above}_
+  * PRs reviewed (with non-trivial review comments): [\#83](https://github.com/AY2425S2-CS2103-F09-2/tp/pull/83), [\#126](https://github.com/AY2425S2-CS2103-F09-2/tp/pull/126)
+  * Contributed to forum discussions (examples: [1](https://github.com/nus-cs2103-AY2425S2/forum/issues/87), [2](https://github.com/nus-cs2103-AY2425S2/forum/issues/106), [3](https://github.com/nus-cs2103-AY2425S2/forum/issues/158), [4](https://github.com/nus-cs2103-AY2425S2/forum/issues/159), [5](https://github.com/nus-cs2103-AY2425S2/forum/issues/199), [6](https://github.com/nus-cs2103-AY2425S2/forum/issues/404), [7](https://github.com/nus-cs2103-AY2425S2/forum/issues/501))
