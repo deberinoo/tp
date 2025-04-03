@@ -51,8 +51,7 @@ public class TagsCommand extends Command {
         if (tagsToFilter == null || tagsToFilter.isEmpty()) {
             // Show all tags case
             ObservableList<Tag> tags = model.getTagList();
-            String formattedTags = UniqueTagList.getSortedTags(tags).stream()
-                    .map(Tag::toString)
+            String formattedTags = UniqueTagList.getSortedTags(tags).stream().map(Tag::toString)
                     .collect(Collectors.joining(", "));
             return new CommandResult(String.format(MESSAGE_SUCCESS, formattedTags));
         } else {

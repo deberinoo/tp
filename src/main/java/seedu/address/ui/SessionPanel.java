@@ -69,4 +69,8 @@ public class SessionPanel extends UiPart<Region> {
             }
         }
     }
+
+    public void refresh() {
+        sessionListView.refresh();
+    }
 }

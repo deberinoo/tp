@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
@@ -63,6 +64,9 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     private StackPane sessionPanelPlaceholder;
 
+    @FXML
+    private TabPane tabPane;
+
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
      */
@@ -72,6 +76,9 @@ public class MainWindow extends UiPart<Stage> {
         // Set dependencies
         this.primaryStage = primaryStage;
         this.logic = logic;
+
+        // Set the MainWindow instance in LogicManager
+        logic.setMainWindow(this);
 
         // Configure the UI
         setWindowDefaultSize(logic.getGuiSettings());
@@ -91,6 +98,7 @@ public class MainWindow extends UiPart<Stage> {
 
     /**
      * Sets the accelerator of a MenuItem.
+     *
      * @param keyCombination the KeyCombination value of the accelerator
      */
     private void setAccelerator(MenuItem menuItem, KeyCombination keyCombination) {
@@ -214,6 +222,26 @@ public class MainWindow extends UiPart<Stage> {
             logger.info("An error occurred while executing command: " + commandText);
             resultDisplay.setFeedbackToUser(e.getMessage());
             throw e;
+        }
+    }
+
+    /**
+     * Changes the panel displayed in the MainWindow.
+     */
+    public void changePanel(String panelName) {
+
+        switch (panelName) {
+        case "contacts":
+            tabPane.getSelectionModel().select(0);
+            break;
+        case "reminders":
+            tabPane.getSelectionModel().select(1);
+            break;
+        case "sessions":
+            tabPane.getSelectionModel().select(2);
+            break;
+        default:
+            throw new IllegalArgumentException("Invalid panel name: " + panelName);
         }
     }
 }

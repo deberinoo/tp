@@ -18,6 +18,7 @@ public class TagsCommandParser implements Parser<TagsCommand> {
     /**
      * Parses the given {@code String} of arguments in the context of the TagsCommand
      * and returns a TagsCommand object for execution.
+     *
      * @throws ParseException if the user input does not conform the expected format
      */
     public TagsCommand parse(String args) throws ParseException {

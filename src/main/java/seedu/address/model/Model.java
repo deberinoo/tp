@@ -8,6 +8,7 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.person.Person;
 import seedu.address.model.schedule.Session;
 import seedu.address.model.tag.Tag;
+import seedu.address.ui.MainWindow;
 
 /**
  * The API of the Model component.
@@ -16,6 +17,12 @@ public interface Model {
     /** {@code Predicate} that always evaluate to true */
     Predicate<Person> PREDICATE_SHOW_ALL_PERSONS = unused -> true;
 
+    /**
+     * Sets the MainWindow of the app.
+     */
+    void setMainWindow(MainWindow mainWindow);
+
+    MainWindow getMainWindow();
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
      */
@@ -122,4 +129,5 @@ public interface Model {
      * Undo latest addressbook command
      */
     Model copy();
+
 }

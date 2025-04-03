@@ -26,6 +26,7 @@ import seedu.address.model.Reminder;
 import seedu.address.model.person.Person;
 import seedu.address.model.schedule.Session;
 import seedu.address.storage.Storage;
+import seedu.address.ui.MainWindow;
 
 /**
  * The main LogicManager of the app.
@@ -37,10 +38,10 @@ public class LogicManager implements Logic {
             "Could not save data to file %s due to insufficient permissions to write to the file or the folder.";
 
     private final Logger logger = LogsCenter.getLogger(LogicManager.class);
-
-    private Model model;
     private final Storage storage;
     private final AddressBookParser addressBookParser;
+    private Model model;
+    private MainWindow mainWindow;
 
     /**
      * Constructs a {@code LogicManager} with the given {@code Model} and {@code Storage}.
@@ -50,6 +51,14 @@ public class LogicManager implements Logic {
         this.storage = storage;
         addressBookParser = new AddressBookParser();
         AddressBookStateManager.addState(model.getAddressBook().copy());
+    }
+
+    /**
+     * Sets the main window of the app.
+     */
+    public void setMainWindow(MainWindow mainWindow) {
+        this.mainWindow = mainWindow;
+        this.model.setMainWindow(mainWindow);
     }
 
     @Override
@@ -67,6 +76,7 @@ public class LogicManager implements Logic {
                 return new CommandResult("Command canceled.");
             }
         }
+
         commandResult = command.execute(model);
 
         // list, and find commands should not change the addressbook state. undo commands should function outside

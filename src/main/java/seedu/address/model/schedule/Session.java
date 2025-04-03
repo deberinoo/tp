@@ -72,10 +72,8 @@ public class Session {
             return false;
         }
         Session session = (Session) o;
-        return Objects.equals(studentName, session.studentName)
-                && Objects.equals(subject, session.subject)
-                && Objects.equals(date, session.date)
-                && Objects.equals(time, session.time)
+        return Objects.equals(studentName, session.studentName) && Objects.equals(subject, session.subject)
+                && Objects.equals(date, session.date) && Objects.equals(time, session.time)
                 && Objects.equals(duration, session.duration);
     }
 
@@ -86,14 +84,13 @@ public class Session {
 
     @Override
     public String toString() {
-        return String.format("%s - %s on %s at %s for %dh%02dm",
-                studentName, subject, date.format(DATE_FORMAT),
-                time.format(TIME_FORMAT),
-                duration.toHours(), duration.toMinutesPart());
+        return String.format("%s - %s on %s at %s for %dh%02dm", studentName, subject, date.format(DATE_FORMAT),
+                time.format(TIME_FORMAT), duration.toHours(), duration.toMinutesPart());
     }
 
     /**
      * Formats the duration for display
+     *
      * @return formatted duration
      */
     public String formatDurationForDisplay() {

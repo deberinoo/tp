@@ -21,6 +21,15 @@ public class AddressBookStateManager {
     }
 
     /**
+     * Reset the state manager.
+     */
+    public static void reset() {
+        states.clear();
+        currentState = 0;
+        previousCommand = null;
+    }
+
+    /**
      * Add a new state and move current state number forward by one.
      */
     public static void addState(AddressBook state) {
@@ -48,6 +57,13 @@ public class AddressBookStateManager {
      */
     public static AddressBook getCurrentState() {
         return states.get(currentState - 1);
+    }
+
+    /**
+     * Set the previous command.
+     */
+    public static void resetPreviousCommand() {
+        previousCommand = null;
     }
 
     /**
