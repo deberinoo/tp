@@ -608,55 +608,53 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1. *Tutor enters the command to undo the last action.*
-2. *EduEase validates if there is an action to undo.*
-3. *If valid, EduEase reverts to the previous state.*
-4. *EduEase confirms the undo with a success message.*
+1. Tutor enters the command to undo the last action.
+2. EduEase validates if there is an action to undo.
+3. If valid, EduEase reverts to the previous state.
+4. EduEase confirms the undo with a success message.
 
-   *Use case ends.*
+   Use case ends.
 
 **Extensions**
+* 2a. If there is no action to undo.*
+    
+    * 2a1. EduEase displays an error message.
 
-* *2a. If there is no action to undo.*
-    * *2a1. EduEase displays an error message.*
-
-      *Use case ends.*
+      Use case ends.
 
 ### Use case: Redo the last undone action
 
 **MSS**
 
-1. *Tutor enters the command to redo the last undone action.*
-2. *EduEase validates if there is an action to redo.*
-3. *If valid, EduEase reverts to the next state.*
-4. *EduEase confirms the redo with a success message.*
+1. Tutor enters the command to redo the last undone action.
+2. EduEase validates if there is an action to redo.
+3. If valid, EduEase reverts to the next state.
+4. EduEase confirms the redo with a success message.
 
-   *Use case ends.*
+   Use case ends.
 
 **Extensions**
+* 2a. If there is no action to redo.
+    * 2a1. EduEase displays an error message.
 
-* *2a. If there is no action to redo.*
-    * *2a1. EduEase displays an error message.*
-
-      *Use case ends.*
+      Use case ends.
 
 ### Use case: Switch between different tabs
 
 **MSS**
 
-1. *Tutor enters the command to switch to a different tab.*
-2. *EduEase validates the tab identifier.*
-3. *If valid, EduEase switches to the specified tab.*
-4. *EduEase confirms the switch with a success message.*
+1. Tutor enters the command to switch to a different tab.
+2. EduEase validates the tab identifier.
+3. If valid, EduEase switches to the specified tab.
+4. EduEase confirms the switch with a success message.
 
-   *Use case ends.*
+   Use case ends.
 
 **Extensions**
+* 2a. If the tab identifier is invalid.
+    * 2a1. EduEase displays an error message.
 
-* *2a. If the tab identifier is invalid.*
-    * *2a1. EduEase displays an error message.*
-
-      *Use case ends.*
+      Use case ends.
 
 ### Non-Functional Requirements
 
