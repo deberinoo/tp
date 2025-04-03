@@ -28,7 +28,8 @@ Given below are my contributions to the project.
       * Update images from previous AB3 to our new EduEase design
 
     * Developer Guide:
-      * Added implementation details on CommandWithConfirmation, covering the logic and  
+      * Added implementation details on CommandWithConfirmation, covering the logic with a sequence diagram
+      * Added manual testing details for note feature
 
 
 * **Community**:

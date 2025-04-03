@@ -725,7 +725,25 @@ testers are expected to do more *exploratory* testing.
    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
       Expected: Similar to previous.
 
-1. _{ more test cases …​ }_
+### Adding a Note to a person
+#### Prerequisites:
+* Have at least one person in the address book.
+* View this person using list or find command.
+1. Test case: `note 1`<br/>
+**Expected:** 
+   * Note of person to be displayed, it will be empty if there are no previous note
+2. Test case: `note 1 a/Need help with multiplication`<br/>
+**Expected:**
+   * Note is appended to the first person's notes.
+   * Note displayed
+3. Test case: `note 1 o/Need help with division`<br/>
+**Expected:**
+   * Note to be overwritten with new note. 
+   * Note displayed
+4. Test case: `note 1 c/`<br/>
+**Expected:**
+   * Note to be cleared
+   * Empty note displayed
 
 ### Saving data
 
