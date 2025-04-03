@@ -6,7 +6,6 @@ import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AddressBookStateManager;
 import seedu.address.model.Model;
-import seedu.address.model.exceptions.NoPreviousModelStateException;
 
 /**
  * Redo previous command.

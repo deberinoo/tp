@@ -1,14 +1,12 @@
 package seedu.address.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static seedu.address.logic.commands.RedoCommand.MESSAGE_FAILURE;
 import static seedu.address.logic.commands.RedoCommand.MESSAGE_SUCCESS;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.AddressBookStateManager;
 import seedu.address.model.Model;
