@@ -10,7 +10,6 @@ import java.util.Objects;
 import java.util.Optional;
 
 import seedu.address.commons.core.index.Index;
-import seedu.address.commons.util.CollectionUtil;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
@@ -76,8 +75,12 @@ public class ScheduleEditCommand extends Command {
         }
 
         Session sessionToEdit = lastShownList.get(index.getZeroBased());
-        Session editedSession = createEditedSession(sessionToEdit, editScheduleDescriptor);
 
+        if (!editScheduleDescriptor.isAnyFieldEdited()) {
+            throw new CommandException(MESSAGE_NOT_EDITED);
+        }
+
+        Session editedSession = createEditedSession(sessionToEdit, editScheduleDescriptor);
         model.updateSession(sessionToEdit, editedSession);
 
         return new CommandResult(String.format(MESSAGE_SUCCESS, editedSession));
@@ -136,7 +139,7 @@ public class ScheduleEditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, subject, date, time, duration);
+            return name != null || subject != null || date != null || time != null || duration != null;
         }
 
         public void setName(String name) {
