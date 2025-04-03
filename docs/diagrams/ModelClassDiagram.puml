@@ -13,6 +13,7 @@ Class ModelManager
 Class UserPrefs
 
 Class Reminder
+Class Session
 Class UniquePersonList
 Class UniqueTagList
 Class Person
@@ -33,6 +34,7 @@ ModelManager .up.|> Model
 ModelManager -left-> "1" AddressBook
 ModelManager -right-> "1" UserPrefs
 ModelManager -down->"*"Reminder
+ModelManager -down->"*"Session
 ModelManager --> "~* filtered" Person
 
 Model .right.> ReadOnlyUserPrefs
