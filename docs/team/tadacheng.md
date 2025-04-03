@@ -9,31 +9,30 @@ EduEase - EduEase simplifies the management of student contact details, helping 
 
 Given below are my contributions to the project.
 
-
 * **New Feature**: Added the ability to add notes on a student.
-    * What it does: allows user to view, append, overwrite or clear notes of a student.
+    * What it does: Allows user to view, append, overwrite or clear notes of a student.
     * Justification: This feature allows user to remember student's progress and weakness, enhancing their ability to personalise their lesson plan based on the student ability.
-
-* **New Feature**:
 
 * **Code contributed**: [RepoSense link]()
 
 * **Project management**:
-    * Managed releases `v1.3` (1 releases) on GitHub
+    * Managed releases `v1.3`, `1.4`, `1.5` (3 releases) on GitHub
 
 * **Enhancements to existing features**:
-    * Updated PersonCard UI and GUI color scheme (Pull requests [\#34](), [\#34]())
-
+    * Updated PersonCard UI and GUI color scheme
+    * Added Confirmation to crucial command like clear to prevent accidental usage
 
 * **Documentation**:
     * User Guide:
+      * Added detailed instruction on using the note features.
+      * Update images from previous AB3 to our new EduEase design
 
     * Developer Guide:
+      * Added implementation details on CommandWithConfirmation, covering the logic and  
 
 
 * **Community**:
     * PRs reviewed (with non-trivial review comments):
-    * Contributed to forum discussions (examples: [1](), [2](), [3](), [4]())
     * Reported bugs and suggestions for other teams in the class (examples: [1](), [2](), [3]())
     * Some parts of the history feature I added was adopted by several other classmates ([1](), [2]())
 
