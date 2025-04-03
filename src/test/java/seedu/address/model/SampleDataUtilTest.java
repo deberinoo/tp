@@ -1,13 +1,14 @@
 package seedu.address.model;
 
-import org.junit.jupiter.api.Test;
-import seedu.address.model.person.Person;
-import seedu.address.model.tag.Tag;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.model.util.SampleDataUtil.getSampleAddressBook;
 import static seedu.address.model.util.SampleDataUtil.getSamplePersons;
+
+import org.junit.jupiter.api.Test;
+
+import seedu.address.model.person.Person;
+import seedu.address.model.tag.Tag;
 
 public class SampleDataUtilTest {
     @Test
