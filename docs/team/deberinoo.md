@@ -10,28 +10,25 @@ EduEase - EduEase simplifies the management of student contact details, helping 
 Given below are my contributions to the project.
 
 
-* **New Feature**:
-    * What it does:
-    * Justification:
-    * Highlights:
+* **New Feature**: Schedule New Sessions, Schedule Cancel, Schedule Edit
+    * What it does: Enables tutors to schedule, cancel, and edit upcoming tutoring sessions with their students.
+    * Justification: Tutors need an efficient tool to manage their upcoming sessions, ensuring they stay organized and on track with their students. This feature allows them to keep track of scheduled sessions and easily make adjustments to their schedule, improving time management and reducing the risk of missed sessions.
+    * Highlights: Use of JavaFX for displaying session details in a user-friendly interface.
     * Credits: *{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}*
-
-* **New Feature**:
 
 * **Code contributed**: [RepoSense link]()
 
 * **Project management**:
-    * Managed releases `v1.1` (1 releases) on GitHub
+    * Managed releases `v1.3`, `v1.4`, `v1.5` on GitHub.
 
 * **Enhancements to existing features**:
-    *
-    *
+    * Added tabs for better UI/UX to accommodate new features like reminders, sessions, and notes.
 
 * **Documentation**:
     * User Guide:
-        *
+        * Added detailed instructions on using the schedule, schedule edit, and schedule delete features.
     * Developer Guide:
-        *
+        * Included implementation details for the schedule management system, covering the logic and UI components involved.
 
 * **Community**:
     * PRs reviewed (with non-trivial review comments):
