@@ -687,162 +687,201 @@ testers are expected to do more *exploratory* testing.
 
 </div>
 
-### Launch and shutdown
+---
+
+### Launch and Shutdown
 
 1. Initial launch
+    1. Download the JAR file and copy it into an empty folder.
+    2. Double-click the JAR file.  
+       Expected: Shows the GUI with a set of sample contacts. The window size may not be optimal.
 
-    1. Download the jar file and copy into an empty folder
+2. Saving window preferences
+    1. Resize the window to an optimal size. Move it to a different location. Close the window.
+    2. Re-launch the app by double-clicking the JAR file.  
+       Expected: The most recent window size and location are retained.
 
-    1. Double-click the jar file <br>
-       Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+3. *{ more test cases ... }*
 
-1. Saving window preferences
+---
 
-    1. Resize the window to an optimum size. Move the window to a different location. Close the window.
+### Deleting a Person
 
-    1. Re-launch the app by double-clicking the jar file.<br>
-       Expected: The most recent window size and location is retained.
+1. Deleting a person while all persons are shown
+    1. Prerequisites: List all persons using the `list` command. Ensure there are multiple persons.
+    2. Test case: `delete 1`  
+       Expected: First contact is deleted. Details shown in the status message. Status bar timestamp updated.
+    3. Test case: `delete 0`  
+       Expected: No person is deleted. Error message shown. Status bar remains unchanged.
+    4. Test case: `delete`, `delete x` (where x > list size)  
+       Expected: Error message shown. No changes made.
 
-1. _{ more test cases …​ }_
+5. *{ more test cases ... }*
 
-### Deleting a person
+---
 
-1. Deleting a person while all persons are being shown
+### Adding a Note to a Person
 
-    1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+1. Prerequisites
+    * Have at least one person in the address book.
+    * View this person using `list` or `find`.
 
-    1. Test case: `delete 1`<br>
-       Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+2. Test case: `note 1`  
+   Expected: Note of person displayed. Empty if there are no previous notes.
 
-    1. Test case: `delete 0`<br>
-       Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
+3. Test case: `note 1 a/Need help with multiplication`  
+   Expected: Note is appended to the first person's notes. Updated note is displayed.
 
-    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
-       Expected: Similar to previous.
+4. Test case: `note 1 o/Need help with division`  
+   Expected: Note is overwritten with new note. Updated note is displayed.
 
-### Adding a Note to a person
-#### Prerequisites:
-* Have at least one person in the address book.
-* View this person using list or find command.
-1. Test case: `note 1`<br/>
-**Expected:** 
-   * Note of person to be displayed, it will be empty if there are no previous note
-2. Test case: `note 1 a/Need help with multiplication`<br/>
-**Expected:**
-   * Note is appended to the first person's notes.
-   * Note displayed
-3. Test case: `note 1 o/Need help with division`<br/>
-**Expected:**
-   * Note to be overwritten with new note. 
-   * Note displayed
-4. Test case: `note 1 c/`<br/>
-**Expected:**
-   * Note to be cleared
-   * Empty note displayed
+5. Test case: `note 1 c/`  
+   Expected: Note is cleared. Empty note is displayed.
 
-### Saving data
+6. *{ more test cases ... }*
+
+---
+
+### Saving Data
 
 1. Dealing with missing/corrupted data files
+    1. *{ explain how to simulate a missing/corrupted file, and the expected behavior }*
+    2. *{ more test cases ... }*
 
-    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+---
 
-1. _{ more test cases …​ }_
-
-### Filtering contacts by tags
+### Filtering Contacts by Tags
 
 1. Listing all tags added to contacts
-    1. Prerequisites: There must at least be 1 tag added to any contacts.
-    2. Test case: `tags`<br>
-       Expected: Shows a list of unique tags added to all contacts. List of contacts will not be shown as it is not part of this feature. To list all contacts, use `list`.
-1. Filtering contacts by a single tag
-    1. Prerequisites: There must at least be 1 tag added to any contacts.
-    2. Test case: `tags [t/TAG]`<br>
-       Expected: Shows a list of contacts based on the specified tag. Else, no contacts will be shown.
-1. Filtering contacts by multiple tags
-    1. Prerequisites: There must at least be 2 different tags added to any contacts.
-    2. Test case: `tags [t/TAG]...`<br>
-       Expected: Shows a list of contacts based on tags combination. Else, no contacts will be shown.
-1. _{ more test cases …​ }_
+    1. Prerequisites: At least one tag must exist.
+    2. Test case: `tags`  
+       Expected: Shows a list of unique tags. Contact list is not shown. Use `list` to view all contacts.
 
-### Listing student contacts
+2. Filtering contacts by a single tag
+    1. Prerequisites: At least one tag must exist.
+    2. Test case: `tags t/TAG`  
+       Expected: Shows contacts with the specified tag. If none, displays an empty list.
+
+3. Filtering contacts by multiple tags
+    1. Prerequisites: At least two different tags exist.
+    2. Test case: `tags t/TAG1 t/TAG2`  
+       Expected: Shows contacts that match the combination of tags.
+
+4. *{ more test cases ... }*
+
+---
+
+### Listing Student Contacts
+
 1. Listing all student contacts
-    1. Test case: `list`
-    - Prerequisites: Have at least 1 student contact added.
-    - Expected: Displays a list of all student contacts. Else, nothing will be shown.
+    1. Prerequisites: At least one student contact exists.
+    2. Test case: `list`  
+       Expected: Displays all student contacts. Empty if none exist.
 
-### Setting reminders
+2. *{ more test cases ... }*
+
+---
+
+### Setting Reminders
+
 1. Setting a reminder with valid details
-    1. Test case: `remind n/John Doe d/2025-12-25 t/10:00`
-    - Expected: Reminder is set. Success message is displayed.
+    1. Test case: `remind n/John Doe d/2025-12-25 t/10:00`  
+       Expected: Reminder is set. Success message is displayed.
 
 2. Setting a reminder with invalid date
-    1. Test case: `remind n/John Doe d/invalid_date t/10:00`
-    - Expected: Error message is displayed indicating invalid date.
+    1. Test case: `remind n/John Doe d/invalid_date t/10:00`  
+       Expected: Error message is displayed indicating invalid date.
 
-### Undo the last action
+3. *{ more test cases ... }*
+
+---
+
+### Undo the Last Action
 
 1. Undoing the last action
     1. Prerequisites: A previous action has been performed.
-    2. Test case: `undo`
-    - Expected: The last action is undone. Success message is displayed.
+    2. Test case: `undo`  
+       Expected: Last action is undone. Success message is displayed.
 
 2. Undoing when there is no action to undo
-    1. Test case: `undo`
-    - Expected: Error message is displayed indicating no action to undo.
+    1. Test case: `undo`  
+       Expected: Error message is displayed indicating no action to undo.
 
-### Redo the last undone action
+3. *{ more test cases ... }*
+
+---
+
+### Redo the Last Undone Action
 
 1. Redoing the last undone action
     1. Prerequisites: An undo action has been performed.
-    2. Test case: `redo`
-    - Expected: The last undone action is redone. Success message is displayed.
+    2. Test case: `redo`  
+       Expected: Last undone action is redone. Success message is displayed.
 
 2. Redoing when there is no action to redo
-    1. Test case: `redo`
-    - Expected: Error message is displayed indicating no action to redo.
+    1. Test case: `redo`  
+       Expected: Error message is displayed indicating no action to redo.
 
-### Switching between tabs
+3. *{ more test cases ... }*
+
+---
+
+### Switching Between Tabs
 
 1. Switching to a valid tab
-    1. Test case: `switch 1`
-    - Expected: Switches to the specified tab. Success message is displayed.
+    1. Test case: `switch 1`  
+       Expected: Switches to specified tab. Success message is displayed.
 
 2. Switching to an invalid tab
-    1. Test case: `switch invalid_tab`
-    - Expected: Error message is displayed indicating invalid tab identifier.
+    1. Test case: `switch invalid_tab`  
+       Expected: Error message is displayed indicating invalid tab identifier.
 
-### Scheduling a tutoring session
+3. *{ more test cases ... }*
 
-1. Scheduling a session with valid details
-    1. Test case: `schedule n/John Doe s/Math d/2025-12-25 t/10:00 dur/1h`
-    - Expected: Session is scheduled. Success message is displayed.
+---
 
-2. Scheduling a session with invalid date
-    1. Test case: `schedule n/John Doe s/Math d/invalid_date t/10:00 dur/1h`
-    - Expected: Error message is displayed indicating invalid date.
+### Scheduling a Tutoring Session
 
-3. Scheduling a session with invalid duration
-    1. Test case: `schedule n/John Doe s/Math d/2025-12-25 t/10:00 dur/0h'
-    - Expected: Error message is displayed indicating student does not exist.
+1. Scheduling with valid details
+    1. Test case: `schedule n/John Doe s/Math d/2025-12-25 t/10:00 dur/1h`  
+       Expected: Session is scheduled. Success message is displayed.
 
-### Editing a scheduled session
+2. Scheduling with invalid date
+    1. Test case: `schedule n/John Doe s/Math d/invalid_date t/10:00 dur/1h`  
+       Expected: Error message indicating invalid date.
 
-1. Editing a session with valid details
+3. Scheduling with invalid duration
+    1. Test case: `schedule n/John Doe s/Math d/2025-12-25 t/10:00 dur/0h`  
+       Expected: Error message indicating invalid duration.
+
+4. *{ more test cases ... }*
+
+---
+
+### Editing a Scheduled Session
+
+1. Editing with valid details
     1. Prerequisites: A session exists.
-    2. Test case: `schedule edit 1 n/John Doe s/Science d/2025-12-26 t/11:00 dur/2h`
-    - Expected: Session is edited. Success message is displayed.
+    2. Test case: `schedule edit 1 n/John Doe s/Science d/2025-12-26 t/11:00 dur/2h`  
+       Expected: Session is edited. Success message is displayed.
 
-2. Editing a session with invalid index
-    1. Test case: `schedule edit invalid_index n/John Doe s/Science d/2025-12-26 t/11:00 dur/2h`
-    - Expected: Error message is displayed indicating invalid session index.
+2. Editing with invalid index
+    1. Test case: `schedule edit invalid_index n/John Doe s/Science d/2025-12-26 t/11:00 dur/2h`  
+       Expected: Error message indicating invalid session index.
 
-### Canceling a scheduled session
+3. *{ more test cases ... }*
 
-1. Canceling a session with valid index
+---
+
+### Canceling a Scheduled Session
+
+1. Canceling with valid index
     1. Prerequisites: A session exists.
-    2. Test case: `schedule cancel 1`
-    - Expected: Session is canceled. Success message is displayed.
+    2. Test case: `schedule cancel 1`  
+       Expected: Session is canceled. Success message is displayed.
 
-2. Canceling a session with invalid index
-    1. Test case: `schedule cancel invalid_index`
-    - Expected: Error message is displayed indicating invalid session index.
+2. Canceling with invalid index
+    1. Test case: `schedule cancel invalid_index`  
+       Expected: Error message indicating invalid session index.
+
+3. *{ more test cases ... }*
