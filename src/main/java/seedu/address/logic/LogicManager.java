@@ -82,13 +82,8 @@ public class LogicManager implements Logic {
         // list, and find commands should not change the addressbook state. undo commands should function outside
         // the addressbook state
         if (!(command instanceof UndoCommand) && !(command instanceof ListCommand)
-                && !(command instanceof FindCommand)) {
+                && !(command instanceof FindCommand) && !(command instanceof RedoCommand)) {
             AddressBookStateManager.addState(model.getAddressBook().copy());
-        }
-
-        // redo commands do not change the previous command and should not be saved in the state manager.
-        if (!(command instanceof RedoCommand)) {
-            AddressBookStateManager.setPreviousCommand(command);
         }
 
         try {

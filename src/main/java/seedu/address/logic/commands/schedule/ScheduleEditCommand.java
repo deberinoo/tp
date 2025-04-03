@@ -10,7 +10,6 @@ import java.util.Objects;
 import java.util.Optional;
 
 import seedu.address.commons.core.index.Index;
-import seedu.address.commons.util.CollectionUtil;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
@@ -30,7 +29,8 @@ public class ScheduleEditCommand extends Command {
             + "Example: schedule edit 1 n/NEW_NAME s/NEW_SUBJECT d/2025-03-19 t/14:00 dur/2h";
 
     public static final String MESSAGE_SUCCESS = "Edited session: %1$s";
-    public static final String MESSAGE_INVALID_INDEX = "Invalid index! Please provide a valid session number.";
+    public static final String MESSAGE_INVALID_INDEX = "Invalid index!"
+                    + "Available sessions: %1$s (Please use 1 to %2$d)";
     public static final String MESSAGE_SESSION_NOT_FOUND = "The session could not be found.";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
 
@@ -53,13 +53,34 @@ public class ScheduleEditCommand extends Command {
         requireNonNull(model);
         List<Session> lastShownList = model.getSessionList();
 
-        if (index.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(MESSAGE_INVALID_INDEX);
+        if (lastShownList.isEmpty()) {
+            throw new CommandException("No sessions available to edit.");
+        }
+
+        if (index.getZeroBased() >= lastShownList.size() || index.getZeroBased() < 0) {
+            // Generate list of available indexes
+            StringBuilder availableIndexes = new StringBuilder();
+            for (int i = 0; i < lastShownList.size(); i++) {
+                if (i > 0) {
+                    availableIndexes.append(", ");
+                }
+                availableIndexes.append(i + 1); // Convert to 1-based index
+            }
+
+            throw new CommandException(String.format(
+                "Invalid index! Available sessions: %s (Please use 1 to %d)",
+                availableIndexes.toString(),
+                lastShownList.size()
+            ));
         }
 
         Session sessionToEdit = lastShownList.get(index.getZeroBased());
-        Session editedSession = createEditedSession(sessionToEdit, editScheduleDescriptor);
 
+        if (!editScheduleDescriptor.isAnyFieldEdited()) {
+            throw new CommandException(MESSAGE_NOT_EDITED);
+        }
+
+        Session editedSession = createEditedSession(sessionToEdit, editScheduleDescriptor);
         model.updateSession(sessionToEdit, editedSession);
 
         return new CommandResult(String.format(MESSAGE_SUCCESS, editedSession));
@@ -83,9 +104,10 @@ public class ScheduleEditCommand extends Command {
 
     @Override
     public boolean equals(Object other) {
-        return other == this // Short circuit if same object
-                || (other instanceof ScheduleEditCommand // Check instance type
-                && index.equals(((ScheduleEditCommand) other).index)); // Compare index
+        return other == this // short circuit if same object
+                || (other instanceof ScheduleEditCommand // instanceof handles nulls
+                && index.equals(((ScheduleEditCommand) other).index)
+                && editScheduleDescriptor.equals(((ScheduleEditCommand) other).editScheduleDescriptor));
     }
 
     /**
@@ -117,7 +139,7 @@ public class ScheduleEditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, subject, date, time, duration);
+            return name != null || subject != null || date != null || time != null || duration != null;
         }
 
         public void setName(String name) {

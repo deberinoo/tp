@@ -6,6 +6,7 @@ import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.AddressBookStateManager;
 import seedu.address.model.Model;
@@ -24,7 +25,6 @@ public class UndoCommandTest {
 
         // Add some initial state to the model
         AddressBookStateManager.reset();
-        AddressBookStateManager.resetPreviousCommand();
         model.addPerson(new PersonBuilder().withName("Alice").build());
         AddressBookStateManager.addState(model.getAddressBook().copy());
         model.addPerson(new PersonBuilder().withName("Bob").build());
@@ -36,7 +36,7 @@ public class UndoCommandTest {
     }
 
     @Test
-    public void execute_undoSuccessful() {
+    public void execute_undoSuccessful() throws CommandException {
         // Simulate undo by reverting to the previous state
         AddressBookStateManager.addState(model.getAddressBook().copy());
         AddressBookStateManager.undo();
@@ -46,7 +46,7 @@ public class UndoCommandTest {
     }
 
     @Test
-    public void execute_noUndoableState_failure() {
+    public void execute_noUndoableState_failure() throws CommandException {
         // Prepare at least two saved states to allow undos
         AddressBook state1 = new AddressBook(); // empty or default state
         AddressBook state2 = new AddressBook(); // another state (could be same or modified)

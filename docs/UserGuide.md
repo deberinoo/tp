@@ -255,10 +255,20 @@ Format: `undo`
 
 ### Redoing the last command : `redo`
 
-Redoes the last command that changes the data. If there is no command to redo, the user will be informed.
+Undoes the last command that was undone. If there is no command to redo, the user will be informed.
 
 Format: `redo`
 
+### Switching tabs : `switch`
+
+Switches between the different tabs in the application. The tab name is case-sensitive.
+
+Format: `switch [TAB_NAME]`
+
+Example:
+* `switch sessions` switches to the sessions tab.
+* `switch contacts` switches to the contacts tab.
+* `switch reminders` switches to the reminders tab.
 
 ### Saving the data
 
@@ -311,5 +321,6 @@ Action | Format, Examples
 **Remind** | `remind n/[STUDENT_NAME] e/[EVENT] d/[DATE] t/[TIME]` <br> e.g., `remind n/John Doe e/Math exam d/2025-06-20 t/09:00`
 **Undo** | `undo`
 **Redo** | `redo`
+**Switch** | `switch [TAB_NAME]` <br> e.g., `switch sessions`, `switch contacts`, `switch reminders`
 **Exit** | `exit`
 **Help** | `help`

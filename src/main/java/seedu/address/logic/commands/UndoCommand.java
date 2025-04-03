@@ -3,9 +3,9 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AddressBookStateManager;
 import seedu.address.model.Model;
-import seedu.address.model.exceptions.NoPreviousModelStateException;
 
 /**
  * Reverts entire model state.
@@ -23,7 +23,7 @@ public class UndoCommand extends Command {
 
         try {
             AddressBookStateManager.undo();
-        } catch (NoPreviousModelStateException e) {
+        } catch (CommandException e) {
             return new CommandResult(MESSAGE_FAILURE);
         }
         model.setAddressBook(AddressBookStateManager.getCurrentState());

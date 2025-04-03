@@ -27,7 +27,10 @@ public class ScheduleCommand extends Command {
             + PREFIX_SUBJECT + "SUBJECT "
             + PREFIX_DATE + "2025-03-18 "
             + PREFIX_TIME + "14:00 "
-            + PREFIX_DURATION + "1h30m";
+            + PREFIX_DURATION + "1h30m\n\n"
+            + "You can also use the following commands:\n"
+            + "  schedule edit: Edits an existing scheduled session.\n"
+            + "  schedule cancel: Cancels a scheduled session.";
 
     public static final String MESSAGE_SUCCESS = "New session scheduled: %1$s";
     public static final String MESSAGE_DUPLICATE_SESSION = "This session already exists in the schedule";
