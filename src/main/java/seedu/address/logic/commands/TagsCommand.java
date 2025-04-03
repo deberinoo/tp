@@ -22,9 +22,10 @@ public class TagsCommand extends Command {
             + "or lists all persons with the specified tags.\n"
             + "Parameters: [" + PREFIX_TAG + "TAG]...\n"
             + "Example 1: " + COMMAND_WORD + " (shows all tags)\n"
-            + "Example 2: " + COMMAND_WORD + " " + PREFIX_TAG + "friends " + PREFIX_TAG + "colleagues";
+            + "Example 2: " + COMMAND_WORD + " " + PREFIX_TAG + "math" + PREFIX_TAG + "p3";
 
     public static final String MESSAGE_SUCCESS = "Listing all tags: %1$s";
+    public static final String MESSAGE_NO_TAGS_EXIST = "No tags exist in the address book yet.";
     public static final String MESSAGE_PERSONS_WITH_TAGS = "Listed all persons with tags: %1$s";
     public static final String MESSAGE_NO_TAGS_FOUND = "No persons found with all specified tags: %1$s";
 
@@ -51,6 +52,11 @@ public class TagsCommand extends Command {
         if (tagsToFilter == null || tagsToFilter.isEmpty()) {
             // Show all tags case
             ObservableList<Tag> tags = model.getTagList();
+
+            if (tags.isEmpty()) {
+                return new CommandResult("No tags exist in the address book yet.");
+            }
+
             String formattedTags = UniqueTagList.getSortedTags(tags).stream().map(Tag::toString)
                     .collect(Collectors.joining(", "));
             return new CommandResult(String.format(MESSAGE_SUCCESS, formattedTags));
