@@ -2,9 +2,7 @@ package seedu.address.model;
 
 import java.util.ArrayList;
 
-import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.exceptions.NoPreviousModelStateException;
 
 /**
  * StateList class that contains the states of TaskLists
@@ -12,7 +10,6 @@ import seedu.address.model.exceptions.NoPreviousModelStateException;
 public class AddressBookStateManager {
     private static final ArrayList<AddressBook> states = new ArrayList<>();
     private static int currentState = 0;
-    private static Command previousCommand = null;
 
     /**
      * Instantiate task list with old task list data loaded in.
@@ -26,7 +23,6 @@ public class AddressBookStateManager {
     public static void reset() {
         states.clear();
         currentState = 0;
-        previousCommand = null;
     }
 
     /**
@@ -44,11 +40,11 @@ public class AddressBookStateManager {
     /**
      * Move current state number back by one
      */
-    public static void undo() throws NoPreviousModelStateException {
+    public static void undo() throws CommandException {
         if (currentState > 1) {
             currentState--;
         } else {
-            throw new NoPreviousModelStateException();
+            throw new CommandException("No previous state found");
         }
     }
 
@@ -60,27 +56,13 @@ public class AddressBookStateManager {
     }
 
     /**
-     * Set the previous command.
+     * Undo the undo command
      */
-    public static void resetPreviousCommand() {
-        previousCommand = null;
-    }
-
-    /**
-     * Get the previous command.
-     */
-    public static Command getPreviousCommand() throws CommandException {
-        if (previousCommand != null) {
-            return previousCommand;
+    public static void redo() throws CommandException {
+        if (currentState < states.size()) {
+            currentState++;
         } else {
-            throw new CommandException("No previous command found");
+            throw new CommandException("No next state found");
         }
-    }
-
-    /**
-     * Set the previous command.
-     */
-    public static void setPreviousCommand(Command command) {
-        previousCommand = command;
     }
 }

@@ -1,10 +1,15 @@
 package seedu.address.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static seedu.address.logic.commands.RedoCommand.MESSAGE_FAILURE;
+import static seedu.address.logic.commands.RedoCommand.MESSAGE_SUCCESS;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.model.AddressBook;
 import seedu.address.model.AddressBookStateManager;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
@@ -17,12 +22,11 @@ public class RedoCommandTest {
 
     @BeforeEach
     public void setUp() {
-        model = new ModelManager(new seedu.address.model.AddressBook(), new UserPrefs());
-        expectedModel = new ModelManager(new seedu.address.model.AddressBook(), new UserPrefs());
+        model = new ModelManager(new AddressBook(), new UserPrefs());
+        expectedModel = new ModelManager(new AddressBook(), new UserPrefs());
 
         // Add some initial state to the model
         AddressBookStateManager.reset();
-        AddressBookStateManager.resetPreviousCommand();
         model.addPerson(new PersonBuilder().withName("Alice").build());
         AddressBookStateManager.addState(model.getAddressBook().copy());
         model.addPerson(new PersonBuilder().withName("Bob").build());
@@ -34,30 +38,28 @@ public class RedoCommandTest {
     }
 
     @Test
-    public void execute_redoSuccessful() throws Exception {
+    public void execute_redo_success() throws Exception {
         // Simulate undo by reverting to the previous state
-        AddressBookStateManager.addState(model.getAddressBook().copy());
-        AddressBookStateManager.addState(model.getAddressBook().copy());
         AddressBookStateManager.undo();
-        expectedModel.deletePerson(new PersonBuilder().withName("Bob").build());
         model.deletePerson(new PersonBuilder().withName("Bob").build());
 
         // Simulate redo by re-executing the previous command
-        AddressBookStateManager.setPreviousCommand(new UndoCommand());
         RedoCommand redoCommand = new RedoCommand();
-        String expectedMessage = RedoCommand.MESSAGE_SUCCESS + ": " + UndoCommand.MESSAGE_SUCCESS;
-        assertEquals(expectedModel.getAddressBook().getPersonList(),
-                model.getAddressBook().getPersonList());
+        CommandResult result = redoCommand.execute(model);
 
+        assertEquals(MESSAGE_SUCCESS, result.getFeedbackToUser());
+        assertEquals(expectedModel.getAddressBook(), model.getAddressBook());
     }
 
     @Test
     public void execute_noRedoableState_failure() {
+        // Reset the state manager to ensure no redoable state
+        AddressBookStateManager.reset();
+
         // Attempt to redo when there is no redoable state
-        AddressBookStateManager.resetPreviousCommand();
         RedoCommand redoCommand = new RedoCommand();
         CommandResult result = redoCommand.execute(model);
 
-        assertEquals(RedoCommand.MESSAGE_FAILURE + ": No previous command found", result.getFeedbackToUser());
+        assertEquals(MESSAGE_FAILURE, result.getFeedbackToUser());
     }
 }
