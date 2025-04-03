@@ -200,7 +200,7 @@ Step 6. LogicManager creates a CommandResult, confirming that the session was su
 
 The following Schedule Sequence Diagram visually represents these interactions.
 
-<img src="images/ScheduleSequenceDiagram.png" width="574" />
+![ScheduleSequenceDiagram](images/ScheduleSequenceDiagram.png)
 
 ### Undo/redo feature
 
