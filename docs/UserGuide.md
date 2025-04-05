@@ -16,7 +16,7 @@ tailored specifically for private tutors with young tutees.<br>
 1. Ensure you have Java `17` or above installed in your Computer.<br>
    **Mac users:** Ensure you have the precise JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
 
-1. Download the latest `.jar` file from [here](https://github.com/se-edu/addressbook-level3/releases).
+1. Download the latest `.jar` file from [here](https://github.com/AY2425S2-CS2103-F09-2/tp/releases).
 
 1. Copy the file to the folder you want to use as the _home folder_ for your AddressBook.
 
@@ -92,13 +92,15 @@ Adds a person to the address book.
 
 Format: `add n/NAME p/PHONE_NUMBER pp/PARENT_PHONE e/EMAIL  [t/TAG]…​`
 
+* Duplicate phone numbers are allowed. In tutoring contexts with young tutees, it is common for multiple students to share the same phone number in the event they do not have a phone number or they have the same parent.
+
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 A person can have any number of tags (including 0)
 </div>
 
 Examples:
 * `add n/John Doe p/98765432 pp/98765433 e/johnd@example.com`
-* `add n/Betsy Crowe t/Math e/betsycrowe@example.com p/1234567 pp/1234568 t/P3`
+* `add n/Betsy Crowe t/Math e/betsycrowe@example.com p/12345678 pp/12345688 t/P3`
 
 ### Listing all persons : `list`
 
@@ -170,6 +172,7 @@ Format: `note INDEX [a/ APPEND] [o/ OVERWRITE] [c/]`
 * If no additional parameter is present, there will be no change and the old note will be shown.
 * The index refers to the index number shown in the displayed person list.
 * The index **must be a positive integer** 1, 2, 3, …​
+* The note feature is designed to store and display free-form text exactly as entered by the user. Escape sequences (e.g., \n, \t, \\) are not interpreted or processed, and are instead treated as plain text.
 
 Examples:
 * `list` followed by `note 2` will show the note of the 2nd person in the address book.
@@ -181,9 +184,11 @@ Examples:
 
 ### Clearing all entries : `clear`
 
-Clears all entries from the address book. Requires a confirmation from user.
+Clears all entries from the address book.
 
 Format: `clear`
+
+* Requires a confirmation from user. An alert will appear for your response.
 
 ### Exiting the program : `exit`
 
@@ -310,10 +315,10 @@ _Details coming soon ..._
 
 Action | Format, Examples
 --------|------------------
-**Add** | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
+**Add** | `add n/NAME p/PHONE_NUMBER pp/PARENT_PHONE e/EMAIL [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
 **Clear** | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
+**Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [pp/PARENT_PHONE] [e/EMAIL] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
 **Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
 **List** | `list`
 **Note** | `note INDEX [a/ APPEND] [o/ OVERWRITE] [c/]`<br> e.g., `note 2 a/ Need help in long division`
