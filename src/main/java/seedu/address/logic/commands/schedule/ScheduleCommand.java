@@ -25,9 +25,9 @@ public class ScheduleCommand extends Command {
             + "Parameters: "
             + PREFIX_NAME + "NAME "
             + PREFIX_SUBJECT + "SUBJECT "
-            + PREFIX_DATE + "2025-03-18 "
-            + PREFIX_TIME + "14:00 "
-            + PREFIX_DURATION + "1h30m\n\n"
+            + PREFIX_DATE + "YYYY-MM-DD "
+            + PREFIX_TIME + "HH:MM "
+            + PREFIX_DURATION + "XhYm\n\n"
             + "You can also use the following commands:\n"
             + "  schedule edit: Edits an existing scheduled session.\n"
             + "  schedule cancel: Cancels a scheduled session.";
@@ -54,7 +54,6 @@ public class ScheduleCommand extends Command {
         }
 
         model.addSession(toSchedule);
-
         return new CommandResult(String.format(MESSAGE_SUCCESS, toSchedule.toString()));
     }
 

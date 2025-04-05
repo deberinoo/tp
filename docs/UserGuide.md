@@ -211,16 +211,19 @@ Examples:
 
 Schedules a session with a student.
 
-Format: `schedule n/[STUDENT_NAME] s/[SUBJECT] d/[DATE] t/[TIME] dur/[DURATION]`
+Format: `schedule n/STUDENT_NAME s/SUBJECT d/DATE t/TIME dur/DURATION`
+
+* The date must be a future date.
+* The format for date and time must be YYYY-MM-DD and HH:MM respectively.
 
 Examples:
-* `schedule n/John Doe s/Math d/2022-12-31 t/14:00 dur/1h` schedules a session with John Doe on 31st December 2022 at 2pm for 1 hour.
+* `schedule n/John Doe s/Math d/2026-12-31 t/14:00 dur/1h` schedules a session with John Doe on 31st December 2026 at 2pm for 1 hour.
 
 ### Editing a session : `schedule edit`
 
 Edits an existing session with a student.
 
-Format: `schedule edit [INDEX]`
+Format: `schedule edit INDEX n/[STUDENT_NAME] s/[SUBJECT] d/[DATE] t/[TIME] dur/[DURATION]`
 
 * Edits the session at the specified `INDEX`. The index refers to the index number shown in the sessions list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
@@ -233,7 +236,7 @@ Examples:
 
 Deletes a session with a student.
 
-Format: `schedule cancel [INDEX]`
+Format: `schedule cancel INDEX`
 
 ### Setting a reminder: `remind`
 
