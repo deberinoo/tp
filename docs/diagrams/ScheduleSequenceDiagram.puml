@@ -42,7 +42,7 @@ activate Session
 Session --> Parser : duration
 deactivate Session
 
-Parser -> Session : **new Session(studentIndex, subject, date, time, duration)**
+Parser -> Session : **new Session(studentName, subject, date, time, duration)**
 activate Session
 
 Session --> Parser : session instance
