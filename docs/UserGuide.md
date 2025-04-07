@@ -264,7 +264,7 @@ Format: `schedule cancel INDEX`
 
 Sets a reminder for an event at a specific time and date.
 
-Format: `remind n/[STUDENT_NAME] e/[EVENT] d/[DATE] t/[TIME]`
+Format: `remind n/STUDENT_NAME e/EVENT d/DATE t/TIME`
 
 * The date must be a future date.
 * The format for date and time must be YYYY-MM-DD and HH:MM respectively.
@@ -343,7 +343,7 @@ Action | Format, Examples
 **Schedule** | `schedule n/[STUDENT_NAME] s/[SUBJECT] d/[DATE] t/[TIME] dur/[DURATION]`<br> e.g., `schedule n/John Doe s/Math d/2022-12-31 t/14:00 dur/1h`
 **Schedule Edit** | `schedule edit INDEX [n/STUDENT_NAME] [s/SUBJECT] [d/DATE] [t/TIME] [dur/DURATION]`<br> e.g., `schedule edit 1 n/John Doe s/Math d/2023-12-31 t/15:00 dur/2h`
 **Schedule Cancel** | `schedule cancel INDEX`<br> e.g., `schedule cancel 1`
-**Remind** | `remind n/[STUDENT_NAME] e/[EVENT] d/[DATE] t/[TIME]` <br> e.g., `remind n/John Doe e/Math exam d/2025-06-20 t/09:00`
+**Remind** | `remind n/STUDENT_NAME e/EVENT d/DATE t/TIME` <br> e.g., `remind n/John Doe e/Math exam d/2025-06-20 t/09:00`
 **Undo** | `undo`
 **Redo** | `redo`
 **Switch** | `switch [TAB_NAME]` <br> e.g., `switch sessions`, `switch contacts`, `switch reminders`
