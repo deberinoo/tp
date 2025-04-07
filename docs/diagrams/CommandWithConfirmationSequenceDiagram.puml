@@ -34,21 +34,21 @@ ClearCommand -> ClearCommand: showConfirmationDialog()
 ClearCommand --> LogicManager: return confirmation result
 deactivate ClearCommand
 
-alt not confirmed
+opt not confirmed
     <-- LogicManager : return CommandResult("Command canceled.")
-else confirmed
-    LogicManager -> ClearCommand: execute(model)
-    activate ClearCommand
-    ClearCommand -> Model: setAddressBook(new AddressBook())
-    activate Model
-    Model --> ClearCommand
-    deactivate Model
-    ClearCommand --> LogicManager: return CommandResult("Address book has been cleared!")
-    deactivate ClearCommand
-    'Hidden arrow to position the destroy marker below the end of the activation bar.'
-    ClearCommand -[hidden]-> LogicManager
-    destroy ClearCommand
 end
+LogicManager -> ClearCommand: execute(model)
+activate ClearCommand
+ClearCommand -> Model: setAddressBook(new AddressBook())
+activate Model
+Model --> ClearCommand
+deactivate Model
+ClearCommand --> LogicManager
+deactivate ClearCommand
+'Hidden arrow to position the destroy marker below the end of the activation bar.'
+ClearCommand -[hidden]-> LogicManager
+destroy ClearCommand
+
 
 [<--LogicManager
 deactivate LogicManager

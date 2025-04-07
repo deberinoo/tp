@@ -189,6 +189,7 @@ Clears all entries from the address book.
 Format: `clear`
 
 * Requires a confirmation from user. An alert will appear for your response.
+* If you prefer typing, you can press Enter again to confirm.
 
 ### Exiting the program : `exit`
 
