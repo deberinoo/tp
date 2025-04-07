@@ -13,8 +13,10 @@ import seedu.address.model.Model;
 public class UndoCommand extends Command {
 
     public static final String COMMAND_WORD = "undo";
-    public static final String MESSAGE_SUCCESS = "Undo Success: Reverted entire model state";
-    public static final String MESSAGE_FAILURE = "Undo Failure: No previous model state found";
+    public static final String MESSAGE_SUCCESS = "Undo Success: Reverted entire addressbook(contacts) state";
+    public static final String MESSAGE_FAILURE = "Undo Failure: No previous addressbook(contacts) state found";
+    public static final String MESSAGE_INVALIDPANEL =
+            "Undo Failure: Cannot undo in this panel. Please switch to the contacts panel to undo.";
 
 
     @Override
