@@ -4,11 +4,12 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Objects;
 
+import seedu.address.model.person.Name;
 /**
  * Represents a Reminder in the application.
  */
 public class Reminder {
-    private final String name;
+    private final Name name;
     private final String event;
     private final LocalDate date;
     private final LocalTime time;
@@ -24,14 +25,14 @@ public class Reminder {
      * <p>Reminders are immutable; once created, their core attributes cannot be changed.
      * If modifications are needed, a new Reminder object should be created.</p>
      */
-    public Reminder(String name, String event, LocalDate date, LocalTime time) {
+    public Reminder(Name name, String event, LocalDate date, LocalTime time) {
         this.name = name;
         this.event = event;
         this.date = date;
         this.time = time;
     }
 
-    public String getName() {
+    public Name getName() {
         return name;
     }
 

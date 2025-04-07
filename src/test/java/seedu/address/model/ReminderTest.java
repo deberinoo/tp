@@ -1,5 +1,7 @@
 package seedu.address.model;
 
+import seedu.address.model.person.Name;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
@@ -10,12 +12,12 @@ import org.junit.jupiter.api.Test;
 
 public class ReminderTest {
 
-    private static final String VALID_NAME_MATH_EXAM = "Math Exam";
+    private static final Name VALID_NAME_MATH_EXAM = new Name("John Doe");
     private static final String VALID_EVENT_MATH_EXAM = "Final Semester Math Exam";
     private static final LocalDate VALID_DATE_MATH_EXAM = LocalDate.of(2025, 5, 10);
     private static final LocalTime VALID_TIME_MATH_EXAM = LocalTime.of(9, 0);
 
-    private static final String VALID_NAME_SCIENCE_TEST = "Science Test";
+    private static final Name VALID_NAME_SCIENCE_TEST = new Name("Jane Smith");
     private static final String VALID_EVENT_SCIENCE_TEST = "Chapter 5 and 6 Science Test";
     private static final LocalDate VALID_DATE_SCIENCE_TEST = LocalDate.of(2025, 5, 15);
     private static final LocalTime VALID_TIME_SCIENCE_TEST = LocalTime.of(14, 30);

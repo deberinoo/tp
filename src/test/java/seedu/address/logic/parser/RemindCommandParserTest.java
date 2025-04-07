@@ -12,10 +12,11 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.RemindCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.person.Name;
 
 public class RemindCommandParserTest {
 
-    private static final String VALID_NAME = "John Doe";
+    private static final Name VALID_NAME = new Name("John Doe");
     private static final String VALID_EVENT = "Math Exam";
     private static final String VALID_DATE = "2025-06-20";
     private static final String VALID_TIME = "09:00";
