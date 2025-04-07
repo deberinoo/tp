@@ -1,5 +1,6 @@
 package seedu.address.logic.commands;
 
+import static java.util.Objects.isNull;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
@@ -23,7 +24,9 @@ public class ListCommand extends Command {
     public CommandResult execute(Model model) {
         requireNonNull(model);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
-        model.getMainWindow().changePanel("contacts");
+        if (!isNull(model.getMainWindow())) {
+            model.getMainWindow().changePanel("contacts");
+        }
         return new CommandResult(MESSAGE_SUCCESS);
     }
 }
