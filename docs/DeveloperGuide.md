@@ -902,3 +902,15 @@ Team size: 5
 6. Expanding Undo and Redo functionality
 - Current flaw: undo and redo commands only work for the contacts tab which may not be very intuitive.
 - Fix: Save the reminder and sessions list states to expand the undo and redo command functionalities for the remind and sessions tabs.
+
+7. Prevent scheduling edits to past dates
+- Current flaw: The schedule edit command unexpectedly allows editing dates to past values.
+- Fix: Implement validation to prevent scheduling edits from setting dates in the past.
+
+8. Allow same-day session scheduling
+- Current flaw: The system currently does not allow scheduling sessions on the same day.
+- Fix: Modify the scheduling logic to permit same-day session creation while maintaining relevant constraints.
+
+9. Prevent overlapping sessions for the same person
+- Current flaw: Sessions can be created with overlapping times for the same person.
+- Fix: Implement a validation check to prevent overlapping session times for a single individual.
