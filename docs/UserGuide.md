@@ -77,6 +77,16 @@ tailored specifically for private tutors with young tutees.<br>
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
 </div>
 
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Notes about the fields:**<br>
+
+* `Name` only accepts alphabets and certain special characters such as `'`, `-`, and `/`. These special characters can only be used once. 
+  * **Valid Names:** John Doe, O'Connor, Jean-Luc, Ravi S/O Lim
+  * **Invalid Names:** O''Connor, -John, Mary-, S//O, 007
+
+</div>
+
 ### Viewing help : `help`
 
 Shows a message explaining how to access the help page.
@@ -212,6 +222,12 @@ Examples:
 * `tags` shows an unique list of all tags in the address book.
 * `tags t/Math` shows a unique list of persons with the `Math` tag.
 * `tags t/Math t/P3` shows a unique list of persons with the tag combination of `Math` and `P3`.
+
+About the fields:
+* `Tags` should be a single alphanumeric combination.
+* If users wants to combine 2 different words in a single combination, use `Pascal` or `Camel` case instead.
+* **Valid Tags:** tag123, HelloWorld, helloThere, Alpha123Beta, Test1234
+* **Invalid Tags:** Tag 123, Hello-World, Alpha_123, #Tag123
 
 ### Scheduling a session : `schedule`
 
