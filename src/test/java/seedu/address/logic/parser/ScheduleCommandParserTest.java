@@ -77,7 +77,7 @@ public class ScheduleCommandParserTest {
                         + PREFIX_DATE + VALID_DATE + " "
                         + PREFIX_TIME + VALID_TIME + " "
                         + PREFIX_DURATION + INVALID_DURATION_ZERO,
-                "Duration cannot be zero or negative!");
+                "Duration must be greater than zero!");
 
         // Negative duration
         assertParseFailure(parser,
@@ -86,7 +86,7 @@ public class ScheduleCommandParserTest {
                         + PREFIX_DATE + VALID_DATE + " "
                         + PREFIX_TIME + VALID_TIME + " "
                         + PREFIX_DURATION + INVALID_DURATION_NEGATIVE,
-                "Duration cannot be zero or negative!");
+                "Duration must be greater than zero!");
 
         // Duration > 24 hours
         assertParseFailure(parser,
@@ -95,7 +95,7 @@ public class ScheduleCommandParserTest {
                         + PREFIX_DATE + VALID_DATE + " "
                         + PREFIX_TIME + VALID_TIME + " "
                         + PREFIX_DURATION + INVALID_DURATION_LONG,
-                "Duration cannot be more than 24 hours!");
+                "Duration cannot exceed 24 hours!");
     }
 
     @Test
@@ -106,7 +106,7 @@ public class ScheduleCommandParserTest {
                         + PREFIX_DATE + INVALID_DATE + " "
                         + PREFIX_TIME + VALID_TIME + " "
                         + PREFIX_DURATION + VALID_DURATION,
-                String.format("Invalid date! Expected: The specified date must be in the future (after today: %s).",
+                String.format("Invalid date! The specified date must be after today.",
                         LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))));
     }
 }
