@@ -1,9 +1,8 @@
 package seedu.address.logic.commands.schedule;
 
-import static java.util.Objects.requireNonNull;
-
 import java.util.Comparator;
 import java.util.List;
+import static java.util.Objects.requireNonNull;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.Command;
@@ -21,6 +20,7 @@ public class ScheduleCancelCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Cancels a scheduled session using its index.\n"
+            + "Parameters: INDEX\n"
             + "Example: schedule cancel 1";
 
     public static final String MESSAGE_SUCCESS = "Cancelled session: %1$s";

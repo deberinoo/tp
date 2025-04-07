@@ -1,16 +1,16 @@
 package seedu.address.logic.commands.schedule;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_SUBJECT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TIME;
 
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_SUBJECT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TIME;
 import seedu.address.model.Model;
 import seedu.address.model.schedule.Session;
 
@@ -27,7 +27,8 @@ public class ScheduleCommand extends Command {
             + PREFIX_SUBJECT + "SUBJECT "
             + PREFIX_DATE + "YYYY-MM-DD "
             + PREFIX_TIME + "HH:MM "
-            + PREFIX_DURATION + "XhYm\n\n"
+            + PREFIX_DURATION + "XhYm\n"
+            + "Example: schedule n/John Doe s/Math d/2025-12-25 t/10:00 dur/1h\n"
             + "You can also use the following commands:\n"
             + "  schedule edit: Edits an existing scheduled session.\n"
             + "  schedule cancel: Cancels a scheduled session.";
