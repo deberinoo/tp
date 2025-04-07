@@ -369,7 +369,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1. Tutor enters the command to add a new student with details (name, phone number, email, parent contact).
-2. EduEase validates the input fields.
+2. EduEase checks if inputs given are valid.
 3. If all fields are valid, EduEase saves the student contact.
 4. EduEase confirms the addition with a success message.
 
