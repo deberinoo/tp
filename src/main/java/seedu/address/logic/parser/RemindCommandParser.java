@@ -8,6 +8,7 @@ import java.time.format.DateTimeFormatter;
 
 import seedu.address.logic.commands.RemindCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.person.Name;
 /**
  * Parses input arguments and creates a new {@code RemindCommand} object
  */
@@ -41,13 +42,19 @@ public class RemindCommandParser implements Parser<RemindCommand> {
                     RemindCommand.MESSAGE_USAGE));
         }
 
+        //No duplicate prefixes allowed
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME,
+                PREFIX_EVENT, PREFIX_DATE, PREFIX_TIME);
+
         // Extract values from ArgumentMultimap
-        String name = argMultimap.getValue(PREFIX_NAME).get();
-        String event = argMultimap.getValue(PREFIX_EVENT).get();
+        String nameStr = argMultimap.getValue(PREFIX_NAME).get();
+        String eventStr = argMultimap.getValue(PREFIX_EVENT).get();
         String dateStr = argMultimap.getValue(PREFIX_DATE).get();
         String timeStr = argMultimap.getValue(PREFIX_TIME).get();
 
-        // Parsing date and time strings
+        // Parsing strings
+        Name name = ParserUtil.parseName(nameStr);
+        String event = ParserUtil.parseEvent(eventStr);
         LocalDate date = ParserUtil.parseDate(dateStr);
         LocalTime time = ParserUtil.parseTime(timeStr);
 

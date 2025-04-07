@@ -163,4 +163,20 @@ public class ParserUtil {
             throw new ParseException("Invalid duration format! Expected format: XhYm (e.g., 1h30m)");
         }
     }
+
+    /**
+     * Parses a {@code String eventStr} into a valid event name.
+     * Ensures that the string is non-empty and trimmed.
+     * @param eventStr The string representing the event.
+     * @return A trimmed, valid event string.
+     * @throws ParseException If the input string is empty or invalid.
+     */
+    public static String parseEvent(String eventStr) throws ParseException {
+        requireNonNull(eventStr);
+        String trimmedEvent = eventStr.trim();
+        if (trimmedEvent.isEmpty()) {
+            throw new ParseException("Event name cannot be empty!");
+        }
+        return trimmedEvent;
+    }
 }
