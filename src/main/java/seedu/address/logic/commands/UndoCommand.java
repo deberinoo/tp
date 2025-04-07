@@ -13,8 +13,8 @@ import seedu.address.model.Model;
 public class UndoCommand extends Command {
 
     public static final String COMMAND_WORD = "undo";
-    public static final String MESSAGE_SUCCESS = "Reverted entire model state";
-    public static final String MESSAGE_FAILURE = "No previous model state found";
+    public static final String MESSAGE_SUCCESS = "Undo Success: Reverted entire model state";
+    public static final String MESSAGE_FAILURE = "Undo Failure: No previous model state found";
 
 
     @Override

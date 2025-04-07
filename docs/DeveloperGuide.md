@@ -866,3 +866,9 @@ testers are expected to do more *exploratory* testing.
        Expected: Error message indicating invalid session index.
 
 3. *{ more test cases ... }*
+
+---
+### Future Enhancements
+
+1. **Expanding Undo and Redo functionality**: Currently, the undo and redo functionality is limited to the contacts tab. 
+   Future versions will extend this functionality to other tabs, such as reminders and sessions, allowing users to revert changes across the entire application.
