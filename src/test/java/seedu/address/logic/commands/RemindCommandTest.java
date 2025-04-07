@@ -20,6 +20,7 @@ import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.Reminder;
+import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.schedule.Session;
 import seedu.address.model.tag.Tag;
@@ -30,12 +31,12 @@ import seedu.address.ui.MainWindow;
  */
 public class RemindCommandTest {
 
-    private static final String VALID_NAME = "John Doe";
+    private static final Name VALID_NAME = new Name("John Doe");
     private static final String VALID_EVENT = "Math Exam";
     private static final LocalDate VALID_DATE = LocalDate.of(2025, 6, 20);
     private static final LocalTime VALID_TIME = LocalTime.of(9, 0);
 
-    private static final String ANOTHER_NAME = "Jane Smith";
+    private static final Name ANOTHER_NAME = new Name("Jane Smith");
     private static final String ANOTHER_EVENT = "Science Test";
     private static final LocalDate ANOTHER_DATE = LocalDate.of(2025, 6, 25);
     private static final LocalTime ANOTHER_TIME = LocalTime.of(14, 30);

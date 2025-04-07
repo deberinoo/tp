@@ -8,6 +8,7 @@ import java.time.LocalTime;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.Reminder;
+import seedu.address.model.person.Name;
 /**
  * Adding reminders to the system.
  */
@@ -25,7 +26,7 @@ public class RemindCommand extends Command {
 
     public static final String MESSAGE_ARGUMENTS = "Name: %1$s, Event: %2$s, Date: %3$s, Time: %4$s";
 
-    private final String name;
+    private final Name name;
     private final String event;
     private final LocalDate date;
     private final LocalTime time;
@@ -40,7 +41,7 @@ public class RemindCommand extends Command {
      * @param time The time of the reminder.
      * @throws NullPointerException If any of the parameters are null.
      */
-    public RemindCommand(String name, String event, LocalDate date, LocalTime time) {
+    public RemindCommand(Name name, String event, LocalDate date, LocalTime time) {
         requireAllNonNull(name, event, date, time);
 
         this.name = name;

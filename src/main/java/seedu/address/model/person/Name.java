@@ -10,13 +10,21 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class Name {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Names should only contain alphanumeric characters and spaces, and it should not be blank";
+            "Names must start and end with a letter.\n"
+                    + "In addition, only ', -, / are allowed once.\n"
+                    + "Numbers and other special characters are not allowed.\n"
+                    + "Valid examples: John Doe, O'Connor, Jean-Luc, Ravi S/O Lim\n"
+                    + "Invalid examples: O''Connor, -John, Mary-, S//O, 007\n";
 
     /*
-     * The first character of the address must not be a whitespace,
-     * otherwise " " (a blank string) becomes a valid input.
+     * The regex enforces:
+     * - Starts and ends with a letter
+     * - Can contain letters, spaces, apostrophes, hyphens, and slashes
+     * - No consecutive special characters
+     * - No leading/trailing spaces and special characters
      */
-    public static final String VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
+    public static final String VALIDATION_REGEX =
+            "^(?!.*[ '-/]$)(?!.*'')(?!.*--)(?!.*//)[A-Za-z]+(?:[\\s'-][A-Za-z]+)*(?:/[A-Za-z]+)?(?:[\\s'-][A-Za-z]+)*$";
 
     public final String fullName;
 
@@ -37,7 +45,6 @@ public class Name {
     public static boolean isValidName(String test) {
         return test.matches(VALIDATION_REGEX);
     }
-
 
     @Override
     public String toString() {

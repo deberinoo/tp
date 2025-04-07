@@ -58,7 +58,7 @@ The *Sequence Diagram* below shows how the components interact with each other f
 Each of the four main components (also shown in the diagram above),
 
 * defines its *API* in an `interface` with the same name as the Component.
-* implements its functionality using a concrete `{Component Name}Manager` class (which follows the corresponding API `interface` mentioned in the previous point.
+* implements its functionality using a concrete `{Component Name}Manager` class which follows the corresponding API `interface` mentioned in the previous point.
 
 For example, the `Logic` component defines its API in the `Logic.java` interface and implements its functionality using the `LogicManager.java` class which follows the `Logic` interface. Other components interact with a given component through its interface rather than the concrete class (reason: to prevent outside component's being coupled to the implementation of a component), as illustrated in the (partial) class diagram below.
 
@@ -200,7 +200,7 @@ Step 6. LogicManager creates a CommandResult, confirming that the session was su
 
 The following Schedule Sequence Diagram visually represents these interactions.
 
-<img src="images/ScheduleSequenceDiagram.png" width="574" />
+![ScheduleSequenceDiagram](images/ScheduleSequenceDiagram.png)
 
 ### Undo/redo feature
 
@@ -320,40 +320,40 @@ _{Explain here how the data archiving feature will be implemented}_
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​ | I want to …​                                                                                  | So that I can…​                                                                        |
-|----------|---------|-----------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------|
+| Priority | As a …​ | I want to …​                                                                            | So that I can…​                                                                        |
+|----------|---------|-----------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------|
 | `* * *`  | tutor   | add new student contacts with details (Eg. name, phone, email, parent/guardian contact, etc.) | keep track of my students easily                                                       |
-| `* * *`  | tutor   | delete student contacts                                                                       | remove outdated or incorrect contacts                                                  |
-| `* * *`  | tutor   | view a simple list of all my students                                                         | quickly find their details                                                             |
-| `* * *`  | tutor   | set reminders for upcoming exams or important dates dates for each student                    | prepare appropriate review materials in advance                                        |
-| `* * *`  | tutor   | create custom tags for students                                                               | filter and group them more efficiently                                                 |
-| `* *`    | tutor   | edit existing student contacts                                                                | keep student information up to date                                                    |
-| `* *`    | tutor   | add notes about each student's progress                                                       | personalize my lessons                                                                 |
-| `* *`    | tutor   | clear all student contacts                                                                    | remove all contacts quickly                                                            |
-| `* *`    | tutor   | categorize my contacts (Eg. Current students, past students, etc.)                            | manage them efficiently                                                                |
-| `* *`    | tutor   | manually schedule tutoring sessions                                                           | keep track of upcoming classes                                                         |
-| `* *`    | tutor   | view all scheduled sessions in a simple calendar                                              | stay organized                                                                         |
-| `* *`    | tutor   | reschedule or cancel a session manually                                                       | update my availabiity                                                                  |
-| `* *`    | tutor   | filter my schedule by student                                                                 | see sessions for a specific student                                                    |
-| `* *`    | tutor   | set recurring sessions for regular students                                                   | avoid manually scheduling them every week                                              |
-| `* *`    | tutor   | undo the last action                                                                          | recover from mistakes                                                                  |
-| `* *`    | tutor   | undoes undo commands                                                                          | revert undo commands                                                                   |
-| `* *`    | tutor   | switch between different tabs                                                                 | view a different tab                                                                   |
-| `*`      | tutor   | manually save my student data as a local file                                                 | back up my records                                                                     |
-| `*`      | tutor   | write notes after a session                                                                   | review what was covered                                                                |
-| `*`      | tutor   | mark a session as completed                                                                   | track my past lessons                                                                  |
-| `*`      | tutor   | keep a history of past sessions                                                               | refer to them later                                                                    |
-| `*`      | tutor   | receive simple local notifications before a session starts                                    | be prepared for it                                                                     |
-| `*`      | tutor   | track the payment status of each session                                                      | easily manage my income and follow up on any outstanding payments                      |
-| `*`      | tutor   | generate a simple progress report for each student                                            | share their improvement or areas that need further attention with parents or guardians |
-| `*`      | tutor   | add and view teaching resources (Eg. Worksheets, Practice questions, etc.)                    | quickly access relevant materials during sessions                                      |
-| `*`      | tutor   | set goals for each student and track their progress towards these goals                       | provide targeted support and motivation                                                |
-| `*`      | tutor   | view a summary of my weekly or monthly teaching hours                                         | manage my workload effectively                                                         |
-| `*`      | tutor   | upload and store student assignments or completed work                                        | review them later and track their progress over time                                   |
-| `*`      | tutor   | quickly message a student or their parent directly from the app                               | communicate easily about scheduling changes or important updates                       |
-| `*`      | tutor   | track the duration of each session                                                            | accurately log my teaching hours                                                       |
-| `*`      | tutor   | archive inactive students instead of deleting them                                            | refer to their records later if needed                                                 |
-| `*`      | tutor   | import student contacts from a CSV of Excel file                                              | quickly set up my student database                                                     |
+| `* * *`  | tutor   | delete student contacts                                                                 | remove outdated or incorrect contacts                                                  |
+| `* * *`  | tutor   | view a simple list of all my students                                                   | quickly find their details                                                             |
+| `* * *`  | tutor   | set reminders for upcoming exams or important dates for each student                    | prepare appropriate review materials in advance                                        |
+| `* * *`  | tutor   | create custom tags for students                                                         | filter and group them more efficiently                                                 |
+| `* *`    | tutor   | edit existing student contacts                                                          | keep student information up to date                                                    |
+| `* *`    | tutor   | add notes about each student's progress                                                 | personalize my lessons                                                                 |
+| `* *`    | tutor   | clear all student contacts                                                              | remove all contacts quickly                                                            |
+| `* *`    | tutor   | categorize my contacts (Eg. Current students, past students, etc.)                      | manage them efficiently                                                                |
+| `* *`    | tutor   | manually schedule tutoring sessions                                                     | keep track of upcoming classes                                                         |
+| `* *`    | tutor   | view all scheduled sessions in a simple calendar                                        | stay organized                                                                         |
+| `* *`    | tutor   | reschedule or cancel a session manually                                                 | update my availability                                                                 |
+| `* *`    | tutor   | filter my schedule by student                                                           | see sessions for a specific student                                                    |
+| `* *`    | tutor   | set recurring sessions for regular students                                             | avoid manually scheduling them every week                                              |
+| `* *`    | tutor   | undo the last action                                                                    | recover from mistakes                                                                  |
+| `* *`    | tutor   | undoes undo commands                                                                    | revert undo commands                                                                   |
+| `* *`    | tutor   | switch between different tabs                                                           | view a different tab                                                                   |
+| `*`      | tutor   | manually save my student data as a local file                                           | back up my records                                                                     |
+| `*`      | tutor   | write notes after a session                                                             | review what was covered                                                                |
+| `*`      | tutor   | mark a session as completed                                                             | track my past lessons                                                                  |
+| `*`      | tutor   | keep a history of past sessions                                                         | refer to them later                                                                    |
+| `*`      | tutor   | receive simple local notifications before a session starts                              | be prepared for it                                                                     |
+| `*`      | tutor   | track the payment status of each session                                                | easily manage my income and follow up on any outstanding payments                      |
+| `*`      | tutor   | generate a simple progress report for each student                                      | share their improvement or areas that need further attention with parents or guardians |
+| `*`      | tutor   | add and view teaching resources (Eg. Worksheets, Practice questions, etc.)              | quickly access relevant materials during sessions                                      |
+| `*`      | tutor   | set goals for each student and track their progress towards these goals                 | provide targeted support and motivation                                                |
+| `*`      | tutor   | view a summary of my weekly or monthly teaching hours                                   | manage my workload effectively                                                         |
+| `*`      | tutor   | upload and store student assignments or completed work                                  | review them later and track their progress over time                                   |
+| `*`      | tutor   | quickly message a student or their parent directly from the app                         | communicate easily about scheduling changes or important updates                       |
+| `*`      | tutor   | track the duration of each session                                                      | accurately log my teaching hours                                                       |
+| `*`      | tutor   | archive inactive students instead of deleting them                                      | refer to their records later if needed                                                 |
+| `*`      | tutor   | import student contacts from a CSV of Excel file                                        | quickly set up my student database                                                     |
 
 
 *{More to be added}*
@@ -369,7 +369,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1. Tutor enters the command to add a new student with details (name, phone number, email, parent contact).
-2. EduEase validates the input fields.
+2. EduEase checks if inputs given are valid.
 3. If all fields are valid, EduEase saves the student contact.
 4. EduEase confirms the addition with a success message.
 
@@ -727,6 +727,11 @@ testers are expected to do more *exploratory* testing.
     2. Test case: `note 1 c/`  
        Expected: Note is cleared. Empty note is displayed.
 
+5. Appending a note with extra prefixes
+   1.  Prerequisites: Have at least one person in the address book. View this person using the `list` or `find` command.
+   2. Test case: `note 1 a/Need help with multiplication c/`
+      Expected: Note is appended instead of cleared.
+
 5. *{ more test cases ... }*
 
 ---
@@ -867,8 +872,25 @@ testers are expected to do more *exploratory* testing.
 
 3. *{ more test cases ... }*
 
+  
 ---
-### Future Enhancements
 
-1. **Expanding Undo and Redo functionality**: Currently, the undo and redo functionality is limited to the contacts tab. 
-   Future versions will extend this functionality to other tabs, such as reminders and sessions, allowing users to revert changes across the entire application.
+## **Appendix: Planned Enhancements**
+
+Team size: 5
+
+1.Persistent reminder storage integration
+Current flaw: Reminders exist only in runtime memory.
+Fix: Save reminders to JSON storage with automated daily expiration checks.
+
+2.Contact-reference validation
+Current flaw: remind and session accept non-existent contacts.
+Fix: Add validation check for reminder and session
+
+3.Cascade deletion protocol
+Current flaw: Deleting contacts leaves orphaned reminders.
+Fix: Automatic removal of all reminders/schedules linked to deleted contacts.
+                        
+4.Expanding Undo and Redo functionality
+Current flaw: undo and redo commands only work for the contacts tab which may not be very intuitive.
+Fix: Save the reminder and sessions list states to expand the undo and redo command functionalities for the remind and sessions tabs.

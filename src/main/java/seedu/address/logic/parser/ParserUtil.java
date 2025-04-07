@@ -46,7 +46,7 @@ public class ParserUtil {
      */
     public static Name parseName(String name) throws ParseException {
         requireNonNull(name);
-        String trimmedName = name.trim();
+        String trimmedName = name.replaceAll("\\s+", " ").trim();
         if (!Name.isValidName(trimmedName)) {
             throw new ParseException(Name.MESSAGE_CONSTRAINTS);
         }
@@ -61,7 +61,7 @@ public class ParserUtil {
      */
     public static Phone parsePhone(String phone) throws ParseException {
         requireNonNull(phone);
-        String trimmedPhone = phone.trim();
+        String trimmedPhone = phone.replaceAll("\\s+", "").trim();
         if (!Phone.isValidPhone(trimmedPhone)) {
             throw new ParseException(Phone.MESSAGE_CONSTRAINTS);
         }
@@ -162,5 +162,21 @@ public class ParserUtil {
         } catch (NumberFormatException | ArrayIndexOutOfBoundsException | StringIndexOutOfBoundsException e) {
             throw new ParseException("Invalid duration format! Expected format: XhYm (e.g., 1h30m)");
         }
+    }
+
+    /**
+     * Parses a {@code String eventStr} into a valid event name.
+     * Ensures that the string is non-empty and trimmed.
+     * @param eventStr The string representing the event.
+     * @return A trimmed, valid event string.
+     * @throws ParseException If the input string is empty or invalid.
+     */
+    public static String parseEvent(String eventStr) throws ParseException {
+        requireNonNull(eventStr);
+        String trimmedEvent = eventStr.trim();
+        if (trimmedEvent.isEmpty()) {
+            throw new ParseException("Event name cannot be empty!");
+        }
+        return trimmedEvent;
     }
 }
