@@ -29,6 +29,9 @@ public class SwitchCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         model.getMainWindow().changePanel(panelName);
+        if (panelName.equals("contacts")) {
+            model.updateFilteredPersonList(Model.PREDICATE_SHOW_ALL_PERSONS);
+        }
         return new CommandResult("Panel changed to " + panelName + " successfully.");
     }
 }

@@ -872,6 +872,9 @@ testers are expected to do more *exploratory* testing.
 
 3. *{ more test cases ... }*
 
+  
+---
+
 ## **Appendix: Planned Enhancements**
 
 Team size: 5
@@ -895,3 +898,7 @@ Team size: 5
 5. Persistent sessions storage integration
 - Current flaw: Sessions exist only in runtime memory.
 - Fix: Save sessions to JSON storage with automated daily expiration checks.
+              
+6. Expanding Undo and Redo functionality
+- Current flaw: undo and redo commands only work for the contacts tab which may not be very intuitive.
+- Fix: Save the reminder and sessions list states to expand the undo and redo command functionalities for the remind and sessions tabs.
