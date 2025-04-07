@@ -79,6 +79,10 @@ public class LogicManager implements Logic {
 
         commandResult = command.execute(model);
 
+        if (command instanceof ListCommand) {
+            model.getMainWindow().changePanel("contacts");
+        }
+
         // list, and find commands should not change the addressbook state. undo commands should function outside
         // the addressbook state
         if (!(command instanceof UndoCommand) && !(command instanceof ListCommand)
