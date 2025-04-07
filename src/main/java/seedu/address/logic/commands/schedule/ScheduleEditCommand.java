@@ -1,12 +1,11 @@
 package seedu.address.logic.commands.schedule;
 
-import static java.util.Objects.requireNonNull;
-
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 import java.util.Objects;
+import static java.util.Objects.requireNonNull;
 import java.util.Optional;
 
 import seedu.address.commons.core.index.Index;
@@ -26,7 +25,8 @@ public class ScheduleEditCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Edits a scheduled session using its index and new details.\n"
-            + "Example: schedule edit 1 n/NEW_NAME s/NEW_SUBJECT d/2025-03-19 t/14:00 dur/2h";
+            + "Parameters: INDEX [n/NEW_NAME] [s/NEW_SUBJECT] [d/YYYY-MM-DD] [t/HH:MM] [dur/XhYm]\n"
+            + "Example: schedule edit 1 n/John Doe";
 
     public static final String MESSAGE_SUCCESS = "Edited session: %1$s";
     public static final String MESSAGE_INVALID_INDEX = "Invalid index!"
