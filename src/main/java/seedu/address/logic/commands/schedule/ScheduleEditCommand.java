@@ -1,11 +1,12 @@
 package seedu.address.logic.commands.schedule;
 
+import static java.util.Objects.requireNonNull;
+
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 import java.util.Objects;
-import static java.util.Objects.requireNonNull;
 import java.util.Optional;
 
 import seedu.address.commons.core.index.Index;
