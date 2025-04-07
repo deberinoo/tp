@@ -1,8 +1,9 @@
 package seedu.address.logic.commands.schedule;
 
+import static java.util.Objects.requireNonNull;
+
 import java.util.Comparator;
 import java.util.List;
-import static java.util.Objects.requireNonNull;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.Command;

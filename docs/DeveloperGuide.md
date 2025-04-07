@@ -877,24 +877,28 @@ testers are expected to do more *exploratory* testing.
 
 ## **Appendix: Planned Enhancements**
 
-Team size: 6
+Team size: 5
 
-1.Persistent reminder storage integration
-Current flaw: Reminders exist only in runtime memory.
-Fix: Save reminders to JSON storage with automated daily expiration checks.
+1. Persistent reminder storage integration
+- Current flaw: Reminders exist only in runtime memory.
+- Fix: Save reminders to JSON storage with automated daily expiration checks.
 
-2.Contact-reference validation
-Current flaw: remind and session accept non-existent contacts.
-Fix: Add validation check for reminder and session
+2. Contact-reference validation
+- Current flaw: remind and session accept non-existent contacts.
+- Fix: Add validation check for reminder and session
 
-3.Cascade deletion protocol
-Current flaw: Deleting contacts leaves orphaned reminders.
-Fix: Automatic removal of all reminders/schedules linked to deleted contacts.
-                        
-4.Expanding Undo and Redo functionality
-Current flaw: undo and redo commands only work for the contacts tab which may not be very intuitive.
-Fix: Save the reminder and sessions list states to expand the undo and redo command functionalities for the remind and sessions tabs.
+3. Cascade deletion protocol
+- Current flaw: Deleting contacts leaves orphaned reminders.
+- Fix: Automatic removal of all reminders/schedules linked to deleted contacts.
 
-5.Force confirmation in command
-Current flaw: Confirmation is handled via alert popups.
-Fix: Integrate confirmation directly into the command structure, requiring explicit user input (e.g., confirm/) to proceed, removing reliance on alert dialogs.
+4. Force confirmation in command
+- Current flaw: Confirmation is handled via alert popups.
+- Fix: Integrate confirmation directly into the command structure, requiring explicit user input (e.g., confirm/) to proceed, removing reliance on alert dialogs.
+
+5. Persistent sessions storage integration
+- Current flaw: Sessions exist only in runtime memory.
+- Fix: Save sessions to JSON storage with automated daily expiration checks.
+              
+6. Expanding Undo and Redo functionality
+- Current flaw: undo and redo commands only work for the contacts tab which may not be very intuitive.
+- Fix: Save the reminder and sessions list states to expand the undo and redo command functionalities for the remind and sessions tabs.
