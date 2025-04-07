@@ -877,7 +877,7 @@ testers are expected to do more *exploratory* testing.
 
 ## **Appendix: Planned Enhancements**
 
-Team size: 5
+Team size: 6
 
 1.Persistent reminder storage integration
 Current flaw: Reminders exist only in runtime memory.
@@ -894,3 +894,7 @@ Fix: Automatic removal of all reminders/schedules linked to deleted contacts.
 4.Expanding Undo and Redo functionality
 Current flaw: undo and redo commands only work for the contacts tab which may not be very intuitive.
 Fix: Save the reminder and sessions list states to expand the undo and redo command functionalities for the remind and sessions tabs.
+
+5.Force confirmation in command
+Current flaw: Confirmation is handled via alert popups.
+Fix: Integrate confirmation directly into the command structure, requiring explicit user input (e.g., confirm/) to proceed, removing reliance on alert dialogs.
