@@ -369,7 +369,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1. Tutor enters the command to add a new student with details (name, phone number, email, parent contact).
-2. EduEase validates the input fields.
+2. EduEase checks if inputs given are valid.
 3. If all fields are valid, EduEase saves the student contact.
 4. EduEase confirms the addition with a success message.
 
@@ -726,6 +726,11 @@ testers are expected to do more *exploratory* testing.
     1. Prerequisites: Have at least one person in the address book. View this person using the `list` or `find` command.
     2. Test case: `note 1 c/`  
        Expected: Note is cleared. Empty note is displayed.
+
+5. Appending a note with extra prefixes
+   1.  Prerequisites: Have at least one person in the address book. View this person using the `list` or `find` command.
+   2. Test case: `note 1 a/Need help with multiplication c/`
+      Expected: Note is appended instead of cleared.
 
 5. *{ more test cases ... }*
 
