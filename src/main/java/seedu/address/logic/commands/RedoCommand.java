@@ -12,8 +12,8 @@ import seedu.address.model.Model;
  */
 public class RedoCommand extends Command {
     public static final String COMMAND_WORD = "redo";
-    public static final String MESSAGE_SUCCESS = "Reverted to before Undo command";
-    public static final String MESSAGE_FAILURE = "No redoable state found";
+    public static final String MESSAGE_SUCCESS = "Redo Success: Reverted addressbook(contacts) to before Undo command";
+    public static final String MESSAGE_FAILURE = "Redo Failure: No redoable addressbook(contacts) state found";
 
 
     @Override

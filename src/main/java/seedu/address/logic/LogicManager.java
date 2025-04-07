@@ -15,8 +15,13 @@ import seedu.address.logic.commands.CommandWithConfirmation;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.RedoCommand;
+import seedu.address.logic.commands.RemindCommand;
+import seedu.address.logic.commands.SwitchCommand;
 import seedu.address.logic.commands.UndoCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.commands.schedule.ScheduleCancelCommand;
+import seedu.address.logic.commands.schedule.ScheduleCommand;
+import seedu.address.logic.commands.schedule.ScheduleEditCommand;
 import seedu.address.logic.parser.AddressBookParser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.AddressBookStateManager;
@@ -79,10 +84,18 @@ public class LogicManager implements Logic {
 
         commandResult = command.execute(model);
 
+        if ((command instanceof ListCommand) || (command instanceof UndoCommand) || (command instanceof RedoCommand)
+                || (command instanceof SwitchCommand) || (command instanceof FindCommand)) {
+            model.getMainWindow().changePanel("contacts");
+        }
+
         // list, and find commands should not change the addressbook state. undo commands should function outside
         // the addressbook state
         if (!(command instanceof UndoCommand) && !(command instanceof ListCommand)
-                && !(command instanceof FindCommand) && !(command instanceof RedoCommand)) {
+                && !(command instanceof FindCommand) && !(command instanceof RedoCommand)
+                && !(command instanceof ScheduleCommand) && !(command instanceof ScheduleCancelCommand)
+                && !(command instanceof ScheduleEditCommand) && !(command instanceof RemindCommand)
+                && !(command instanceof SwitchCommand)) {
             AddressBookStateManager.addState(model.getAddressBook().copy());
         }
 

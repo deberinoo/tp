@@ -244,4 +244,18 @@ public class MainWindow extends UiPart<Stage> {
             throw new IllegalArgumentException("Invalid panel name: " + panelName);
         }
     }
+
+    public String getCurrentPanelName() {
+        int selectedIndex = tabPane.getSelectionModel().getSelectedIndex();
+        switch (selectedIndex) {
+        case 0:
+            return "contacts";
+        case 1:
+            return "reminders";
+        case 2:
+            return "sessions";
+        default:
+            throw new IllegalStateException("Unexpected value: " + selectedIndex);
+        }
+    }
 }
